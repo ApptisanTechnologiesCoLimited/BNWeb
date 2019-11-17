@@ -49,6 +49,7 @@
                             <div class="col-sm-5 col-xs-12 text-center" >
                                 <img v-bind:src="current.img" alt="">
                                 <div class="mt50 font11">
+                                    <h4>{{current.name}}</h4>
                                     {{current.product}}
                                 </div>
                                 <div class="mt50">
@@ -179,18 +180,30 @@ export default {
   data(){
         return {
                     artworkList:null,
-					current: null
+					current:null
                 }
       },
    mounted () {
        axios
          .get('http://localhost:3000/artwork/api')
-         .then(response => (this.artworkList = response.data,this.current = this.artworkList[0]))
+         .then(response => (
+             this.artworkList = response.data,
+             this.current = this.artworkList[0]
+         ))
          .catch(function (error) { // 请求失败处理
 			// console.log(error);
 			alert(error);
          });
-     },methods:{zan(index){this.current =  this.artworkList[index]}}
+     },
+    methods:{
+      zan(index){
+          this.current =  this.artworkList[index]
+          // alert(this.current);
+          // window.console.log(this.current)
+
+
+      }
+  }
 }
 
 </script>
