@@ -1,19 +1,21 @@
-import Vue from 'vue'
+import Vue from 'vue/dist/vue.js'
 import App from './App.vue'
 import VueRouter from 'vue-router'
-//import BootstrapVue from 'bootstrap-vue'
-//import 'bootstrap/dist/css/bootstrap.css'
-//import 'bootstrap-vue/dist/bootstrap-vue.css'
+import 'bootstrap/dist/css/bootstrap.css'
+import 'bootstrap/dist/js/bootstrap.js'
 import routes from './router.js'
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
+import '../src/assets/css/iconfont.css';
+import '../src/assets/css/main.css';
+
 
 
 Vue.config.productionTip = false
 //Vue.use(BootstrapVue)
 Vue.use(ElementUI);
-
 Vue.use(VueRouter)
+
 
 const router = new VueRouter({
   routes
