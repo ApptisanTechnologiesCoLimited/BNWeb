@@ -73,6 +73,7 @@
                                 </a>
 
                             </div>
+
                             <div class="col-sm-7 col-xs-12">
 
                                 <table class="table mb0" >
