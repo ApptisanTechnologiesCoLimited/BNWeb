@@ -1,7 +1,7 @@
 <template>
     <div id="myartworks">
 		<Header/>
-      
+
             <div class="content login middle">
                 <div class="cell">
                     <div class="container">
@@ -28,7 +28,7 @@
                                 <div class="scroll-wrapper">
                                     <div class="scrollbar-dynamic">
                                         <table class="table list-box lh25">
-											
+
                                             <tr v-for="( i,index ) in artworkList" v-on:click="zan(index)" v-bind:key="index">
                                                 <td>{{i.name}}</td>
                                                 <td class="text-center w30">{{i.changedate}}</td>
@@ -47,16 +47,28 @@
                             </div>
 
                             <div class="col-sm-5 col-xs-12 text-center" >
-                                <img v-bind:src="current.img" alt="">
-                                <div class="mt50 font11">
-                                    <h4>{{current.name}}</h4>
+                                <img v-bind:src="require('../assets' + current.img)" alt="">
+                                <!-- <img src="../assets/images/pic1.jpg" alt=""> -->
+                                <div class="mt20 font11">
+                                    {{current.name}}<br>
                                     {{current.product}}
                                 </div>
-                                <div class="mt50">
-                                    <a class="black mr20" href="#" >Open</a>
+                                <div class="mt20">
+                                    <router-link :to="'/artwork/' + current.id" class="black mr20">Open</router-link>
                                     <a class="black" data-toggle="modal" data-target="#edit"><span class="iconfont icon-edit font18"></span></a>
                                     <a class="black" href="#"><span class="iconfont icon-copy font18"></span></a>
-                                    <a class="black" data-toggle="modal" data-target="#delete"><span class="iconfont icon-delete font18"></span></a>
+                                    <!-- <a class="black" data-toggle="modal" data-target="#delete"><span class="iconfont icon-delete font18"></span></a> -->
+                                    <el-popover
+                                      placement="top"
+                                      width="200"
+                                      v-model="visible">
+                                      <p>Are you sure you want to delete {{current.name}}?</p>
+                                      <div style="text-align: right; margin: 0">
+                                        <el-button size="mini" type="text" @click="visible = false">取消</el-button>
+                                        <el-button type="primary" size="mini" @click="visible = false">确定</el-button>
+                                      </div>
+                                      <el-button slot="reference"><span class="iconfont icon-delete font18"></span></el-button>
+                                    </el-popover>
                                 </div>
                             </div>
                         </div>
@@ -134,7 +146,7 @@
                 </div>
             </div>
 
-            <div class="modal" id="delete" tabindex="-1" role="dialog" aria-labelledby="" data-backdrop="static">
+            <!-- <div class="modal" id="delete" tabindex="-1" role="dialog" aria-labelledby="" data-backdrop="static">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
 
@@ -160,8 +172,8 @@
                         </div>
                     </div>
                 </div>
-            </div>
-       
+            </div> -->
+
 
     </div>
 
@@ -180,7 +192,8 @@ export default {
   data(){
         return {
                     artworkList:null,
-					current:null
+                    current:null,
+                    visible:false
                 }
       },
    mounted () {

@@ -1,73 +1,13 @@
 <template>
 <div id="artwork">
-    <div class="header relative">
-        <nav class="navbar navbar-default">
-            <div class="container-fluid">
-                <!-- Brand and toggle get grouped for better mobile display -->
-                <div class="navbar-header">
-                    <a class="navbar-brand" href="#">Brand</a>
-                    <button type="button" class="navbar-toggle visible-xs" data-toggle="modal" data-target="#right-menu">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                </div>
 
-                <!-- Collect the nav links, forms, and other content for toggling -->
-                <div class="collapse navbar-collapse">
-                    <ul class="nav navbar-nav">
-                        <li><a href="#">ANY </a></li>
-                        <li><a href="#">ALBA</a></li>
-                        <li><a href="#">ARIA</a></li>
-
-                    </ul>
-
-                    <button type="button" class="navbar-toggle pull-right mr-15" data-toggle="modal" data-target="#right-menu">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <ul class="nav navbar-nav navbar-right">
-                        <li><a href="#">Get Black Nova </a></li>
-                        <li><a href="#">Create your keypad </a></li>
-                        <li class="ml"><a href="#">Mr Jones </a></li>
-                    </ul>
-                </div><!-- /.navbar-collapse -->
-            </div><!-- /.container-fluid -->
-        </nav>
-        <!-- Right Bar Menu -->
-        <div class="modal fade" id="right-menu" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <p class="text-right">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    </p>
-                    <div class="prl70 pt100">
-                        <ul class="list-unstyled menu font20">
-                            <li><a href="#">DOWNLOAD</a> </li>
-                            <li><a href="#">CONTACT</a> </li>
-                            <li><a href="#">NEWS</a> </li>
-                            <li><a href="#">ABOUT</a> </li>
-                            <hr>
-                            <li><a href="#">ACCOUNT SETTINGS</a> </li>
-                            <li><a href="#">LOG OUT</a> </li>
-                        </ul>
-                    </div>
-
-
-
-                </div>
-            </div>
-        </div>
-
-    </div>
     <div class="content login middle">
         <div class="cell">
             <div class="container">
                 <div class="row">
 
                     <div class="col-sm-5 col-xs-12 text-center mt5p">
-                        <img src="images/pic1.jpg" alt="">
+                        <img v-bind:src="require('../assets' + artwork.img)" alt="">
                     </div>
                     <div class="col-sm-5 col-xs-12 col-sm-offset-2 text-right">
                         <h3 class="now">{{artwork.name}}</h3>
