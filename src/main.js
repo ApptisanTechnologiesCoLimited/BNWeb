@@ -2,12 +2,11 @@ import Vue from 'vue/dist/vue.js'
 import App from './App.vue'
 import VueRouter from 'vue-router'
 import 'bootstrap/dist/css/bootstrap.css'
-import 'bootstrap/dist/js/bootstrap.js'
 import routes from './router.js'
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 import '../src/assets/css/iconfont.css';
-import '../src/assets/css/main.css';
+import '../src/assets/css/custom.css';
 
 
 
