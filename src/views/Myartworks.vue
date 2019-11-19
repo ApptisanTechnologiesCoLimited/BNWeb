@@ -54,7 +54,7 @@
                                 </div>
                                 <div class="mt20">
                                     <router-link :to="'/artwork/' + current.id" class="black mr20">Open</router-link>
-                                    <a class="black" data-toggle="modal" data-target="#edit"><span class="iconfont icon-edit font18"></span></a>
+                                    <a class="black" data-toggle="modal" data-target="#edit"  ><span class="iconfont icon-edit font18"></span></a>
                                     <a class="black" href="#"><span class="iconfont icon-copy font18"></span></a>
                                     <a class="black" @click="delete_artwork()"><span class="iconfont icon-delete font18"></span></a>
 
@@ -79,20 +79,20 @@
                                     <table class="table mt30 font12">
                                         <tr>
                                             <td>Name</td>
-                                            <td><input type="text" class="form-control" v-model="current.name"></td>
+                                            <td><input type="text" class="form-control" v-model="editable_artwork.name"></td>
                                         </tr>
                                         <tr>
                                             <td class="text-middle">Product</td>
-                                            <td class="text-right">{{current.product}}</td>
+                                            <td class="text-right">{{editable_artwork.product}}</td>
                                         </tr>
                                         <tr>
                                             <td class="text-middle">Unique ID</td>
-                                            <td class="text-right">{{current.id}}</td>
+                                            <td class="text-right">{{editable_artwork.id}}</td>
                                         </tr>
                                         <tr>
                                             <td class="text-middle">Communication protocol</td>
                                             <td class="text-right text-middle">
-                                                <input type="text" class="form-control"  v-model="current.protocol" />
+                                                <input type="text" class="form-control"  v-model="editable_artwork.protocol" />
                                             </td>
                                         </tr>
                                     </table>
@@ -133,7 +133,8 @@ export default {
   data(){
         return {
             artworkList:{},
-            current:{}
+            current:{},
+            editable_artwork:{}
 
         }
       },
@@ -155,6 +156,8 @@ export default {
     methods:{
       zan(index){
           this.current =  this.artworkList[index]
+          this.editable_artwork = Object.assign({},this.current);
+
 
       },
         delete_artwork() {
@@ -207,9 +210,9 @@ export default {
         },
         edit_artwork(){
             axios
-                .put('http://localhost:3000/artwork/api/'+ this.current.id,{
-                    "name":this.current.name,
-                    "protocol":this.current.protocol
+                .put('http://localhost:3000/artwork/api/'+ this.editable_artwork.id,{
+                    "name":this.editable_artwork.name,
+                    "protocol":this.editable_artwork.protocol
                 })
                 .then(res => {
                     // window.console.log(res.data);
@@ -229,6 +232,7 @@ export default {
                     alert(error);
                 });
       }
+
 
   }
 }
