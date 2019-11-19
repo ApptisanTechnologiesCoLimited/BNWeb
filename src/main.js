@@ -7,14 +7,15 @@ import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 import '../src/assets/css/iconfont.css';
 import '../src/assets/css/custom.css';
+import VueFilterDateFormat from 'vue-filter-date-format';
 
 
 
 Vue.config.productionTip = false
 //Vue.use(BootstrapVue)
-Vue.use(ElementUI);
+Vue.use(ElementUI)
 Vue.use(VueRouter)
-
+Vue.use(VueFilterDateFormat)
 
 const router = new VueRouter({
   routes

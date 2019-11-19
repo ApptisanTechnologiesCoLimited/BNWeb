@@ -31,7 +31,7 @@
 
                                             <tr v-for="( i,index ) in artworkList" @click="zan(index)" :key="index">
                                                 <td>{{i.name}}</td>
-                                                <td class="text-center w30">{{i.changedate}}</td>
+                                                <td class="text-center w30">{{new Date(i.changedate) | dateFormat('DD.MM.YYYY')}}</td>
                                             </tr>
 
 
