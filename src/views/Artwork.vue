@@ -7,14 +7,14 @@
                 <div class="row">
 
                     <div class="col-sm-5 col-xs-12 text-center mt5p">
-                        <img v-bind:src="require('../assets' + artwork.img)" alt="">
+                        <img :src="artwork.img" alt="">
                     </div>
                     <div class="col-sm-5 col-xs-12 col-sm-offset-2 text-right">
                         <h3 class="now">{{artwork.name}}</h3>
                         <div class="mt30 lh25">
                             <p>ALBA 4, General Purpose Panel</p>
-                            <p>Cresnet</p>
-                            <p>UID 999999</p>
+                            <p>{{artwork.protocol}}</p>
+                            <p>UID {{artwork.id}}</p>
                             <div class="font11 lh15">
                                 D L FE 4K X G YB <br>
                                 D L FE FR 1F X M AS<br>
@@ -98,7 +98,7 @@
         mounted() {
             axios.get("http://localhost:3000/artwork/api/"+ this.$route.params.id).then(response =>
             {
-                this.artwork = response.data;
+                this.artwork = response.data[0];
 
             })
         }

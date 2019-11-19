@@ -47,7 +47,7 @@
                             </div>
 
                             <div class="col-sm-5 col-xs-12 text-center" >
-                                <img :src="'' + current.img" alt="">
+                                <img :src="current.img" alt="">
                                 <div class="mt20 font11">
                                     {{current.name}}<br>
                                     {{current.product}}
@@ -133,8 +133,7 @@ export default {
   data(){
         return {
             artworkList:{},
-            current:{},
-            getData:null
+            current:{}
 
         }
       },
@@ -145,7 +144,6 @@ export default {
         {
             this.artworkList = response.data;
                 this.current = this.artworkList[0];
-            //this.getData = Object.assign({},this.current)
 
 
         })
@@ -156,10 +154,8 @@ export default {
      },
     methods:{
       zan(index){
-          this.current =  this.artworkList[index],
-              this.getData = Object.assign({},this.current);
-          // window.console.log(this.current)
-          window.console.log(this.getData)
+          this.current =  this.artworkList[index]
+
       },
         delete_artwork() {
             const h = this.$createElement;
@@ -193,6 +189,7 @@ export default {
                                             message: 'Delete Failed!'
                                         })
                                     }
+                                    instance.confirmButtonLoading = false;
                                 }
 
                             )
@@ -201,12 +198,7 @@ export default {
                                     window.console.log(error);
                             });
 
-                        setTimeout(() => {
-                            done();
-                            setTimeout(() => {
-                                instance.confirmButtonLoading = false;
-                            }, 300);
-                        }, 1000);
+
                     } else {
                         done();
                     }
