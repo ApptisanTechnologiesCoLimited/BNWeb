@@ -59,26 +59,6 @@
 
     </div>
 
-    <div class="sub-footer font10 mt30">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-sm-4">
-                    <div class="hidden">Interior images <br>are provided by Sivak+Partners.</div>
-                </div>
-                <div class="col-sm-4 text-center">All rights reserved - Black Nova© - 2019 | Legal</div>
-                <div class="col-sm-4 text-right font13">
-                    <div class="hidden">
-                        <a class="black" href="#"><span class="iconfont icon-instagram"></span></a>
-                        <a class="black" href="#"><span class="iconfont icon-Facebook"></span></a>
-                        <a class="black" href="#"><span class="iconfont icon-twitter"></span></a>
-                        <a class="black" href="#"><span class="iconfont icon-linkedin font18"></span></a>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-    </div>
-
 
 
 

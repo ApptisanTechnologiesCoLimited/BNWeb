@@ -29,7 +29,7 @@
                                     <div class="scrollbar-dynamic">
                                         <table class="table list-box">
 
-                                            <tr v-for="( i,index ) in artworkList" @click="zan(index)" :key="index">
+                                            <tr :class="activeClass == index ? 'active':''" v-for="( i,index ) in artworkList" @click="zan(index)" :key="index">
                                                 <td>{{i.name}}</td>
                                                 <td class="text-center w30">{{new Date(i.changedate) | dateFormat('DD.MM.YYYY')}}</td>
                                             </tr>
@@ -99,7 +99,7 @@
                                     <div class="mt50 text-center">
                                         <div class="row mlr0">
                                             <div class="col-sm-4 prl7">
-                                                <button type="button" class="ebutton" @click="edit_artwork()">OK</button>
+                                                <button type="button" class="ebutton" @click="edit_artwork()" data-dismiss="modal" aria-label="Close">OK</button>
                                             </div>
                                             <div class="col-sm-4 prl7">
                                                 <button type="button" class="ebutton">Change design</button>
@@ -134,29 +134,34 @@ export default {
         return {
             artworkList:{},
             current:{},
-            editable_artwork:{}
+            editable_artwork:{},
+            activeClass:0
 
         }
       },
     mounted () {
-       axios
-         .get('http://localhost:3000/artwork/api')
-         .then(response =>
-        {
-            this.artworkList = response.data;
-                this.current = this.artworkList[0];
-
-
-        })
-         .catch(function (error) { // 请求失败处理
-			alert(error);
-         });
+       this.getData();
 
      },
     methods:{
+      getData:function(){
+        axios
+          .get('http://localhost:3000/artwork/api')
+          .then(response =>
+         {
+             this.artworkList = response.data;
+             this.current = this.artworkList[0];
+             this.editable_artwork = Object.assign({},this.current);
+
+         })
+          .catch(function (error) { // 请求失败处理
+            alert(error);
+          });
+      },
       zan(index){
           this.current =  this.artworkList[index]
           this.editable_artwork = Object.assign({},this.current);
+          this.activeClass = index;
 
 
       },
@@ -165,7 +170,7 @@ export default {
             this.$msgbox({
                 title: 'DELETE ARTWORK',
                 message: h('p', null, [
-                    h('span', null, 'Are you sure you want to delete  '),
+                    h('span', null, 'Are you sure you want to delete '),
                     h('br',null,' '),
                     h('span', null , this.current.name +'?')
                 ]),
@@ -182,17 +187,23 @@ export default {
                                 res => {
                                     // window.console.log(res.data);
                                     if(res.data.affectedRows == 1){
+                                        instance.confirmButtonLoading = false;
+                                        done();
                                         this.$message({
                                             type: 'success',
                                             message: 'Delete Successful!'
                                         })
+
+                                        this.getData();
                                     }else{
+                                        instance.confirmButtonLoading = false;
+                                        done();
                                         this.$message({
                                             type: 'error',
                                             message: 'Delete Failed!'
                                         })
                                     }
-                                    instance.confirmButtonLoading = false;
+
                                 }
 
                             )
@@ -220,7 +231,8 @@ export default {
                         this.$message({
                             type: 'success',
                             message: 'Delete Successful!'
-                        })
+                        }),
+                        this.getData();
                     }else{
                         this.$message({
                             type: 'error',
