@@ -283,9 +283,32 @@ export default {
           .get('http://localhost:3000/project/api')
           .then(response =>
          {
-             this.projectList = response.data;
-             this.current = this.artworkList[0];
-             this.editable_project = Object.assign({},this.current);
+
+             var Residential =[];
+             var Hospitality =[];
+             var Marine =[];
+             var Commercial =[];
+
+             response.data.forEach(function(item){
+
+                if(item.category == 1)Residential.push(item);
+                else if(item.category == 2)Hospitality.push(item);
+                else if(item.category == 3)Marine.push(item);
+                else if(item.category == 4)Commercial.push(item);
+
+
+
+             });
+             this.projectList = [Residential,Hospitality,Marine,Commercial];
+             // eslint-disable-next-line no-console
+             console.log( this.projectList)
+
+
+
+
+
+             //this.current = this.artworkList[0];
+             //this.editable_project = Object.assign({},this.current);
 
          })
           .catch(function (error) { // 请求失败处理
