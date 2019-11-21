@@ -25,18 +25,17 @@
                                         <th class="text-center w30">Change Date</th>
                                     </tr>
                                 </table>
-                                <div class="scroll-wrapper">
-                                    <div class="scrollbar-dynamic">
+                                <div class="scroll-wrapper infinite-list-wrapper" style="overflow:auto!important">
                                         <table class="table list-box">
-
                                             <tr :class="activeClass == index ? 'active':''" v-for="( i,index ) in artworkList" @click="zan(index)" :key="index">
                                                 <td>{{i.name}}</td>
                                                 <td class="text-center w30">{{new Date(i.changedate) | dateFormat('DD.MM.YYYY')}}</td>
                                             </tr>
+                                            <tr v-if="loading"><td colspan="2">Loading...</td></tr>
+                                            <tr v-if="noMore"><td colspan="2">No More Artwork. </td></tr>
 
 
                                         </table>
-                                    </div>
                                 </div>
 
                                 <p class="text-center mt30">
@@ -135,7 +134,8 @@ export default {
             artworkList:{},
             current:{},
             editable_artwork:{},
-            activeClass:0
+            activeClass:0,
+            loading: false
 
         }
       },
@@ -161,16 +161,14 @@ export default {
       zan(index){
           this.current =  this.artworkList[index]
           this.editable_artwork = Object.assign({},this.current);
-          this.activeClass = index;
-
-
-      },
+          this.activeClass = index
+          },
         delete_artwork() {
             const h = this.$createElement;
             this.$msgbox({
                 title: 'DELETE ARTWORK',
                 message: h('p', null, [
-                    h('span', null, 'Are you sure you want to delete '),
+                    h('span', null, 'Are you sure you want to delete?'),
                     h('br',null,' '),
                     h('span', null , this.current.name +'?')
                 ]),
@@ -244,6 +242,7 @@ export default {
                     alert(error);
                 });
       }
+
 
 
   }

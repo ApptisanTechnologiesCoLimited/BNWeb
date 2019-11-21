@@ -34,7 +34,7 @@ hr{
     position: relative;
 }
 .w30{
-    width:30%;
+    width:30%!important;
 }
 .w40{
     width:40%;
@@ -64,7 +64,10 @@ hr{
     font-size:18px;
 }
 .font20{
-    font-size:20px;
+    font-size:20px!important;
+}
+.font25{
+    font-size:25px!important;
 }
 .font30{
     font-size:30px;
@@ -157,6 +160,9 @@ hr{
 .mb0{
     margin-bottom: 0px!important;
 }
+.mb10{
+    margin-bottom: 10px;
+}
 .mb20{
     margin-bottom: 20px;
 }
@@ -239,7 +245,7 @@ hr{
 .ebutton{
     border: none;
     background-color:#999;
-    padding:8px 0;
+    padding:10px 0;
     color:#fff;
     width:100%;
 }
@@ -502,7 +508,6 @@ hr{
     width:65px;
     height:65px;
     border-radius: 50%;
-    border: 1px solid #979797;
     text-align: center;
     line-height:65px;
     font-size: 34px;
@@ -564,4 +569,15 @@ tr.active,
     -ms-transform: translate(0,0);
     -o-transform: translate(0,0);
     transform: translate(0,0);
+}
+.panel-group .panel + .panel{
+    margin-top:0;
+}
+hr.gray{
+    border-color:#ccc;
+    margin-bottom:10px;
+    margin-top:10px;
+}
+.el-input__inner{
+    border-radius:0;
 }
