@@ -57,7 +57,7 @@
                                 <div class="mt20">
                                     <router-link :to="'/artwork/' + current.id" class="black mr20">Open</router-link>
                                     <a class="black" data-toggle="modal" data-target="#edit"  ><span class="iconfont icon-edit font18"></span></a>
-                                    <a class="black" href="#"><span class="iconfont icon-copy font18"></span></a>
+                                    <!-- <a class="black" href="#"><span class="iconfont icon-copy font18"></span></a> -->
                                     <a class="black" @click="delete_artwork()"><span class="iconfont icon-delete font18"></span></a>
 
                                 </div>
@@ -178,9 +178,8 @@ export default {
             this.$msgbox({
                 title: 'DELETE ARTWORK',
                 message: h('p', null, [
-                    h('span', null, 'Are you sure you want to delete?'),
-                    h('br',null,' '),
-                    h('span', null , this.current.name +'?')
+                    h('span', null, 'Are you sure you want to delete '),
+                    h('span', { style: 'color: red' } , this.current.name +'?')
                 ]),
                 showCancelButton: true,
                 confirmButtonText: 'Yes',
@@ -199,7 +198,7 @@ export default {
                                         done();
                                         this.$message({
                                             type: 'success',
-                                            message: 'Delete Successful!'
+                                            message: 'Delete Successfully!'
                                         })
 
                                         this.getData();
@@ -238,13 +237,13 @@ export default {
                     if(res.data.affectedRows == 1){
                         this.$message({
                             type: 'success',
-                            message: 'Delete Successful!'
+                            message: 'Edit Successfully!'
                         }),
                         this.getData();
                     }else{
                         this.$message({
                             type: 'error',
-                            message: 'Delete Failed!'
+                            message: 'Edit Failed!'
                         })
                     }
                 })
