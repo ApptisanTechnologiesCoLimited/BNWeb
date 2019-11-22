@@ -33,9 +33,9 @@
                     </div>
                     <div class="col-xs-12 col-sm-6 col-sm-offset-3 mb20 mt50">
                         <div class="row">
-                            <div class="col-sm-6"><input type="text" class="form-control" placeholder="Villa 1"></div>
+                            <div class="col-sm-6"><input type="text" v-model="rname" class="form-control" placeholder="Villa 1"></div>
                             <div class="col-sm-3 text-center">
-                                <button type="button" class="ebutton">CREATE</button>
+                                <button type="button" class="ebutton" @click="create_roomtype()">CREATE</button>
                             </div>
                             <div class="col-sm-3 text-center">
                                 <button type="button" class="ebutton">CANCEL</button>
@@ -49,27 +49,17 @@
                                         <th class="text-center">Latest change</th>
                                     </tr>
                                     <!-- loop start -->
-                                    <tr>
-                                        <td class="">Suite 1</td>
+                                    <tr v-for="(i,index) in roomtypeList" :key="index">
+                                        <td class="">{{i.name}}</td>
                                         <td class="text-center option h40">
                                             <a class="black mr20" href="#" >Open</a>
                                             <a class="black" href="#"><span class="iconfont icon-copy font18"></span></a>
-                                            <a class="black" data-toggle="modal" data-target="#delete"><span class="iconfont icon-delete font18"></span></a>
+                                            <a class="black" @click="delete_roomtype(i)"  ><span class="iconfont icon-delete font18"></span></a>
                                         </td>
-                                        <td class="text-center">14.04.2019</td>
+                                        <td class="text-center">{{i.change_date}}</td>
                                     </tr>
                                     <!-- loop end -->
-                                    <!-- loop start -->
-                                    <tr>
-                                        <td class="">Suite 2</td>
-                                        <td class="text-center option h40">
-                                            <a class="black mr20" href="#" >Open</a>
-                                            <a class="black" href="#"><span class="iconfont icon-copy font18"></span></a>
-                                            <a class="black" data-toggle="modal" data-target="#delete"><span class="iconfont icon-delete font18"></span></a>
-                                        </td>
-                                        <td class="text-center">14.04.2019</td>
-                                    </tr>
-                                    <!-- loop end -->
+
                                 </table>
                             </div>
                         </div>
@@ -95,7 +85,9 @@
         name: 'project',
         data(){
             return {
-                project:{}
+                project:{},
+                roomtypeList:[],
+                rname:""
             }
         },
         mounted() {
@@ -104,6 +96,107 @@
                 this.project = response.data[0];
 
             })
+            this.getRoomtypes();
+            window.console.log(Date.now());
+
+
+        },
+        methods:{
+            getRoomtypes(){
+                axios.get("http://localhost:3000/roomtype/api/byproject/"+this.$route.params.id).then(response =>
+                {
+                    this.roomtypeList = response.data;
+
+                })
+
+            },
+            delete_roomtype(rt) {
+                const h = this.$createElement;
+                this.$msgbox({
+                    title: 'DELETE ROOM TYPE',
+                    message: h('p', null, [
+                        h('span', null, 'Are you sure you want to delete?'),
+                        h('br',null,' '),
+                        h('span', null , rt.name +'?')
+                    ]),
+                    showCancelButton: true,
+                    confirmButtonText: 'Yes',
+                    cancelButtonText: 'No',
+                    beforeClose: (action, instance, done) => {
+                        if (action === 'confirm') {
+                            instance.confirmButtonLoading = true;
+                            instance.confirmButtonText = 'Deleting...';
+                            axios
+                                .delete('http://localhost:3000/roomtype/api/' + rt.id)
+                                .then(
+                                    res => {
+                                        // window.console.log(res.data);
+                                        if(res.data.affectedRows == 1){
+                                            instance.confirmButtonLoading = false;
+                                            done();
+                                            this.$message({
+                                                type: 'success',
+                                                message: 'Delete Successful!'
+                                            })
+
+                                            this.getRoomtypes();
+                                        }else{
+                                            instance.confirmButtonLoading = false;
+                                            done();
+                                            this.$message({
+                                                type: 'error',
+                                                message: 'Delete Failed!'
+                                            })
+                                        }
+
+                                    }
+
+                                )
+                                .catch(
+                                    function (error) { // 请求失败处理
+                                        window.console.log(error);
+                                    });
+
+
+                        } else {
+                            done();
+                        }
+                    }
+                });
+            },
+            create_roomtype() {
+
+                axios
+                    .post('http://localhost:3000/roomtype/api/',{
+                        "name":this.rname,
+
+                        "pid":this.$route.params.id
+                    })
+                    .then(
+                        res => {
+                            if(res.data.affectedRows == 1){
+                                this.$message({
+                                    type: 'success',
+                                    message: 'Create Successful!'
+                                })
+                                this.rname = "";
+
+                                this.getRoomtypes();
+                            }else{
+                                this.$message({
+                                    type: 'error',
+                                    message: 'Create Failed!'
+                                })
+                            }
+
+                        }
+
+                    )
+                    .catch(
+                        function (error) { // 请求失败处理
+                            window.console.log(error);
+                        });
+            }
         }
     }
 </script>
