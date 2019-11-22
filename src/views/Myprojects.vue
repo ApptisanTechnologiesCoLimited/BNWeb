@@ -31,15 +31,15 @@
 
             </div>
             <div class="col-xs-12 mb20">
-              <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+              <div class="panel-group" id="accordion" >
                 <div class="panel panel-default">
                   <div class="panel-heading" role="tab" id="headingOne">
-                    <h4 class="panel-title" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                    <h4 class="panel-title" role="button" data-toggle="collapse" href="#collapseOne">
                       <span class="iconfont icon-Hotel button-icon mr20"></span> RESIDENTIAL
                       <span class="glyphicon glyphicon-menu-up pull-right" aria-hidden="true"></span>
                     </h4>
                   </div>
-                  <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+                  <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel">
                     <div class="panel-body">
                       <table class="table mb0">
                         <tr>
@@ -82,14 +82,14 @@
                 </div>
                 <div class="panel panel-default">
                   <div class="panel-heading" role="tab" id="headingTwo">
-                    <h4 class="panel-title collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                    <h4 class="panel-title" role="button" data-toggle="collapse" href="#collapseTwo">
 
                         <span class="iconfont icon-xingzhuang button-icon mr20"></span> HOSPITALITY
                         <span class="glyphicon glyphicon-menu-up pull-right" aria-hidden="true"></span>
 
                     </h4>
                   </div>
-                  <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                  <div id="collapseTwo" class="panel-collapse collapse in" role="tabpanel">
                     <div class="panel-body">
                       <table class="table mb0">
                         <tr>
@@ -122,12 +122,12 @@
                 </div>
                 <div class="panel panel-default">
                   <div class="panel-heading" role="tab" id="headingThree">
-                    <h4 class="panel-title collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                    <h4 class="panel-title" role="button" data-toggle="collapse" href="#collapseThree">
                       <span class="iconfont  button-icon mr20"></span> MARINE
                       <span class="glyphicon glyphicon-menu-up pull-right" aria-hidden="true"></span>
                     </h4>
                   </div>
-                  <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+                  <div id="collapseThree" class="panel-collapse collapse in" role="tabpanel">
                     <div class="panel-body">
                       <table class="table mb0">
                         <tr>
@@ -160,12 +160,12 @@
                 </div>
                 <div class="panel panel-default">
                   <div class="panel-heading" role="tab" id="headingFour">
-                    <h4 class="panel-title collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                    <h4 class="panel-title" role="button" data-toggle="collapse" href="#collapseFour">
                       <span class="iconfont  button-icon mr20"></span> COMMERCIAL
                       <span class="glyphicon glyphicon-menu-up pull-right" aria-hidden="true"></span>
                     </h4>
                   </div>
-                  <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
+                  <div id="collapseFour" class="panel-collapse collapse in" role="tabpanel">
                     <div class="panel-body">
                       <table class="table mb0">
                         <tr>
