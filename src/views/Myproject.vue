@@ -298,16 +298,16 @@
                        <table class="table mt30 font12">
                          <tr>
                            <td>Project name</td>
-                           <td><input type="text" class="form-control" v-model="editable_project.name"></td>
+                           <td><input type="text" class="form-control" v-model="add_project.name"></td>
                          </tr>
                          <tr>
                           <td class="text-middle">Customer name</td>
-                          <td class="text-right"><input type="text" class="form-control" v-model="editable_project.customer_name"></td>
+                          <td class="text-right"><input type="text" class="form-control" v-model="add_project.customer_name"></td>
                         </tr>
                         <tr>
                           <td class="text-middle">Category</td>
                           <td class="text-right">
-                            <select class="form-control"  v-model="editable_project.category">
+                            <select class="form-control"  v-model="add_project.category">
                                   <option value="1">Residential</option>
                                   <option value="2">Hospitality</option>
                                   <option value="3">Marine</option>
@@ -319,44 +319,44 @@
                         <tr>
                           <td class="text-middle">Country</td>
                           <td class="text-right text-middle">
-                            <input type="text" class="form-control" v-model="editable_project.country">
+                            <input type="text" class="form-control" v-model="add_project.country">
                           </td>
                         </tr>
                         <tr>
                           <td class="text-middle">City</td>
                           <td class="text-right text-middle">
-                            <input type="text" class="form-control" v-model="editable_project.city">
+                            <input type="text" class="form-control" v-model="add_project.city">
                           </td>
                         </tr>
                         <tr>
                           <td class="text-middle">Description <br><span class="font10">(max 250 symbols)</span> </td>
                           <td class="text-right text-middle">
-                              <textarea class="form-control" rows="3" v-model="editable_project.description"></textarea>
+                              <textarea class="form-control" rows="3" v-model="add_project.description"></textarea>
                           </td>
                         </tr>
                         <tr>
                           <td class="text-middle">Number of rooms</td>
                           <td class="text-right text-middle">
-                            <input type="text" class="form-control" v-model="editable_project.num_room">
+                            <input type="text" class="form-control" v-model="add_project.num_room">
                           </td>
                         </tr>
                         <tr>
                           <td class="text-middle">Hotel brand</td>
                           <td class="text-right text-middle">
-                             <input type="text" class="form-control" v-model="editable_project.hotel_brand">
+                             <input type="text" class="form-control" v-model="add_project.hotel_brand">
                           </td>
                         </tr>
                         <tr>
                           <td class="text-middle">Purchase Order #</td>
                           <td class="text-right text-middle">
-                            <input type="text" class="form-control" v-model="editable_project.order_num">
+                            <input type="text" class="form-control" v-model="add_project.order_num">
                           </td>
                         </tr>
                       </table>
                       <div class="mt50 text-center">
                         <div class="row mlr0">
                           <div class="col-sm-4 prl7 col-sm-offset-2">
-                             <button type="button" class="ebutton" data-dismiss="modal" aria-label="Close" @click="edit_project()">OK</button>
+                             <button type="button" class="ebutton" data-dismiss="modal" aria-label="Close" @click="add_new_project()">OK</button>
                           </div>
 
                           <div class="col-sm-4 prl7">
@@ -472,18 +472,18 @@ export default {
                     alert(error);
                 });
       },
-      add_project(){
+      add_new_project(){
             axios
-                .put('http://localhost:3000/project/api/',{
-                    "name":this.editable_project.name,
-                    "customer_name":this.editable_project.customer_name,
-                    "category":this.editable_project.category,
-                    "country":this.editable_project.country,
-                    "city":this.editable_project.city,
-                    "description":this.editable_project.description,
-                    "num_room":this.editable_project.num_room,
-                    "hotel_brand":this.editable_project.hotel_brand,
-                    "order_num":this.editable_project.order_num
+                .post('http://localhost:3000/project/api/',{
+                    "name":this.add_project.name,
+                    "customer_name":this.add_project.customer_name,
+                    "category":this.add_project.category,
+                    "country":this.add_project.country,
+                    "city":this.add_project.city,
+                    "description":this.add_project.description,
+                    "num_room":this.add_project.num_room,
+                    "hotel_brand":this.add_project.hotel_brand,
+                    "order_num":this.add_project.order_num
                 })
                 .then(res => {
                     // window.console.log(res.data);
