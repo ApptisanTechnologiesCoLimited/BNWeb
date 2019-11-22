@@ -57,7 +57,7 @@
                             <router-link :to="'/project/' + i.id" class="black mr20">Open</router-link>
                             <a class="black" data-toggle="modal" data-target="#edit" @click="sendData(index,0)"><span class="iconfont icon-edit font18"></span></a>
                             <a class="black" href="#"><span class="iconfont icon-copy font18"></span></a>
-                            <a class="black" data-toggle="modal" data-target="#delete"><span class="iconfont icon-delete font18"></span></a>
+                            <a class="black" @click="delete_project(i.id,i.name)"><span class="iconfont icon-delete font18"></span></a>
                           </td>
                           <td class="text-center">{{i.customer_name}}</td>
                           <td class="text-center">{{i.country}}</td>
@@ -107,7 +107,7 @@
                             <router-link :to="'/project/' + i.id" class="black mr20">Open</router-link>
                             <a class="black" data-toggle="modal" data-target="#edit" @click="sendData(index,0)"><span class="iconfont icon-edit font18"></span></a>
                             <a class="black" href="#"><span class="iconfont icon-copy font18"></span></a>
-                            <a class="black" data-toggle="modal" data-target="#delete"><span class="iconfont icon-delete font18"></span></a>
+                            <a class="black" @click="delete_project(i.id,i.name)"><span class="iconfont icon-delete font18"></span></a>
                           </td>
                           <td class="text-center">{{i.customer_name}}</td>
                           <td class="text-center">{{i.country}}</td>
@@ -145,7 +145,7 @@
                             <router-link :to="'/project/' + i.id" class="black mr20">Open</router-link>
                             <a class="black" data-toggle="modal" data-target="#edit" @click="sendData(index,0)"><span class="iconfont icon-edit font18"></span></a>
                             <a class="black" href="#"><span class="iconfont icon-copy font18"></span></a>
-                            <a class="black" data-toggle="modal" data-target="#delete"><span class="iconfont icon-delete font18"></span></a>
+                            <a class="black" @click="delete_project(i.id,i.name)"><span class="iconfont icon-delete font18"></span></a>
                           </td>
                           <td class="text-center">{{i.customer_name}}</td>
                           <td class="text-center">{{i.country}}</td>
@@ -183,7 +183,7 @@
                             <router-link :to="'/project/' + i.id" class="black mr20">Open</router-link>
                             <a class="black" data-toggle="modal" data-target="#edit" @click="sendData(index,0)"><span class="iconfont icon-edit font18"></span></a>
                             <a class="black" href="#"><span class="iconfont icon-copy font18"></span></a>
-                            <a class="black" data-toggle="modal" data-target="#delete"><span class="iconfont icon-delete font18"></span></a>
+                            <a class="black" @click="delete_project(i.id,i.name)"><span class="iconfont icon-delete font18"></span></a>
                           </td>
                           <td class="text-center">{{i.customer_name}}</td>
                           <td class="text-center">{{i.country}}</td>
@@ -504,6 +504,59 @@ export default {
                     alert(error);
                 });
       },
+      delete_project(ID,name) {
+            const h = this.$createElement;
+            this.$msgbox({
+                title: 'DELETE PROJECT',
+                message: h('p', null, [
+                    h('span', null, 'Are you sure you want to delete '),
+                    h('span', { style: 'color: red' } , name +'?')
+                ]),
+                showCancelButton: true,
+                confirmButtonText: 'Yes',
+                cancelButtonText: 'No',
+                beforeClose: (action, instance, done) => {
+                    if (action === 'confirm') {
+                        instance.confirmButtonLoading = true;
+                        instance.confirmButtonText = 'Deleting...';
+                        axios
+                            .delete('http://localhost:3000/project/api/' + ID )
+                            .then(
+                                res => {
+                                    // window.console.log(res.data);
+                                    if(res.data.affectedRows == 1){
+                                        instance.confirmButtonLoading = false;
+                                        done();
+                                        this.$message({
+                                            type: 'success',
+                                            message: 'Delete Successful!'
+                                        })
+
+                                        this.getData();
+                                    }else{
+                                        instance.confirmButtonLoading = false;
+                                        done();
+                                        this.$message({
+                                            type: 'error',
+                                            message: 'Delete Failed!'
+                                        })
+                                    }
+
+                                }
+
+                            )
+                            .catch(
+                                function (error) { // 请求失败处理
+                                    window.console.log(error);
+                            });
+
+
+                    } else {
+                        done();
+                    }
+                }
+            });
+        },
 
       search_artwork(){
           // var i;var j;
