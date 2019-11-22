@@ -61,8 +61,8 @@
                           </td>
                           <td class="text-center">{{i.customer_name}}</td>
                           <td class="text-center">{{i.country}}</td>
-                          <td class="text-center">city</td>
-                          <td class="text-center">{{new Date(i.changedate) | dateFormat('DD.MM.YYYY')}}</td>
+                          <td class="text-center">{{i.city}}</td>
+                          <td class="text-center">{{new Date(i.change_date) | dateFormat('DD.MM.YYYY')}}</td>
                         </tr>
                         <!-- loop end -->
                         <tr>
@@ -111,8 +111,8 @@
                           </td>
                           <td class="text-center">{{i.customer_name}}</td>
                           <td class="text-center">{{i.country}}</td>
-                          <td class="text-center">city</td>
-                          <td class="text-center">{{new Date(i.changedate) | dateFormat('DD.MM.YYYY')}}</td>
+                          <td class="text-center">{{i.city}}</td>
+                          <td class="text-center">{{new Date(i.change_date) | dateFormat('DD.MM.YYYY')}}</td>
                         </tr>
                         <!-- loop end -->
                           <tr>
@@ -158,8 +158,8 @@
                           </td>
                           <td class="text-center">{{i.customer_name}}</td>
                           <td class="text-center">{{i.country}}</td>
-                          <td class="text-center">city</td>
-                          <td class="text-center">{{new Date(i.changedate) | dateFormat('DD.MM.YYYY')}}</td>
+                          <td class="text-center">{{i.city}}</td>
+                          <td class="text-center">{{new Date(i.change_date) | dateFormat('DD.MM.YYYY')}}</td>
                         </tr>
                         <!-- loop end -->
                           <tr>
@@ -205,8 +205,8 @@
                           </td>
                           <td class="text-center">{{i.customer_name}}</td>
                           <td class="text-center">{{i.country}}</td>
-                          <td class="text-center">city</td>
-                          <td class="text-center">{{new Date(i.changedate) | dateFormat('DD.MM.YYYY')}}</td>
+                          <td class="text-center">{{i.city}}</td>
+                          <td class="text-center">{{new Date(i.change_date) | dateFormat('DD.MM.YYYY')}}</td>
                         </tr>
                         <!-- loop end -->
                           <tr>
