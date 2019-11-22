@@ -37,7 +37,7 @@ tr:hover td:first-child{
 }
 .breadcrumb{
   padding:15px;
-  margin-bottom:0;
+  margin-bottom:20px;
 }
 .breadcrumb a{
   color:#777;
@@ -50,7 +50,7 @@ tr:hover td:first-child{
   padding:0 15px;
 }
 .content.project{
-  min-height: calc(100vh - 180px);
+  min-height: calc(100vh - 220px);
 }
 .img-box{
   border:1px solid #999;

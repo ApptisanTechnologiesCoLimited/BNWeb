@@ -31,15 +31,15 @@
 
             </div>
             <div class="col-xs-12 mb20">
-              <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+              <div class="panel-group" id="accordion" >
                 <div class="panel panel-default">
                   <div class="panel-heading" role="tab" id="headingOne">
-                    <h4 class="panel-title" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                    <h4 class="panel-title" role="button" data-toggle="collapse" href="#collapseOne">
                       <span class="iconfont icon-Hotel button-icon mr20"></span> RESIDENTIAL
                       <span class="glyphicon glyphicon-menu-up pull-right" aria-hidden="true"></span>
                     </h4>
                   </div>
-                  <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+                  <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel">
                     <div class="panel-body">
                       <table class="table mb0">
                         <tr>
@@ -57,7 +57,7 @@
                             <router-link :to="'/project/' + i.id" class="black mr20">Open</router-link>
                             <a class="black" data-toggle="modal" data-target="#edit" @click="sendData(index,0)"><span class="iconfont icon-edit font18"></span></a>
                             <a class="black" href="#"><span class="iconfont icon-copy font18"></span></a>
-                            <a class="black" data-toggle="modal" data-target="#delete"><span class="iconfont icon-delete font18"></span></a>
+                            <a class="black" @click="delete_project(i.id,i.name)"><span class="iconfont icon-delete font18"></span></a>
                           </td>
                           <td class="text-center">{{i.customer_name}}</td>
                           <td class="text-center">{{i.country}}</td>
@@ -65,8 +65,8 @@
                           <td class="text-center">{{new Date(i.change_date) | dateFormat('DD.MM.YYYY')}}</td>
                         </tr>
                         <!-- loop end -->
-                        <tr>
-                          <td colspan="4">
+                        <!-- <tr> 
+                          <td colspan="6">
                            <div class="block text-center">
                               <el-pagination
                                 layout="prev, pager, next"
@@ -74,7 +74,7 @@
                               </el-pagination>
                             </div>
                           </td>
-                          </tr>
+                          </tr> -->
 
                       </table>
                     </div>
@@ -82,14 +82,14 @@
                 </div>
                 <div class="panel panel-default">
                   <div class="panel-heading" role="tab" id="headingTwo">
-                    <h4 class="panel-title collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                    <h4 class="panel-title" role="button" data-toggle="collapse" href="#collapseTwo">
 
                         <span class="iconfont icon-xingzhuang button-icon mr20"></span> HOSPITALITY
                         <span class="glyphicon glyphicon-menu-up pull-right" aria-hidden="true"></span>
 
                     </h4>
                   </div>
-                  <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                  <div id="collapseTwo" class="panel-collapse collapse in" role="tabpanel">
                     <div class="panel-body">
                       <table class="table mb0">
                         <tr>
@@ -107,7 +107,7 @@
                             <router-link :to="'/project/' + i.id" class="black mr20">Open</router-link>
                             <a class="black" data-toggle="modal" data-target="#edit" @click="sendData(index,0)"><span class="iconfont icon-edit font18"></span></a>
                             <a class="black" href="#"><span class="iconfont icon-copy font18"></span></a>
-                            <a class="black" data-toggle="modal" data-target="#delete"><span class="iconfont icon-delete font18"></span></a>
+                            <a class="black" @click="delete_project(i.id,i.name)"><span class="iconfont icon-delete font18"></span></a>
                           </td>
                           <td class="text-center">{{i.customer_name}}</td>
                           <td class="text-center">{{i.country}}</td>
@@ -115,28 +115,19 @@
                           <td class="text-center">{{new Date(i.change_date) | dateFormat('DD.MM.YYYY')}}</td>
                         </tr>
                         <!-- loop end -->
-                          <tr>
-                          <td colspan="4">
-                           <div class="block text-center">
-                              <el-pagination
-                                layout="prev, pager, next"
-                                :total="10">
-                              </el-pagination>
-                            </div>
-                          </td>
-                          </tr>
+                         
                       </table>
                     </div>
                   </div>
                 </div>
                 <div class="panel panel-default">
                   <div class="panel-heading" role="tab" id="headingThree">
-                    <h4 class="panel-title collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                    <h4 class="panel-title" role="button" data-toggle="collapse" href="#collapseThree">
                       <span class="iconfont  button-icon mr20"></span> MARINE
                       <span class="glyphicon glyphicon-menu-up pull-right" aria-hidden="true"></span>
                     </h4>
                   </div>
-                  <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+                  <div id="collapseThree" class="panel-collapse collapse in" role="tabpanel">
                     <div class="panel-body">
                       <table class="table mb0">
                         <tr>
@@ -154,7 +145,7 @@
                             <router-link :to="'/project/' + i.id" class="black mr20">Open</router-link>
                             <a class="black" data-toggle="modal" data-target="#edit" @click="sendData(index,0)"><span class="iconfont icon-edit font18"></span></a>
                             <a class="black" href="#"><span class="iconfont icon-copy font18"></span></a>
-                            <a class="black" data-toggle="modal" data-target="#delete"><span class="iconfont icon-delete font18"></span></a>
+                            <a class="black" @click="delete_project(i.id,i.name)"><span class="iconfont icon-delete font18"></span></a>
                           </td>
                           <td class="text-center">{{i.customer_name}}</td>
                           <td class="text-center">{{i.country}}</td>
@@ -162,28 +153,19 @@
                           <td class="text-center">{{new Date(i.change_date) | dateFormat('DD.MM.YYYY')}}</td>
                         </tr>
                         <!-- loop end -->
-                          <tr>
-                          <td colspan="4">
-                           <div class="block text-center">
-                              <el-pagination
-                                layout="prev, pager, next"
-                                :total="10">
-                              </el-pagination>
-                            </div>
-                          </td>
-                          </tr>
+                         
                       </table>
                     </div>
                   </div>
                 </div>
                 <div class="panel panel-default">
                   <div class="panel-heading" role="tab" id="headingFour">
-                    <h4 class="panel-title collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                    <h4 class="panel-title" role="button" data-toggle="collapse" href="#collapseFour">
                       <span class="iconfont  button-icon mr20"></span> COMMERCIAL
                       <span class="glyphicon glyphicon-menu-up pull-right" aria-hidden="true"></span>
                     </h4>
                   </div>
-                  <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
+                  <div id="collapseFour" class="panel-collapse collapse in" role="tabpanel">
                     <div class="panel-body">
                       <table class="table mb0">
                         <tr>
@@ -201,7 +183,7 @@
                             <router-link :to="'/project/' + i.id" class="black mr20">Open</router-link>
                             <a class="black" data-toggle="modal" data-target="#edit" @click="sendData(index,0)"><span class="iconfont icon-edit font18"></span></a>
                             <a class="black" href="#"><span class="iconfont icon-copy font18"></span></a>
-                            <a class="black" data-toggle="modal" data-target="#delete"><span class="iconfont icon-delete font18"></span></a>
+                            <a class="black" @click="delete_project(i.id,i.name)"><span class="iconfont icon-delete font18"></span></a>
                           </td>
                           <td class="text-center">{{i.customer_name}}</td>
                           <td class="text-center">{{i.country}}</td>
@@ -209,16 +191,7 @@
                           <td class="text-center">{{new Date(i.change_date) | dateFormat('DD.MM.YYYY')}}</td>
                         </tr>
                         <!-- loop end -->
-                          <tr>
-                          <td colspan="4">
-                           <div class="block text-center">
-                              <el-pagination
-                                layout="prev, pager, next"
-                                :total="10">
-                              </el-pagination>
-                            </div>
-                          </td>
-                          </tr>
+                          
                       </table>
                     </div>
                   </div>
@@ -231,29 +204,31 @@
       </div>
     </div>
   </div>
-  <div class="modal" id="addnew" tabindex="-1" role="dialog" aria-labelledby="" data-backdrop="static">
+  <div class="modal" id="edit" tabindex="-1" role="dialog" aria-labelledby="" data-backdrop="static">
             <div class="modal-dialog" role="document">
               <div class="modal-content">
 
                 <div class="modal-body">
-                  <p class="font18 text-center">CREATE A NEW PROJECT</p>
+                  <p class="font18 text-center">Edit PROJECT</p>
                   <div class="row">
                     <div class="col-sm-8 col-sm-offset-2">
                        <table class="table mt30 font12">
                          <tr>
                            <td>Project name</td>
-                           <td><input type="text" class="form-control" value=""></td>
+                           <td><input type="text" class="form-control" v-model="editable_project.name"></td>
                          </tr>
                          <tr>
                           <td class="text-middle">Customer name</td>
-                          <td class="text-right"><input type="text" class="form-control" value=""></td>
+                          <td class="text-right"><input type="text" class="form-control" v-model="editable_project.customer_name"></td>
                         </tr>
                         <tr>
                           <td class="text-middle">Category</td>
                           <td class="text-right">
-                            <select class="form-control">
-                              <option value="Hospitality">Hospitality</option>
-                              <option value="Residential">Residential</option>
+                            <select class="form-control"  v-model="editable_project.category">
+                                  <option value="1">Residential</option>
+                                  <option value="2">Hospitality</option>
+                                  <option value="3">Marine</option>
+                                  <option value="4">Commercial</option>
 
                             </select>
                           </td>
@@ -261,48 +236,44 @@
                         <tr>
                           <td class="text-middle">Country</td>
                           <td class="text-right text-middle">
-                            <input type="text" class="form-control" value="">
+                            <input type="text" class="form-control" v-model="editable_project.country">
                           </td>
                         </tr>
                         <tr>
                           <td class="text-middle">City</td>
                           <td class="text-right text-middle">
-                            <input type="text" class="form-control" value="">
+                            <input type="text" class="form-control" v-model="editable_project.city">
                           </td>
                         </tr>
                         <tr>
                           <td class="text-middle">Description <br><span class="font10">(max 250 symbols)</span> </td>
                           <td class="text-right text-middle">
-                              <textarea class="form-control" rows="3"></textarea>
+                              <textarea class="form-control" rows="3" v-model="editable_project.description"></textarea>
                           </td>
                         </tr>
                         <tr>
                           <td class="text-middle">Number of rooms</td>
                           <td class="text-right text-middle">
-                            <input type="text" class="form-control" value="">
+                            <input type="text" class="form-control" v-model="editable_project.num_room">
                           </td>
                         </tr>
                         <tr>
                           <td class="text-middle">Hotel brand</td>
                           <td class="text-right text-middle">
-                              <select class="form-control">
-                                  <option value="Hospitality">Hospitality</option>
-                                  <option value="Residential">Residential</option>
-
-                                </select>
+                             <input type="text" class="form-control" v-model="editable_project.hotel_brand">
                           </td>
                         </tr>
                         <tr>
                           <td class="text-middle">Purchase Order #</td>
                           <td class="text-right text-middle">
-                            <input type="text" class="form-control" value="">
+                            <input type="text" class="form-control" v-model="editable_project.order_num">
                           </td>
                         </tr>
                       </table>
                       <div class="mt50 text-center">
                         <div class="row mlr0">
                           <div class="col-sm-4 prl7 col-sm-offset-2">
-                             <button type="button" class="ebutton">OK</button>
+                             <button type="button" class="ebutton" data-dismiss="modal" aria-label="Close" @click="edit_project()">OK</button>
                           </div>
 
                           <div class="col-sm-4 prl7">
@@ -316,6 +287,91 @@
               </div>
             </div>
           </div>
+          <div class="modal" id="addnew" tabindex="-1" role="dialog" aria-labelledby="" data-backdrop="static">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+
+                <div class="modal-body">
+                  <p class="font18 text-center">CREATE A NEW PROJECT</p>
+                  <div class="row">
+                    <div class="col-sm-8 col-sm-offset-2">
+                       <table class="table mt30 font12">
+                         <tr>
+                           <td>Project name</td>
+                           <td><input type="text" class="form-control" v-model="add_project.name"></td>
+                         </tr>
+                         <tr>
+                          <td class="text-middle">Customer name</td>
+                          <td class="text-right"><input type="text" class="form-control" v-model="add_project.customer_name"></td>
+                        </tr>
+                        <tr>
+                          <td class="text-middle">Category</td>
+                          <td class="text-right">
+                            <select class="form-control"  v-model="add_project.category">
+                                  <option value="1">Residential</option>
+                                  <option value="2">Hospitality</option>
+                                  <option value="3">Marine</option>
+                                  <option value="4">Commercial</option>
+
+                            </select>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="text-middle">Country</td>
+                          <td class="text-right text-middle">
+                            <input type="text" class="form-control" v-model="add_project.country">
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="text-middle">City</td>
+                          <td class="text-right text-middle">
+                            <input type="text" class="form-control" v-model="add_project.city">
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="text-middle">Description <br><span class="font10">(max 250 symbols)</span> </td>
+                          <td class="text-right text-middle">
+                              <textarea class="form-control" rows="3" v-model="add_project.description"></textarea>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="text-middle">Number of rooms</td>
+                          <td class="text-right text-middle">
+                            <input type="text" class="form-control" v-model="add_project.num_room">
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="text-middle">Hotel brand</td>
+                          <td class="text-right text-middle">
+                             <input type="text" class="form-control" v-model="add_project.hotel_brand">
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="text-middle">Purchase Order #</td>
+                          <td class="text-right text-middle">
+                            <input type="text" class="form-control" v-model="add_project.order_num">
+                          </td>
+                        </tr>
+                      </table>
+                      <div class="mt50 text-center">
+                        <div class="row mlr0">
+                          <div class="col-sm-4 prl7 col-sm-offset-2">
+                             <button type="button" class="ebutton" data-dismiss="modal" aria-label="Close" @click="add_new_project()">OK</button>
+                          </div>
+
+                          <div class="col-sm-4 prl7">
+                              <button type="button" data-dismiss="modal" aria-label="Close" class="ebutton">Cancel</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+         
+    
 </div>
 
 
@@ -332,7 +388,8 @@ export default {
             current:{},
             editable_project:{},
             artwork_query: '',
-            timeout:  null
+            timeout:  null,
+            add_project:{}
 
         }
       },
@@ -377,24 +434,130 @@ export default {
       sendData(index,sort){
           this.current =  this.projectList[sort][index]
           this.editable_project = Object.assign({},this.current);
+          window.console.log(this.editable_project);
         },
-      // querySearchAsync(queryString, cb) {
-      //   var projectList = this.projectList;
-      //   var results = queryString ? projectList.filter(this.createStateFilter(queryString)) : projectList;
-      //
-      //   clearTimeout(this.timeout);
-      //   this.timeout = setTimeout(() => {
-      //     cb(results);
-      //   }, 3000 * Math.random());
-      // },
-      // createStateFilter(queryString) {
-      //   return (state) => {
-      //     return (state.value.toLowerCase().indexOf(queryString.toLowerCase()) === 0);
-      //   };
-      // },
+      
       handleSelect(item) {
         window.console.log(item);
       },
+      edit_project(){
+            axios
+                .put('http://localhost:3000/project/api/'+ this.editable_project.id,{
+                    "name":this.editable_project.name,
+                    "customer_name":this.editable_project.customer_name,
+                    "category":this.editable_project.category,
+                    "country":this.editable_project.country,
+                    "city":this.editable_project.city,
+                    "description":this.editable_project.description,
+                    "num_room":this.editable_project.num_room,
+                    "hotel_brand":this.editable_project.hotel_brand,
+                    "order_num":this.editable_project.order_num
+                })
+                .then(res => {
+                    // window.console.log(res.data);
+                    if(res.data.affectedRows == 1){
+                        this.$message({
+                            type: 'success',
+                            message: 'Delete Successful!'
+                        }),
+                        this.getData();
+                    }else{
+                        this.$message({
+                            type: 'error',
+                            message: 'Delete Failed!'
+                        })
+                    }
+                })
+                .catch(function (error) { // 请求失败处理
+                    alert(error);
+                });
+      },
+      add_new_project(){
+            axios
+                .post('http://localhost:3000/project/api/',{
+                    "name":this.add_project.name,
+                    "customer_name":this.add_project.customer_name,
+                    "category":this.add_project.category,
+                    "country":this.add_project.country,
+                    "city":this.add_project.city,
+                    "description":this.add_project.description,
+                    "num_room":this.add_project.num_room,
+                    "hotel_brand":this.add_project.hotel_brand,
+                    "order_num":this.add_project.order_num
+                })
+                .then(res => {
+                    // window.console.log(res.data);
+                    if(res.data.affectedRows == 1){
+                        this.$message({
+                            type: 'success',
+                            message: 'Delete Successful!'
+                        }),
+                        this.getData();
+                    }else{
+                        this.$message({
+                            type: 'error',
+                            message: 'Delete Failed!'
+                        })
+                    }
+                })
+                .catch(function (error) { // 请求失败处理
+                    alert(error);
+                });
+      },
+      delete_project(ID,name) {
+            const h = this.$createElement;
+            this.$msgbox({
+                title: 'DELETE PROJECT',
+                message: h('p', null, [
+                    h('span', null, 'Are you sure you want to delete '),
+                    h('span', { style: 'color: red' } , name +'?')
+                ]),
+                showCancelButton: true,
+                confirmButtonText: 'Yes',
+                cancelButtonText: 'No',
+                beforeClose: (action, instance, done) => {
+                    if (action === 'confirm') {
+                        instance.confirmButtonLoading = true;
+                        instance.confirmButtonText = 'Deleting...';
+                        axios
+                            .delete('http://localhost:3000/project/api/' + ID )
+                            .then(
+                                res => {
+                                    // window.console.log(res.data);
+                                    if(res.data.affectedRows == 1){
+                                        instance.confirmButtonLoading = false;
+                                        done();
+                                        this.$message({
+                                            type: 'success',
+                                            message: 'Delete Successful!'
+                                        })
+
+                                        this.getData();
+                                    }else{
+                                        instance.confirmButtonLoading = false;
+                                        done();
+                                        this.$message({
+                                            type: 'error',
+                                            message: 'Delete Failed!'
+                                        })
+                                    }
+
+                                }
+
+                            )
+                            .catch(
+                                function (error) { // 请求失败处理
+                                    window.console.log(error);
+                            });
+
+
+                    } else {
+                        done();
+                    }
+                }
+            });
+        },
+
       search_artwork(){
           // var i;var j;
           //
