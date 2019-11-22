@@ -6,10 +6,10 @@
             <div class="container">
                 <div class="row">
 
-                    <div class="col-sm-5 col-xs-12 text-center mt5p">
+                    <div class="col-xs-5 text-center mt5p">
                         <img :src="artwork.img" alt="">
                     </div>
-                    <div class="col-sm-5 col-xs-12 col-sm-offset-2 text-right">
+                    <div class="col-xs-5 col-xs-offset-2 text-right">
                         <h3 class="now">{{artwork.name}}</h3>
                         <div class="mt30 lh25">
                             <p>ALBA 4, General Purpose Panel</p>
@@ -29,19 +29,19 @@
                             </a>
                             <hr>
                             <div class="row font12">
-                                <div class="col-sm-4 text-left">
+                                <div class="col-xs-4 text-left">
                                     <a href="#">
                                         <span class="button-icon"></span><br>
                                         <span class="black mt10 inlineb">Generate engraving file (.DXF)</span>
                                     </a>
                                 </div>
-                                <div class="col-sm-4 text-center">
+                                <div class="col-xs-4 text-center">
                                     <a href="#">
                                         <span class="button-icon"></span><br>
                                         <span class="black mt10 inlineb">Generate product labels (.XML)</span>
                                     </a>
                                 </div>
-                                <div class="col-sm-4">
+                                <div class="col-xs-4">
                                     <a href="#">
                                         <span class="button-icon"></span><br>
                                         <span class="black mt10 inlineb">Print artwork reference sheet (.PDF)</span>

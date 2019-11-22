@@ -17,7 +17,7 @@
 
                             </div>
 
-                            <div class="col-sm-7 col-xs-12">
+                            <div class="col-xs-7">
 
                                 <table class="table mb0" >
                                     <tr >
@@ -27,7 +27,7 @@
                                 </table>
                                 <div class="scroll-wrapper infinite-list-wrapper" style="overflow:auto!important">
                                         <table class="table list-box">
-                                            <tr :class="activeClass == index ? 'active':''" v-for="( i,index ) in artworkList" @click="zan(index)" :key="index">
+                                            <tr :class="activeClass == index ? 'active':''" v-for="( i,index ) in artworkList" @click="sendData(index)" :key="index">
                                                 <td>{{i.name}}</td>
                                                 <td class="text-center w30">{{new Date(i.changedate) | dateFormat('DD.MM.YYYY')}}</td>
                                             </tr>
@@ -45,7 +45,7 @@
 
                             </div>
 
-                            <div class="col-sm-5 col-xs-12 text-center" >
+                            <div class="col-xs-5 text-center" >
                                 <img :src="current.img" alt="">
                                 <div class="mt20 font11">
                                     {{current.name}}<br>
@@ -74,7 +74,7 @@
                         <div class="modal-body">
                             <p class="font18 text-center">EDIT ARTWORK</p>
                             <div class="row">
-                                <div class="col-sm-8 col-sm-offset-2">
+                                <div class="col-xs-8 col-xs-offset-2">
                                     <table class="table mt30 font12">
                                         <tr>
                                             <td>Name</td>
@@ -97,13 +97,13 @@
                                     </table>
                                     <div class="mt50 text-center">
                                         <div class="row mlr0">
-                                            <div class="col-sm-4 prl7">
+                                            <div class="col-xs-4 prl7">
                                                 <button type="button" class="ebutton" @click="edit_artwork()" data-dismiss="modal" aria-label="Close">OK</button>
                                             </div>
-                                            <div class="col-sm-4 prl7">
+                                            <div class="col-xs-4 prl7">
                                                 <button type="button" class="ebutton">Change design</button>
                                             </div>
-                                            <div class="col-sm-4 prl7">
+                                            <div class="col-xs-4 prl7">
                                                 <button type="button" data-dismiss="modal" aria-label="Close" class="ebutton">Cancel</button>
                                             </div>
                                         </div>
@@ -158,7 +158,7 @@ export default {
             alert(error);
           });
       },
-      zan(index){
+      sendData(index){
           this.current =  this.artworkList[index]
           this.editable_artwork = Object.assign({},this.current);
           this.activeClass = index
