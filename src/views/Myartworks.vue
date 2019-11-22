@@ -25,23 +25,24 @@
                                         <th class="text-center w30">Change Date</th>
                                     </tr>
                                 </table>
+
                                 <div class="scroll-wrapper infinite-list-wrapper" style="overflow:auto!important">
-                                        <table class="table list-box">
+                                        <table class="table list-box"  v-infinite-scroll="load">
                                             <tr :class="activeClass == index ? 'active':''" v-for="( i,index ) in artworkList" @click="zan(index)" :key="index">
                                                 <td>{{i.name}}</td>
                                                 <td class="text-center w30">{{new Date(i.changedate) | dateFormat('DD.MM.YYYY')}}</td>
                                             </tr>
                                             <tr v-if="loading"><td colspan="2">Loading...</td></tr>
-                                            <tr v-if="noMore"><td colspan="2">No More Artwork. </td></tr>
+<!--                                            <tr v-if="noMore"><td colspan="2">No More Artwork. </td></tr>-->
 
 
                                         </table>
                                 </div>
 
-                                <p class="text-center mt30">
-                                    <span class="text-super">Scroll down to see more</span> <br>
-                                    <span class="iconfont icon-jiantou_down font30 animate-bounce-down"></span>
-                                </p>
+<!--                                <p class="text-center mt30">-->
+<!--                                    <span class="text-super">Scroll down to see more</span> <br>-->
+<!--                                    <span class="iconfont icon-jiantou_down font30 animate-bounce-down"></span>-->
+<!--                                </p>-->
 
                             </div>
 
@@ -131,11 +132,14 @@ export default {
   name: 'myartworks',
   data(){
         return {
-            artworkList:{},
+            temp_list:[],
+            artworkList:[],
             current:{},
             editable_artwork:{},
             activeClass:0,
-            loading: false
+            loading: false,
+            start_art:0,
+            end_art:5
 
         }
       },
@@ -144,13 +148,17 @@ export default {
 
      },
     methods:{
+        load () {
+
+
+        },
       getData:function(){
         axios
           .get('http://localhost:3000/artwork/api')
           .then(response =>
          {
              this.artworkList = response.data;
-             this.current = this.artworkList[0];
+                 this.current = this.artworkList[0];
              this.editable_artwork = Object.assign({},this.current);
 
          })
