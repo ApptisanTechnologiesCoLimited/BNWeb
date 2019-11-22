@@ -65,8 +65,8 @@
                           <td class="text-center">{{new Date(i.change_date) | dateFormat('DD.MM.YYYY')}}</td>
                         </tr>
                         <!-- loop end -->
-                        <tr>
-                          <td colspan="4">
+                        <!-- <tr> 
+                          <td colspan="6">
                            <div class="block text-center">
                               <el-pagination
                                 layout="prev, pager, next"
@@ -74,7 +74,7 @@
                               </el-pagination>
                             </div>
                           </td>
-                          </tr>
+                          </tr> -->
 
                       </table>
                     </div>
@@ -115,16 +115,7 @@
                           <td class="text-center">{{new Date(i.change_date) | dateFormat('DD.MM.YYYY')}}</td>
                         </tr>
                         <!-- loop end -->
-                          <tr>
-                          <td colspan="4">
-                           <div class="block text-center">
-                              <el-pagination
-                                layout="prev, pager, next"
-                                :total="10">
-                              </el-pagination>
-                            </div>
-                          </td>
-                          </tr>
+                         
                       </table>
                     </div>
                   </div>
@@ -162,16 +153,7 @@
                           <td class="text-center">{{new Date(i.change_date) | dateFormat('DD.MM.YYYY')}}</td>
                         </tr>
                         <!-- loop end -->
-                          <tr>
-                          <td colspan="4">
-                           <div class="block text-center">
-                              <el-pagination
-                                layout="prev, pager, next"
-                                :total="10">
-                              </el-pagination>
-                            </div>
-                          </td>
-                          </tr>
+                         
                       </table>
                     </div>
                   </div>
@@ -209,16 +191,7 @@
                           <td class="text-center">{{new Date(i.change_date) | dateFormat('DD.MM.YYYY')}}</td>
                         </tr>
                         <!-- loop end -->
-                          <tr>
-                          <td colspan="4">
-                           <div class="block text-center">
-                              <el-pagination
-                                layout="prev, pager, next"
-                                :total="10">
-                              </el-pagination>
-                            </div>
-                          </td>
-                          </tr>
+                          
                       </table>
                     </div>
                   </div>
@@ -231,29 +204,31 @@
       </div>
     </div>
   </div>
-  <div class="modal" id="addnew" tabindex="-1" role="dialog" aria-labelledby="" data-backdrop="static">
+  <div class="modal" id="edit" tabindex="-1" role="dialog" aria-labelledby="" data-backdrop="static">
             <div class="modal-dialog" role="document">
               <div class="modal-content">
 
                 <div class="modal-body">
-                  <p class="font18 text-center">CREATE A NEW PROJECT</p>
+                  <p class="font18 text-center">Edit PROJECT</p>
                   <div class="row">
                     <div class="col-sm-8 col-sm-offset-2">
                        <table class="table mt30 font12">
                          <tr>
                            <td>Project name</td>
-                           <td><input type="text" class="form-control" value=""></td>
+                           <td><input type="text" class="form-control" v-model="editable_project.name"></td>
                          </tr>
                          <tr>
                           <td class="text-middle">Customer name</td>
-                          <td class="text-right"><input type="text" class="form-control" value=""></td>
+                          <td class="text-right"><input type="text" class="form-control" v-model="editable_project.customer_name"></td>
                         </tr>
                         <tr>
                           <td class="text-middle">Category</td>
                           <td class="text-right">
-                            <select class="form-control">
-                              <option value="Hospitality">Hospitality</option>
-                              <option value="Residential">Residential</option>
+                            <select class="form-control"  v-model="editable_project.category">
+                                  <option value="1">Residential</option>
+                                  <option value="2">Hospitality</option>
+                                  <option value="3">Marine</option>
+                                  <option value="4">Commercial</option>
 
                             </select>
                           </td>
@@ -261,48 +236,44 @@
                         <tr>
                           <td class="text-middle">Country</td>
                           <td class="text-right text-middle">
-                            <input type="text" class="form-control" value="">
+                            <input type="text" class="form-control" v-model="editable_project.country">
                           </td>
                         </tr>
                         <tr>
                           <td class="text-middle">City</td>
                           <td class="text-right text-middle">
-                            <input type="text" class="form-control" value="">
+                            <input type="text" class="form-control" v-model="editable_project.city">
                           </td>
                         </tr>
                         <tr>
                           <td class="text-middle">Description <br><span class="font10">(max 250 symbols)</span> </td>
                           <td class="text-right text-middle">
-                              <textarea class="form-control" rows="3"></textarea>
+                              <textarea class="form-control" rows="3" v-model="editable_project.description"></textarea>
                           </td>
                         </tr>
                         <tr>
                           <td class="text-middle">Number of rooms</td>
                           <td class="text-right text-middle">
-                            <input type="text" class="form-control" value="">
+                            <input type="text" class="form-control" v-model="editable_project.num_room">
                           </td>
                         </tr>
                         <tr>
                           <td class="text-middle">Hotel brand</td>
                           <td class="text-right text-middle">
-                              <select class="form-control">
-                                  <option value="Hospitality">Hospitality</option>
-                                  <option value="Residential">Residential</option>
-
-                                </select>
+                             <input type="text" class="form-control" v-model="editable_project.hotel_brand">
                           </td>
                         </tr>
                         <tr>
                           <td class="text-middle">Purchase Order #</td>
                           <td class="text-right text-middle">
-                            <input type="text" class="form-control" value="">
+                            <input type="text" class="form-control" v-model="editable_project.order_num">
                           </td>
                         </tr>
                       </table>
                       <div class="mt50 text-center">
                         <div class="row mlr0">
                           <div class="col-sm-4 prl7 col-sm-offset-2">
-                             <button type="button" class="ebutton">OK</button>
+                             <button type="button" class="ebutton" data-dismiss="modal" aria-label="Close" @click="edit_project()">OK</button>
                           </div>
 
                           <div class="col-sm-4 prl7">
@@ -316,6 +287,91 @@
               </div>
             </div>
           </div>
+          <div class="modal" id="addnew" tabindex="-1" role="dialog" aria-labelledby="" data-backdrop="static">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+
+                <div class="modal-body">
+                  <p class="font18 text-center">CREATE A NEW PROJECT</p>
+                  <div class="row">
+                    <div class="col-sm-8 col-sm-offset-2">
+                       <table class="table mt30 font12">
+                         <tr>
+                           <td>Project name</td>
+                           <td><input type="text" class="form-control" v-model="editable_project.name"></td>
+                         </tr>
+                         <tr>
+                          <td class="text-middle">Customer name</td>
+                          <td class="text-right"><input type="text" class="form-control" v-model="editable_project.customer_name"></td>
+                        </tr>
+                        <tr>
+                          <td class="text-middle">Category</td>
+                          <td class="text-right">
+                            <select class="form-control"  v-model="editable_project.category">
+                                  <option value="1">Residential</option>
+                                  <option value="2">Hospitality</option>
+                                  <option value="3">Marine</option>
+                                  <option value="4">Commercial</option>
+
+                            </select>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="text-middle">Country</td>
+                          <td class="text-right text-middle">
+                            <input type="text" class="form-control" v-model="editable_project.country">
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="text-middle">City</td>
+                          <td class="text-right text-middle">
+                            <input type="text" class="form-control" v-model="editable_project.city">
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="text-middle">Description <br><span class="font10">(max 250 symbols)</span> </td>
+                          <td class="text-right text-middle">
+                              <textarea class="form-control" rows="3" v-model="editable_project.description"></textarea>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="text-middle">Number of rooms</td>
+                          <td class="text-right text-middle">
+                            <input type="text" class="form-control" v-model="editable_project.num_room">
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="text-middle">Hotel brand</td>
+                          <td class="text-right text-middle">
+                             <input type="text" class="form-control" v-model="editable_project.hotel_brand">
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="text-middle">Purchase Order #</td>
+                          <td class="text-right text-middle">
+                            <input type="text" class="form-control" v-model="editable_project.order_num">
+                          </td>
+                        </tr>
+                      </table>
+                      <div class="mt50 text-center">
+                        <div class="row mlr0">
+                          <div class="col-sm-4 prl7 col-sm-offset-2">
+                             <button type="button" class="ebutton" data-dismiss="modal" aria-label="Close" @click="edit_project()">OK</button>
+                          </div>
+
+                          <div class="col-sm-4 prl7">
+                              <button type="button" data-dismiss="modal" aria-label="Close" class="ebutton">Cancel</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+         
+    
 </div>
 
 
@@ -332,7 +388,8 @@ export default {
             current:{},
             editable_project:{},
             artwork_query: '',
-            timeout:  null
+            timeout:  null,
+            add_project:{}
 
         }
       },
@@ -377,24 +434,77 @@ export default {
       sendData(index,sort){
           this.current =  this.projectList[sort][index]
           this.editable_project = Object.assign({},this.current);
+          window.console.log(this.editable_project);
         },
-      // querySearchAsync(queryString, cb) {
-      //   var projectList = this.projectList;
-      //   var results = queryString ? projectList.filter(this.createStateFilter(queryString)) : projectList;
-      //
-      //   clearTimeout(this.timeout);
-      //   this.timeout = setTimeout(() => {
-      //     cb(results);
-      //   }, 3000 * Math.random());
-      // },
-      // createStateFilter(queryString) {
-      //   return (state) => {
-      //     return (state.value.toLowerCase().indexOf(queryString.toLowerCase()) === 0);
-      //   };
-      // },
+      
       handleSelect(item) {
         window.console.log(item);
       },
+      edit_project(){
+            axios
+                .put('http://localhost:3000/project/api/'+ this.editable_project.id,{
+                    "name":this.editable_project.name,
+                    "customer_name":this.editable_project.customer_name,
+                    "category":this.editable_project.category,
+                    "country":this.editable_project.country,
+                    "city":this.editable_project.city,
+                    "description":this.editable_project.description,
+                    "num_room":this.editable_project.num_room,
+                    "hotel_brand":this.editable_project.hotel_brand,
+                    "order_num":this.editable_project.order_num
+                })
+                .then(res => {
+                    // window.console.log(res.data);
+                    if(res.data.affectedRows == 1){
+                        this.$message({
+                            type: 'success',
+                            message: 'Delete Successful!'
+                        }),
+                        this.getData();
+                    }else{
+                        this.$message({
+                            type: 'error',
+                            message: 'Delete Failed!'
+                        })
+                    }
+                })
+                .catch(function (error) { // 请求失败处理
+                    alert(error);
+                });
+      },
+      add_project(){
+            axios
+                .put('http://localhost:3000/project/api/',{
+                    "name":this.editable_project.name,
+                    "customer_name":this.editable_project.customer_name,
+                    "category":this.editable_project.category,
+                    "country":this.editable_project.country,
+                    "city":this.editable_project.city,
+                    "description":this.editable_project.description,
+                    "num_room":this.editable_project.num_room,
+                    "hotel_brand":this.editable_project.hotel_brand,
+                    "order_num":this.editable_project.order_num
+                })
+                .then(res => {
+                    // window.console.log(res.data);
+                    if(res.data.affectedRows == 1){
+                        this.$message({
+                            type: 'success',
+                            message: 'Delete Successful!'
+                        }),
+                        this.getData();
+                    }else{
+                        this.$message({
+                            type: 'error',
+                            message: 'Delete Failed!'
+                        })
+                    }
+                })
+                .catch(function (error) { // 请求失败处理
+                    alert(error);
+                });
+      },
+
       search_artwork(){
           // var i;var j;
           //
