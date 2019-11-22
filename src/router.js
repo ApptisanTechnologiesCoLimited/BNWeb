@@ -22,6 +22,10 @@ const routes = [
   {
     path: '/project/:id',
     component: () => import('./views/Project.vue')
+  },
+  {
+    path: '/roomtype/:id',
+    component: () => import('./views/Roomtype.vue')
   }
 ]
 

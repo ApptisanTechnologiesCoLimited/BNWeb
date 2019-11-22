@@ -3,7 +3,7 @@
     <div class="bg-gray">
         <ol class="breadcrumb">
             <li><a href="#">My projects</a></li>
-            <li class="active">MGM Cotai</li>
+            <li class="active">{{project.name}}</li>
             <a class="pull-right" href="#">All projects</a>
         </ol>
     </div>
@@ -52,7 +52,7 @@
                                     <tr v-for="(i,index) in roomtypeList" :key="index">
                                         <td class="">{{i.name}}</td>
                                         <td class="text-center option h40">
-                                            <a class="black mr20" href="#" >Open</a>
+                                            <router-link :to="'/roomtype/' + i.id" class="black mr20">Open</router-link>
                                             <a class="black" href="#"><span class="iconfont icon-copy font18"></span></a>
                                             <a class="black" @click="delete_roomtype(i)"  ><span class="iconfont icon-delete font18"></span></a>
                                         </td>
