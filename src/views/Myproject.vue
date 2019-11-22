@@ -17,8 +17,8 @@
             <div class="col-xs-12 mt30">
               <span class="iconfont icon-iconfind button-icon mr20 font25"></span>
               <span class="font18 black text-middle mr20">SEARCH FOR A PROJECT</span>
-              <el-autocomplete v-model="state" :fetch-suggestions="querySearchAsync" placeholder="Place input you keyword! " @select="handleSelect" class="w40 mr20"></el-autocomplete>
-              <button type="button" class="ebutton w30">Find</button>
+              <el-input v-model="artwork_query"  placeholder="Place input you keyword! "  class="w40 mr20"></el-input>
+<!--              <button type="button" class="ebutton w30" @click="search_artwork()">Find</button>-->
 
 
             </div>
@@ -51,7 +51,7 @@
                           <th class="text-center">Latest change</th>
                         </tr>
                         <!-- loop start -->
-                        <tr v-for="( i,index ) in projectList[0]" :key="index">
+                        <tr v-for="( i,index ) in filtered_redidential" :key="index">
                           <td class="">{{i.name}}</td>
                           <td class="text-center option h40">
                             <router-link :to="'/project/' + i.id" class="black mr20">Open</router-link>
@@ -101,7 +101,7 @@
                           <th class="text-center">Latest change</th>
                         </tr>
                         <!-- loop start -->
-                        <tr v-for="( i,index ) in projectList[1]" :key="index">
+                        <tr v-for="( i,index ) in filtered_hopspitality" :key="index">
                           <td class="">{{i.name}}</td>
                           <td class="text-center option h40">
                             <router-link :to="'/project/' + i.id" class="black mr20">Open</router-link>
@@ -148,7 +148,7 @@
                           <th class="text-center">Latest change</th>
                         </tr>
                         <!-- loop start -->
-                        <tr v-for="( i,index ) in projectList[2]" :key="index">
+                        <tr v-for="( i,index ) in filtered_marine" :key="index">
                           <td class="">{{i.name}}</td>
                           <td class="text-center option h40">
                             <router-link :to="'/project/' + i.id" class="black mr20">Open</router-link>
@@ -195,7 +195,7 @@
                           <th class="text-center">Latest change</th>
                         </tr>
                         <!-- loop start -->
-                        <tr v-for="( i,index ) in projectList[3]" :key="index">
+                        <tr v-for="( i,index ) in filtered_commercial" :key="index">
                           <td class="">{{i.name}}</td>
                           <td class="text-center option h40">
                             <router-link :to="'/project/' + i.id" class="black mr20">Open</router-link>
@@ -328,10 +328,10 @@ export default {
   name: 'myproject',
   data(){
         return {
-            projectList:{},
+            projectList:[[],[],[],[]],
             current:{},
             editable_project:{},
-            state: '',
+            artwork_query: '',
             timeout:  null
 
         }
@@ -378,27 +378,72 @@ export default {
           this.current =  this.projectList[sort][index]
           this.editable_project = Object.assign({},this.current);
         },
-      querySearchAsync(queryString, cb) {
-        var projectList = this.projectList;
-        var results = queryString ? projectList.filter(this.createStateFilter(queryString)) : projectList;
-
-        clearTimeout(this.timeout);
-        this.timeout = setTimeout(() => {
-          cb(results);
-        }, 3000 * Math.random());
-      },
-      createStateFilter(queryString) {
-        return (state) => {
-          return (state.value.toLowerCase().indexOf(queryString.toLowerCase()) === 0);
-        };
-      },
+      // querySearchAsync(queryString, cb) {
+      //   var projectList = this.projectList;
+      //   var results = queryString ? projectList.filter(this.createStateFilter(queryString)) : projectList;
+      //
+      //   clearTimeout(this.timeout);
+      //   this.timeout = setTimeout(() => {
+      //     cb(results);
+      //   }, 3000 * Math.random());
+      // },
+      // createStateFilter(queryString) {
+      //   return (state) => {
+      //     return (state.value.toLowerCase().indexOf(queryString.toLowerCase()) === 0);
+      //   };
+      // },
       handleSelect(item) {
         window.console.log(item);
-      }
+      },
+      search_artwork(){
+          // var i;var j;
+          //
+          // for(i=0;i<4;i++){
+          //     for(j=0;j<this.projectList[i].length;j++) {
+          //         if (!this.projectList[i][j].name.includes(this.artwork_query)) this.projectList[i].splice(j,1);
+          //         // eslint-disable-next-line no-console
+          //         console.log("j");
+          //     }
+          //     i++;
+          //     // eslint-disable-next-line no-console
+          //     console.log("i");
+          // }
+
+          //this.projectList[0].name.includes(this.artwork_query)
+
+
+          }
     },
     mounted() {
       this.getData();
+    },
+    computed: {
+        filtered_redidential:function() {
+            return this.projectList[0].filter(project => {
+                return project.name.toLowerCase().includes(this.artwork_query.toLowerCase())
+            })
+        },
+        filtered_hopspitality:function() {
+            return this.projectList[1].filter(project => {
+                return project.name.toLowerCase().includes(this.artwork_query.toLowerCase())
+            })
+        },
+        filtered_marine:function() {
+            return this.projectList[2].filter(project => {
+                return project.name.toLowerCase().includes(this.artwork_query.toLowerCase())
+            })
+        },
+        filtered_commercial:function() {
+            return this.projectList[3].filter(project => {
+                return project.name.toLowerCase().includes(this.artwork_query.toLowerCase())
+            })
+        }
+
+
+
+
     }
+
 }
 </script>
 
