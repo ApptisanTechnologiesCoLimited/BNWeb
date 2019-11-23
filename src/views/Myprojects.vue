@@ -105,7 +105,7 @@
                           <td class="">{{i.name}}</td>
                           <td class="text-center option h40">
                             <router-link :to="'/project/' + i.id" class="black mr20">Open</router-link>
-                            <a class="black" data-toggle="modal" data-target="#edit" @click="sendData(index,0)"><span class="iconfont icon-edit font18"></span></a>
+                            <a class="black" data-toggle="modal" data-target="#edit" @click="sendData(index,1)"><span class="iconfont icon-edit font18"></span></a>
                             <a class="black" href="#"><span class="iconfont icon-copy font18"></span></a>
                             <a class="black" @click="delete_project(i.id,i.name)"><span class="iconfont icon-delete font18"></span></a>
                           </td>
@@ -143,7 +143,7 @@
                           <td class="">{{i.name}}</td>
                           <td class="text-center option h40">
                             <router-link :to="'/project/' + i.id" class="black mr20">Open</router-link>
-                            <a class="black" data-toggle="modal" data-target="#edit" @click="sendData(index,0)"><span class="iconfont icon-edit font18"></span></a>
+                            <a class="black" data-toggle="modal" data-target="#edit" @click="sendData(index,2)"><span class="iconfont icon-edit font18"></span></a>
                             <a class="black" href="#"><span class="iconfont icon-copy font18"></span></a>
                             <a class="black" @click="delete_project(i.id,i.name)"><span class="iconfont icon-delete font18"></span></a>
                           </td>
@@ -181,7 +181,7 @@
                           <td class="">{{i.name}}</td>
                           <td class="text-center option h40">
                             <router-link :to="'/project/' + i.id" class="black mr20">Open</router-link>
-                            <a class="black" data-toggle="modal" data-target="#edit" @click="sendData(index,0)"><span class="iconfont icon-edit font18"></span></a>
+                            <a class="black" data-toggle="modal" data-target="#edit" @click="sendData(index,3)"><span class="iconfont icon-edit font18"></span></a>
                             <a class="black" href="#"><span class="iconfont icon-copy font18"></span></a>
                             <a class="black" @click="delete_project(i.id,i.name)"><span class="iconfont icon-delete font18"></span></a>
                           </td>
@@ -458,13 +458,13 @@ export default {
                     if(res.data.affectedRows == 1){
                         this.$message({
                             type: 'success',
-                            message: 'Delete Successful!'
+                            message: 'Edit Successfully!'
                         }),
                         this.getData();
                     }else{
                         this.$message({
                             type: 'error',
-                            message: 'Delete Failed!'
+                            message: 'Edit Failed!'
                         })
                     }
                 })
@@ -490,13 +490,13 @@ export default {
                     if(res.data.affectedRows == 1){
                         this.$message({
                             type: 'success',
-                            message: 'Delete Successful!'
+                            message: 'Added Successful!'
                         }),
                         this.getData();
                     }else{
                         this.$message({
                             type: 'error',
-                            message: 'Delete Failed!'
+                            message: 'Added Failed!'
                         })
                     }
                 })

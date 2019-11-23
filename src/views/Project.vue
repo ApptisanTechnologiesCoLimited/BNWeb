@@ -74,6 +74,89 @@
         </div>
 
     </div>
+    <div class="modal" id="edit" tabindex="-1" role="dialog" aria-labelledby="" data-backdrop="static">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+
+                <div class="modal-body">
+                  <p class="font18 text-center">Edit PROJECT</p>
+                  <div class="row">
+                    <div class="col-sm-8 col-sm-offset-2">
+                       <table class="table mt30 font12">
+                         <tr>
+                           <td>Project name</td>
+                           <td><input type="text" class="form-control" v-model="current.name"></td>
+                         </tr>
+                         <tr>
+                          <td class="text-middle">Customer name</td>
+                          <td class="text-right"><input type="text" class="form-control" v-model="current.customer_name"></td>
+                        </tr>
+                        <tr>
+                          <td class="text-middle">Category</td>
+                          <td class="text-right">
+                            <select class="form-control"  v-model="current.category">
+                                  <option value="1">Residential</option>
+                                  <option value="2">Hospitality</option>
+                                  <option value="3">Marine</option>
+                                  <option value="4">Commercial</option>
+
+                            </select>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="text-middle">Country</td>
+                          <td class="text-right text-middle">
+                            <input type="text" class="form-control" v-model="current.country">
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="text-middle">City</td>
+                          <td class="text-right text-middle">
+                            <input type="text" class="form-control" v-model="current.city">
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="text-middle">Description <br><span class="font10">(max 250 symbols)</span> </td>
+                          <td class="text-right text-middle">
+                              <textarea class="form-control" rows="3" v-model="current.description"></textarea>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="text-middle">Number of rooms</td>
+                          <td class="text-right text-middle">
+                            <input type="text" class="form-control" v-model="current.num_room">
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="text-middle">Hotel brand</td>
+                          <td class="text-right text-middle">
+                             <input type="text" class="form-control" v-model="current.hotel_brand">
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="text-middle">Purchase Order #</td>
+                          <td class="text-right text-middle">
+                            <input type="text" class="form-control" v-model="current.order_num">
+                          </td>
+                        </tr>
+                      </table>
+                      <div class="mt50 text-center">
+                        <div class="row mlr0">
+                          <div class="col-sm-4 prl7 col-sm-offset-2">
+                             <button type="button" class="ebutton" data-dismiss="modal" aria-label="Close" @click="edit_project()">OK</button>
+                          </div>
+
+                          <div class="col-sm-4 prl7">
+                              <button type="button" data-dismiss="modal" aria-label="Close" class="ebutton">Cancel</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
 </div>
 </template>
 
@@ -87,21 +170,25 @@
             return {
                 project:{},
                 roomtypeList:[],
-                rname:""
+                rname:"",
+                current:{}
             }
         },
         mounted() {
-            axios.get("http://localhost:3000/project/api/"+ this.$route.params.id).then(response =>
-            {
-                this.project = response.data[0];
-
-            })
+            this.getData();
             this.getRoomtypes();
             window.console.log(Date.now());
 
 
         },
         methods:{
+            getData(){
+                axios.get("http://localhost:3000/project/api/"+ this.$route.params.id).then(response =>
+               {
+                this.project = response.data[0];
+                this.current = Object.assign({},this.project);
+               })
+            },
             getRoomtypes(){
                 axios.get("http://localhost:3000/roomtype/api/byproject/"+this.$route.params.id).then(response =>
                 {
@@ -110,6 +197,38 @@
                 })
 
             },
+        edit_project(){
+            axios
+                .put('http://localhost:3000/project/api/'+ this.current.id,{
+                    "name":this.current.name,
+                    "customer_name":this.current.customer_name,
+                    "category":this.current.category,
+                    "country":this.current.country,
+                    "city":this.current.city,
+                    "description":this.current.description,
+                    "num_room":this.current.num_room,
+                    "hotel_brand":this.current.hotel_brand,
+                    "order_num":this.current.order_num
+                })
+                .then(res => {
+                    // window.console.log(res.data);
+                    if(res.data.affectedRows == 1){
+                        this.$message({
+                            type: 'success',
+                            message: 'Edit Successfully!'
+                        }),
+                        this.getData();
+                    }else{
+                        this.$message({
+                            type: 'error',
+                            message: 'Edit Failed!'
+                        })
+                    }
+                })
+                .catch(function (error) { // 请求失败处理
+                    alert(error);
+                });
+      },
             delete_roomtype(rt) {
                 const h = this.$createElement;
                 this.$msgbox({

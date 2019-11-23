@@ -11,7 +11,7 @@
 
                             <div class="col-xs-12 mb20">
                                 <a href="">
-                                    <span class="iconfont icon-add button-icon mr20"></span>
+                                    <span class="iconfont icon-add button-icon mr20 border"></span>
                                     <span class="font18 black">Add a new artwork</span>
                                 </a>
 
@@ -150,10 +150,7 @@ export default {
 
      },
     methods:{
-        load () {
-
-
-        },
+        
       getData:function(){
         axios
           .get('http://localhost:3000/artwork/api')

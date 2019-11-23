@@ -216,6 +216,9 @@ hr{
 .modal-dialog{
     margin:10% auto;
 }
+#edit .modal-dialog{
+    margin:5% auto;
+}
 #edit .modal-content,
 #delete .modal-content{
     padding:50px 20px;
@@ -586,4 +589,7 @@ hr.gray{
 }
 .el-input__inner{
     border-radius:0;
+}
+.border{
+    border:1px solid #979797;
 }
