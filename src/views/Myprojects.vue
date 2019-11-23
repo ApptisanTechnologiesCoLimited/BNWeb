@@ -3,8 +3,7 @@
    <div class="bg-gray">
       <ol class="breadcrumb">
           <li><a href="#">Dashboard</a></li>
-          <li><a href="#">My projects</a></li>
-          <li class="active">MGM Cotai</li>
+          <li class="active"> <a href="#">My Projects</a></li>
 
         </ol>
   </div>
@@ -64,17 +63,7 @@
                           <td class="text-center">{{i.city}}</td>
                           <td class="text-center">{{new Date(i.change_date) | dateFormat('DD.MM.YYYY')}}</td>
                         </tr>
-                        <!-- loop end -->
-                        <!-- <tr> 
-                          <td colspan="6">
-                           <div class="block text-center">
-                              <el-pagination
-                                layout="prev, pager, next"
-                                :total="10">
-                              </el-pagination>
-                            </div>
-                          </td>
-                          </tr> -->
+                        
 
                       </table>
                     </div>
