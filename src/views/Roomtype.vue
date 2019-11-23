@@ -2,10 +2,11 @@
     <div id="roomtype">
 <div class="bg-gray">
             <ol class="breadcrumb">
-                <li><a href="#">My projects</a></li>
-                <li><a href="#">MGM Cotai</a></li>
-                <li class="active">Suite 1</li>
-                <a class="pull-right" href="#">All projects</a>
+                                <li><a href="#/dash">Dashboard</a></li>
+
+                <li><a href="#/myprojects">My projects</a></li>
+                <li><a :href="'#/project/'+roomtype.pid">{{$route.params.pname}}</a></li>
+                <li class="active">{{roomtype.name}}</li>
               </ol>
         </div>
         <div class="content project middle" >

@@ -1,25 +1,28 @@
 <template>
 <div id="artwork">
+<div class="bg-gray">
+      <ol class="breadcrumb">
+                    <li><a href="/dash">Dashboard</a></li>
 
-    <div class="content login middle">
+          <li><a href="/myartworks">My Artworks</a></li>
+          <li class="active">{{artwork.name}}</li>
+        </ol>
+  </div>
+    <div class="content login middle" v-loading="loading">
         <div class="cell">
             <div class="container">
                 <div class="row">
 
-                    <div class="col-xs-5 text-center mt5p">
+                    <div class="col-xs-5 text-center mt5p" >
                         <img :src="artwork.img" alt="">
                     </div>
                     <div class="col-xs-5 col-xs-offset-2 text-right">
                         <h3 class="now">{{artwork.name}}</h3>
                         <div class="mt30 lh25">
-                            <p>ALBA 4, General Purpose Panel</p>
-                            <p>{{artwork.protocol}}</p>
-                            <p>UID {{artwork.id}}</p>
-                            <div class="font11 lh15">
-                                D L FE 4K X G YB <br>
-                                D L FE FR 1F X M AS<br>
-                                D L BE 12 K
-                            </div>
+                        
+                            <p>Protocol: {{artwork.protocol}}</p>
+                            <p>UID: {{artwork.id}}</p>
+                            
                         </div>
 
                         <div class="mt30">
@@ -72,13 +75,15 @@
         name: 'artwork',
         data(){
             return {
-                artwork:{}
+                artwork:{},
+                loading:true
             }
         },
         mounted() {
             axios.get("http://localhost:3000/artwork/api/"+ this.$route.params.id).then(response =>
             {
                 this.artwork = response.data[0];
+                this.loading=false;
 
             })
         }

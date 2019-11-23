@@ -1,8 +1,13 @@
 <template>
     <div id="myartworks">
+<div class="bg-gray">
+      <ol class="breadcrumb">
+          <li><a href="#/dash">Dashboard</a></li>
+          <li class="active"><a href="#/myartworks">My Artworks</a></li>
+        </ol>
+  </div>
 
-
-            <div class="content login middle">
+            <div class="content login middle" v-loading="loading">
                 <div class="cell">
                     <div class="container">
                         <div class="row">
@@ -20,22 +25,22 @@
                             <div class="col-xs-7">
 
                                 <table class="table mb0" >
-                                    <tr >
-                                        <th>Name</th>
-                                        <th class="text-center w30">Change Date</th>
-                                    </tr>
+                                    
                                 </table>
 
                                 <div class="scroll-wrapper infinite-list-wrapper" style="overflow:auto!important">
 
                                         <table class="table list-box">
+                                            <tr >
+                                        <th>Name</th>
+                                        <th class="text-center w30">Change Date</th>
+                                    </tr>
                                             <tr :class="activeClass == index ? 'active':''" v-for="( i,index ) in artworkList" @click="sendData(index)" :key="index">
 
                                                 <td>{{i.name}}</td>
+                                                
                                                 <td class="text-center w30">{{new Date(i.changedate) | dateFormat('DD.MM.YYYY')}}</td>
                                             </tr>
-                                            <tr v-if="loading"><td colspan="2">Loading...</td></tr>
-<!--                                            <tr v-if="noMore"><td colspan="2">No More Artwork. </td></tr>-->
 
 
                                         </table>
@@ -139,7 +144,7 @@ export default {
             current:{},
             editable_artwork:{},
             activeClass:0,
-            loading: false,
+            loading: true,
             start_art:0,
             end_art:5
 
@@ -147,6 +152,7 @@ export default {
       },
     mounted () {
        this.getData();
+       
 
      },
     methods:{
@@ -159,6 +165,7 @@ export default {
              this.artworkList = response.data;
                  this.current = this.artworkList[0];
              this.editable_artwork = Object.assign({},this.current);
+             this.loading=false;
 
          })
           .catch(function (error) { // 请求失败处理
