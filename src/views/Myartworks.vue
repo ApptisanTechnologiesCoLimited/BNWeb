@@ -1,5 +1,6 @@
 <template>
     <div id="myartworks">
+
 <div class="bg-gray">
       <ol class="breadcrumb">
           <li><a href="#/dash">Dashboard</a></li>
@@ -8,6 +9,7 @@
   </div>
 
             <div class="content login middle" v-loading="loading">
+
                 <div class="cell">
                     <div class="container">
                         <div class="row">
@@ -16,7 +18,7 @@
 
                             <div class="col-xs-12 mb20">
                                 <a href="">
-                                    <span class="iconfont icon-add button-icon mr20 border"></span>
+                                    <span class="iconfont icon-add button-icon mr20 border brmore"></span>
                                     <span class="font18 black">Add a new artwork</span>
                                 </a>
 
