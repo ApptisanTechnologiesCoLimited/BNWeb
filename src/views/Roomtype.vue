@@ -5,7 +5,7 @@
                 <li><a href="#">My projects</a></li>
                 <li><a href="#">MGM Cotai</a></li>
                 <li class="active">Suite 1</li>
-                <a class="pull-right" href="#">All projects</a>
+               
               </ol>
         </div>
         <div class="content project middle" >
@@ -19,22 +19,34 @@
                           </p>
 
                           <div class="row mt50">
-                            <div class="col-sm-4 prl30">
+                               <div class="col-sm-4 prl30 mb30">
                               <div class="product-box">
-                                <div class="img-box p20">
-                                  <img src="images/pic1.jpg" class="mw100" alt="">
+                                <a class="img-box p20 text-center" style="background-image:url('../assets/images/pic1.jpg');">
+                                  <span class="iconfont icon-add button-icon font30"></span>
+                                </a>
+                                <p class="font18 mt20">Add a product</p>
+                                <p class="showPcs1 pcs"></p>
+                              </div>
+
+                            </div>
+                            <div class="col-sm-4 prl30 mb30">
+                              <div class="product-box">
+                                <div class="img-box p20" :style="{backgroundImage:'url('+require('../assets/images/pic1.jpg')+')'}">
+                                  
                                 </div>
                                 <p class="font18 mt20">ALBA 13</p>
                                 <div class="row editbox">
                                   <div class="col-xs-6">
-                                    <p class="showPcs1 showp pcs">45 pcs</p>
-                                    <p class="editPcs1 hidp pcsinput">
-                                      <input id="pinput1" type="tel" class="w30" value="45"> pcs
+                                    <p class="showPcs1 pcs" v-show="!isshow">
+                                       <span class="mr20"> QTY</span> 45
+                                    </p>
+                                    <p class="editPcs1 " v-show="isshow">
+                                      <span class="mr20">QTY</span> <input type="tel" class="w30" value="45">
                                     </p>
                                   </div>
                                   <div class="col-xs-6 text-right">
-                                      <a class="black editPcsButton" onclick=""><span class="iconfont icon-edit font18"></span></a>
-                                      <a class="black" data-toggle="modal" data-target="#delete"><span class="iconfont icon-delete font18"></span></a>
+                                      <a class="black editPcsButton" @click="edit_pcs()"><span class="iconfont icon-edit"></span></a>
+                                      <a class="black" data-toggle="modal" data-target="#delete"><span class="iconfont icon-delete"></span></a>
                                   </div>
                                 </div>
 
@@ -42,29 +54,82 @@
                               </div>
 
                             </div>
-                            <div class="col-sm-4 prl30">
-                                <div class="product-box">
-                                  <div class="img-box p20">
-                                    <img src="images/pic1.jpg" class="mw100" alt="">
+                            <div class="col-sm-4 prl30 mb30">
+                              <div class="product-box">
+                                <div class="img-box p20" :style="{backgroundImage:'url('+require('../assets/images/pic1.jpg')+')'}">
+                                  
+                                </div>
+                                <p class="font18 mt20">ALBA 13</p>
+                                <div class="row editbox">
+                                  <div class="col-xs-6">
+                                    <p class="showPcs1 pcs" v-show="!isshow">
+                                       <span class="mr20"> QTY</span> 45
+                                    </p>
+                                    <p class="editPcs1 " v-show="isshow">
+                                      <span class="mr20">QTY</span> <input type="tel" class="w30" value="45">
+                                    </p>
                                   </div>
-                                  <p class="font18 mt20">ALBA 13</p>
-                                  <div class="row editbox">
-                                    <div class="col-xs-6">
-                                      <p class="showPcs2 showp pcs">45 pcs</p>
-                                      <p class="editPcs2 hidp pcsinput">
-                                        <input id="pinput2" type="tel" class="w30" value="45"> pcs
-                                      </p>
-                                    </div>
-                                    <div class="col-xs-6 text-right">
-                                        <a class="black editPcsButton" onclick=""><span class="iconfont icon-edit font18"></span></a>
-                                        <a class="black" data-toggle="modal" data-target="#delete"><span class="iconfont icon-delete font18"></span></a>
-                                    </div>
+                                  <div class="col-xs-6 text-right">
+                                      <a class="black editPcsButton" @click="edit_pcs()"><span class="iconfont icon-edit"></span></a>
+                                      <a class="black" data-toggle="modal" data-target="#delete"><span class="iconfont icon-delete"></span></a>
                                   </div>
-
-
                                 </div>
 
+
                               </div>
+
+                            </div>
+                            <div class="col-sm-4 prl30 mb30">
+                              <div class="product-box">
+                                <div class="img-box p20" :style="{backgroundImage:'url('+require('../assets/images/pic1.jpg')+')'}">
+                                  
+                                </div>
+                                <p class="font18 mt20">ALBA 13</p>
+                                <div class="row editbox">
+                                  <div class="col-xs-6">
+                                    <p class="showPcs1 pcs" v-show="!isshow">
+                                       <span class="mr20"> QTY</span> 45
+                                    </p>
+                                    <p class="editPcs1 " v-show="isshow">
+                                      <span class="mr20">QTY</span> <input type="tel" class="w30" value="45">
+                                    </p>
+                                  </div>
+                                  <div class="col-xs-6 text-right">
+                                      <a class="black editPcsButton" @click="edit_pcs()"><span class="iconfont icon-edit"></span></a>
+                                      <a class="black" data-toggle="modal" data-target="#delete"><span class="iconfont icon-delete"></span></a>
+                                  </div>
+                                </div>
+
+
+                              </div>
+
+                            </div>
+                            <div class="col-sm-4 prl30 mb30">
+                              <div class="product-box">
+                                <div class="img-box p20" :style="{backgroundImage:'url('+require('../assets/images/pic1.jpg')+')'}">
+                                  
+                                </div>
+                                <p class="font18 mt20">ALBA 13</p>
+                                <div class="row editbox">
+                                  <div class="col-xs-6">
+                                    <p class="showPcs1 pcs" v-show="!isshow">
+                                       <span class="mr20"> QTY</span> 45
+                                    </p>
+                                    <p class="editPcs1 " v-show="isshow">
+                                      <span class="mr20">QTY</span> <input type="tel" class="w30" value="45">
+                                    </p>
+                                  </div>
+                                  <div class="col-xs-6 text-right">
+                                      <a class="black editPcsButton" @click="edit_pcs()"><span class="iconfont icon-edit"></span></a>
+                                      <a class="black" data-toggle="modal" data-target="#delete"><span class="iconfont icon-delete"></span></a>
+                                  </div>
+                                </div>
+
+
+                              </div>
+
+                            </div>
+                             
                           </div>
 
 
@@ -84,6 +149,7 @@
 <script>
 
      import axios from "axios";
+     import "../assets/css/project.css";
 
      export default {
          name: 'roomtype',
@@ -91,7 +157,8 @@
              return {
                  roomtype:{},
                  productList:[],
-                 rname:""
+                 rname:"",
+                 isshow:false
              }
          },
          mounted() {
@@ -103,7 +170,7 @@
 
 
 
-             //this.getProductList();
+             this.getProductList();
 
 
          },
@@ -115,6 +182,9 @@
 
                  })
 
+             },
+             edit_pcs(){
+                 this.isshow = !this.isshow;
              },
              delete_roomtype(rt) {
                  const h = this.$createElement;

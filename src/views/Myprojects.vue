@@ -43,12 +43,12 @@
                     <div class="panel-body">
                       <table class="table mb0">
                         <tr>
-                          <th class="">Name</th>
+                          <th class="w20">Name</th>
                           <th class="text-center w30"></th>
-                          <th class="text-center">Customer Name</th>
-                          <th class="text-center">Country</th>
-                          <th class="text-center">City</th>
-                          <th class="text-center">Latest change</th>
+                          <th class="text-center w10">Customer Name</th>
+                          <th class="text-center w10">Country</th>
+                          <th class="text-center w10">City</th>
+                          <th class="text-center w20">Latest change</th>
                         </tr>
                         <!-- loop start -->
                         <tr v-for="( i,index ) in filtered_redidential" :key="index">
@@ -92,13 +92,13 @@
                   <div id="collapseTwo" class="panel-collapse collapse in" role="tabpanel">
                     <div class="panel-body">
                       <table class="table mb0">
-                        <tr>
-                          <th class="">Name</th>
+                       <tr>
+                          <th class="w20">Name</th>
                           <th class="text-center w30"></th>
-                          <th class="text-center">Customer Name</th>
-                          <th class="text-center">Country</th>
-                          <th class="text-center">City</th>
-                          <th class="text-center">Latest change</th>
+                          <th class="text-center w10">Customer Name</th>
+                          <th class="text-center w10">Country</th>
+                          <th class="text-center w10">City</th>
+                          <th class="text-center w20">Latest change</th>
                         </tr>
                         <!-- loop start -->
                         <tr v-for="( i,index ) in filtered_hopspitality" :key="index">
@@ -131,12 +131,12 @@
                     <div class="panel-body">
                       <table class="table mb0">
                         <tr>
-                          <th class="">Name</th>
+                          <th class="w20">Name</th>
                           <th class="text-center w30"></th>
-                          <th class="text-center">Customer Name</th>
-                          <th class="text-center">Country</th>
-                          <th class="text-center">City</th>
-                          <th class="text-center">Latest change</th>
+                          <th class="text-center w10">Customer Name</th>
+                          <th class="text-center w10">Country</th>
+                          <th class="text-center w10">City</th>
+                          <th class="text-center w20">Latest change</th>
                         </tr>
                         <!-- loop start -->
                         <tr v-for="( i,index ) in filtered_marine" :key="index">
@@ -169,12 +169,12 @@
                     <div class="panel-body">
                       <table class="table mb0">
                         <tr>
-                          <th class="">Name</th>
+                          <th class="w20">Name</th>
                           <th class="text-center w30"></th>
-                          <th class="text-center">Customer Name</th>
-                          <th class="text-center">Country</th>
-                          <th class="text-center">City</th>
-                          <th class="text-center">Latest change</th>
+                          <th class="text-center w10">Customer Name</th>
+                          <th class="text-center w10">Country</th>
+                          <th class="text-center w10">City</th>
+                          <th class="text-center w20">Latest change</th>
                         </tr>
                         <!-- loop start -->
                         <tr v-for="( i,index ) in filtered_commercial" :key="index">

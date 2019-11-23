@@ -53,10 +53,10 @@
                                         <td class="">{{i.name}}</td>
                                         <td class="text-center option h40">
                                             <router-link :to="'/roomtype/' + i.id" class="black mr20">Open</router-link>
-                                            <a class="black" href="#"><span class="iconfont icon-copy font18"></span></a>
+                                            <!-- <a class="black" href="#"><span class="iconfont icon-copy font18"></span></a> -->
                                             <a class="black" @click="delete_roomtype(i)"  ><span class="iconfont icon-delete font18"></span></a>
                                         </td>
-                                        <td class="text-center">{{i.change_date}}</td>
+                                        <td class="text-center">{{new Date(i.change_date) | dateFormat('DD.MM.YYYY')}}</td>
                                     </tr>
                                     <!-- loop end -->
 

@@ -36,6 +36,12 @@ hr{
 .relative{
     position: relative;
 }
+.w10{
+    width:10%!important;  
+}
+.w20{
+    width:20%!important; 
+}
 .w30{
     width:30%!important;
 }
@@ -171,6 +177,9 @@ hr{
 }
 .mb20{
     margin-bottom: 20px;
+}
+.mb30{
+    margin-bottom: 30px;
 }
 .inlineb{
     display: inline-block;

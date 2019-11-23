@@ -53,11 +53,19 @@ tr:hover td:first-child{
   min-height: calc(100vh - 220px);
 }
 .img-box{
+  display:block;
   border:1px solid #999;
+  width:100%;
+  height:200px;
+  background-size:80% auto;
+  background-position:center;
+  background-repeat: no-repeat;
+  line-height:160px;
 }
 .product-box:hover .img-box{
   border-color:#F40000;
 }
-.pcsinput{
-  display: none;
+.showPcs1{
+  height:26px;
+  line-height:26px;
 }
