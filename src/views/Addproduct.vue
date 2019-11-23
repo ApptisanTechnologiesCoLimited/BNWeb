@@ -31,13 +31,41 @@
                       </div>
                     </div>
                   </div>
-                  <div class="col-xs-6">
+                  <div class="col-xs-5 col-xs-offset-1">
                     <div class="row">
-                      <div class="col-xs-4">
-                        <span class="iconfont icon-add button-icon mr20 border"></span>
-                        <span>Create New Artwork</span>
+                      <div class="col-xs-4 text-center click">
+                        <span class="iconfont icon-add button-icon border"></span>
+                        <p class="mt10">Create<br> New Artwork</p>
+                      </div>
+                       <div class="col-xs-4 text-center click">
+                        <span class="glyphicon glyphicon-search button-icon border font20"></span>
+                        <p class="mt10">Add<br> an Existing Artwork</p>
+                      </div>
+                       <div class="col-xs-4 text-center click">
+                        <span class="glyphicon glyphicon-th-large button-icon border font20"></span>
+                        <p class="mt10">Add<br> a Socket Frame</p>
                       </div>
                     </div>
+                    <hr>
+                    <el-input
+                      size="medium"
+                      placeholder="Place search your keyword"
+                      suffix-icon="el-icon-search"
+                      >
+                    </el-input>
+                    <table class="table mt30">
+                        <tr>
+                            <th class="w30">Name</th>
+                            <th class="text-center">Latest change</th>
+                        </tr>
+                        <!-- loop start -->
+                        <tr v-for="(i,index) in roomtypeList" :key="index">
+                            <td class="">{{i.name}}</td>
+                            <td class="text-center">{{new Date(i.change_date) | dateFormat('DD.MM.YYYY')}}</td>
+                        </tr>
+                        <!-- loop end -->
+
+                    </table>
                   </div>
                </div>
             
