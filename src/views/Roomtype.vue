@@ -1,6 +1,6 @@
 <template>
     <div id="roomtype">
-<div class="bg-gray">
+       <div class="bg-gray">
             <ol class="breadcrumb">
                 <li><a href="#">My projects</a></li>
                 <li><a href="#">MGM Cotai</a></li>
@@ -21,9 +21,10 @@
                           <div class="row mt50">
                                <div class="col-sm-4 prl30 mb30">
                               <div class="product-box">
-                                <a class="img-box p20 text-center" style="background-image:url('../assets/images/pic1.jpg');">
-                                  <span class="iconfont icon-add button-icon font30"></span>
-                                </a>
+                                <router-link :to="'/addproduct/'" class="img-box p20 text-center">
+                                   <span class="iconfont icon-add button-icon font30"></span>
+                                </router-link>
+                               
                                 <p class="font18 mt20">Add a product</p>
                                 <p class="showPcs1 pcs"></p>
                               </div>

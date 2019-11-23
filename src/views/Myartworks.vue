@@ -1,7 +1,5 @@
 <template>
     <div id="myartworks">
-
-
             <div class="content login middle">
                 <div class="cell">
                     <div class="container">
@@ -11,7 +9,7 @@
 
                             <div class="col-xs-12 mb20">
                                 <a href="">
-                                    <span class="iconfont icon-add button-icon mr20 border"></span>
+                                    <span class="iconfont icon-add button-icon mr20 border brmore"></span>
                                     <span class="font18 black">Add a new artwork</span>
                                 </a>
 
