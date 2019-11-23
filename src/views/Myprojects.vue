@@ -14,9 +14,18 @@
         <div class="row">
             <p class="font30 text-center">MY PORJECTS</p>
             <div class="col-xs-12 mt30">
-              <span class="iconfont icon-iconfind button-icon mr20 font25"></span>
-              <span class="font18 black text-middle mr20">SEARCH FOR A PROJECT</span>
-              <el-input v-model="artwork_query"  placeholder="Place input you keyword! "  class="w40 mr20"></el-input>
+              <div class="row">
+                <div class="col-xs-5">
+                  <span class="iconfont icon-iconfind button-icon mr20 font25"></span>
+                  <span class="font18 black text-middle mr20">SEARCH FOR A PROJECT</span>
+                </div>
+                <div class="col-xs-7">
+                  <el-input v-model="artwork_query" size="medium" suffix-icon="el-icon-search"  placeholder="Place input you keyword!" class="mt20"></el-input>
+                </div>
+              </div>
+              
+              
+              
 <!--              <button type="button" class="ebutton w30" @click="search_artwork()">Find</button>-->
 
 

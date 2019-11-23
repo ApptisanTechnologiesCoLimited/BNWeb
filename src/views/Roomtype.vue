@@ -25,7 +25,7 @@
                             <div class="col-sm-4 prl30"  >
 
                               <div class="product-box">
-                                <router-link :to="'/addproduct/'" class="img-box p20 text-center">
+                                <router-link :to="'/addproduct/' + roomtype.id" class="img-box p20 text-center">
                                    <span class="iconfont icon-add button-icon font30"></span>
                                 </router-link>
                                

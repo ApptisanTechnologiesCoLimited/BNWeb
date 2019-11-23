@@ -48,6 +48,9 @@ hr{
 .w40{
     width:40%;
 }
+.w100{
+    width:100%;
+}
 .mw100{
     max-width:100%;
 }
@@ -107,6 +110,9 @@ hr{
 }
 .p20{
     padding: 20px;
+}
+.pr15{
+    padding-right:15px ;
 }
 .prl5{
     padding-right:5px!important;

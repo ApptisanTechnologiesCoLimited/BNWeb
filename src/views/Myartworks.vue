@@ -34,9 +34,9 @@
 
                                         <table class="table list-box">
                                             <tr >
-                                        <th>Name</th>
-                                        <th class="text-center w30">Change Date</th>
-                                    </tr>
+                                                <th>Name</th>
+                                                <th class="text-center w30">Change Date</th>
+                                            </tr>
                                             <tr :class="activeClass == index ? 'active':''" v-for="( i,index ) in artworkList" @click="sendData(index)" :key="index">
 
                                                 <td>{{i.name}}</td>

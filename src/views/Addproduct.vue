@@ -17,13 +17,15 @@
               <div class="container">
                 <div class="row">
                   <div class="col-xs-4 col-xs-offset-2 text-center">
-                    <div class="product-img bg inlineb" :style="{backgroundImage:'url('+require('../assets/images/pic1.jpg')+')'}"></div>
+                    <div class="product-img bg inlineb" :style="{backgroundImage:'url('+require('')+')'}"></div>
                     <p class="click"> Click to zoom</p>
                     <div class="row mt20">
                       <div class="col-xs-8 text-left">
+                        {{current.name}}
                         ALBA 4, General Purpose York Black Glass
                       </div>
                       <div class="col-xs-4 text-right">
+                        {{current.product}}
                         Crestnet
                       </div>
                       <div class="col-xs-12 mt20">
@@ -53,19 +55,27 @@
                       suffix-icon="el-icon-search"
                       >
                     </el-input>
-                    <table class="table mt30">
-                        <tr>
-                            <th class="w30">Name</th>
-                            <th class="text-center">Latest change</th>
-                        </tr>
-                        <!-- loop start -->
-                        <tr v-for="(i,index) in roomtypeList" :key="index">
-                            <td class="">{{i.name}}</td>
-                            <td class="text-center">{{new Date(i.change_date) | dateFormat('DD.MM.YYYY')}}</td>
-                        </tr>
-                        <!-- loop end -->
+                    <div>
+                      <table class="table mt30">
+                            <tr>
+                                <th class="w40">Name</th>
+                                <th class="text-center pr15">Latest change</th>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="h200">
+                        <table class="table list-box">
+                            <!-- loop start -->
+                              <tr v-for="(i,index) in artworkList" :key="index" class="click" :class="activeClass == index ? 'active':''" @click="sendData(index)">
+                                <td class="w40">{{i.name}}</td>
+                                <td class="text-center">{{new Date(i.changedate) | dateFormat('DD.MM.YYYY')}}</td>
+                              </tr>
+                            
+                            <!-- loop end -->
 
-                    </table>
+                        </table>
+                    </div>
+                   
                   </div>
                </div>
             
@@ -79,9 +89,40 @@
 
 <script>
 import "../assets/css/project.css";
-// import axios from "axios";
+import axios from "axios";
 export default {
-  name: 'addproduct'
+  name: 'addproduct',
+  data(){
+        return {
+            artworkList:{},
+            current:{},
+            activeClass:0,
+            
+        }
+      },
+  mounted () {
+       this.getData();
+       
+     },
+  methods:{
+    getData:function(){
+        axios
+          .get('http://localhost:3000/artwork/api')
+          .then(response =>
+         {
+             this.artworkList = response.data;
+             this.current = this.artworkList[0]; 
+
+         })
+          .catch(function (error) { // 请求失败处理
+            alert(error);
+          });
+      },
+      sendData(index){
+          this.current =  this.artworkList[index]
+          this.activeClass = index
+        },
+  }
 }
 </script>
 
