@@ -4,7 +4,7 @@
             <ol class="breadcrumb">
                                 <li><a href="#/dash">Dashboard</a></li>
 
-                <li><a href="#/myprojects">My projects</a></li>
+                <li><a href="#/myprojects">My Projects</a></li>
                 <li><a :href="'#/project/'+roomtype.pid">{{$route.params.pname}}</a></li>
                 <li class="active">{{roomtype.name}}</li>
               </ol>
@@ -20,18 +20,16 @@
                           </p>
 
                           <div class="row mt50">
-                            <div class="col-sm-4 prl30">
+                            <div class="col-sm-4 prl30" v-for="(i,index) in productList" :key="index" >
                               <div class="product-box">
                                 <div class="img-box p20">
                                   <img src="images/pic1.jpg" class="mw100" alt="">
                                 </div>
-                                <p class="font18 mt20">ALBA 13</p>
+                                <p class="font18 mt20">{{i.name}}11</p>
                                 <div class="row editbox">
                                   <div class="col-xs-6">
-                                    <p class="showPcs1 showp pcs">45 pcs</p>
-                                    <p class="editPcs1 hidp pcsinput">
-                                      <input id="pinput1" type="tel" class="w30" value="45"> pcs
-                                    </p>
+                                    <p class="showPcs1 showp pcs">QTY: 45 pcs</p>
+                                    
                                   </div>
                                   <div class="col-xs-6 text-right">
                                       <a class="black editPcsButton" onclick=""><span class="iconfont icon-edit font18"></span></a>
@@ -43,29 +41,7 @@
                               </div>
 
                             </div>
-                            <div class="col-sm-4 prl30">
-                                <div class="product-box">
-                                  <div class="img-box p20">
-                                    <img src="images/pic1.jpg" class="mw100" alt="">
-                                  </div>
-                                  <p class="font18 mt20">ALBA 13</p>
-                                  <div class="row editbox">
-                                    <div class="col-xs-6">
-                                      <p class="showPcs2 showp pcs">45 pcs</p>
-                                      <p class="editPcs2 hidp pcsinput">
-                                        <input id="pinput2" type="tel" class="w30" value="45"> pcs
-                                      </p>
-                                    </div>
-                                    <div class="col-xs-6 text-right">
-                                        <a class="black editPcsButton" onclick=""><span class="iconfont icon-edit font18"></span></a>
-                                        <a class="black" data-toggle="modal" data-target="#delete"><span class="iconfont icon-delete font18"></span></a>
-                                    </div>
-                                  </div>
-
-
-                                </div>
-
-                              </div>
+                           
                           </div>
 
 
@@ -104,7 +80,7 @@
 
 
 
-             //this.getProductList();
+             this.getProductList();
 
 
          },
@@ -112,7 +88,8 @@
              getProductList(){
                  axios.get("http://localhost:3000/product/api/byroomtype/"+this.$route.params.id).then(response =>
                  {
-                     this.roomtypeList = response.data;
+                     this.productList = response.data;
+                     window.console.log(response.data)
 
                  })
 
