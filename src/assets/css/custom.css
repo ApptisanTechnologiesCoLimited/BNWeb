@@ -278,7 +278,7 @@ hr{
     min-height:calc( 100vh - 405px);
 }
 .content.login{
-    min-height: calc(100vh - 130px);
+    min-height: calc(100vh - 210px);
 }
 .middle{
     display: table;
@@ -603,4 +603,24 @@ hr.gray{
 }
 .border{
     border:1px solid #979797;
+}
+.bg{
+ background-position: center;
+ background-repeat: no-repeat;
+ background-size: contain; 
+}
+.click{
+    cursor: pointer;
+}
+.button-select{
+    width:100%;
+    display: block;
+    box-shadow:0 0 5px #EF5923;
+    color:#000;
+    line-height:3;
+} 
+.button-select:hover{
+    text-decoration:none;
+    background-color: #EF5923;
+    color:#fff;
 }
