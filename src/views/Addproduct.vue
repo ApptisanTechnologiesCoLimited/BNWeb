@@ -17,19 +17,17 @@
               <div class="container">
                 <div class="row">
                   <div class="col-xs-4 col-xs-offset-2 text-center">
-                    <div class="product-img bg inlineb" :style="{backgroundImage:'url('+require('')+')'}"></div>
+                    <div class="product-img bg inlineb" :style="{backgroundImage: 'url(' + current.img  + ')' }"></div>
                     <p class="click"> Click to zoom</p>
                     <div class="row mt20">
                       <div class="col-xs-8 text-left">
-                        {{current.name}}
-                        ALBA 4, General Purpose York Black Glass
+                        {{current.product}}
                       </div>
                       <div class="col-xs-4 text-right">
-                        {{current.product}}
-                        Crestnet
+                        {{current.name}}
                       </div>
                       <div class="col-xs-12 mt20">
-                        <a class="click button-select w100">Select</a>
+                        <a class="click button-select w100" @click="select(current.id)">Select</a>
                       </div>
                     </div>
                   </div>
@@ -122,6 +120,36 @@ export default {
           this.current =  this.artworkList[index]
           this.activeClass = index
         },
+     select(ID){
+       axios
+          .post('http://localhost:3000/product/api/'+ ID,{
+                    "name":this.current.name,
+                    "type":this.current.type,
+                    "aid": ID,
+                    "quantity":0,
+                    "rid":this.$route.params.id
+
+                })
+                .then(res => {
+                    // window.console.log(res.data);
+                    if(res.data.affectedRows == 1){
+                        this.$message({
+                            type: 'success',
+                            message: 'Add Successfully!'
+                        }),
+                        this.getData();
+                    }else{
+                        this.$message({
+                            type: 'error',
+                            message: 'Add Failed!'
+                        })
+                    }
+                })
+                .catch(function (error) { // 请求失败处理
+                    alert(error);
+                });
+     }
+        
   }
 }
 </script>
