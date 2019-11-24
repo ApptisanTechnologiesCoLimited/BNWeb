@@ -4,7 +4,7 @@
             <ol class="breadcrumb">
                 <li><a href="#/dash">Dashboard</a></li>
                 <li><a href="#/myprojects">My Projects</a></li>
-          <li><a class="active">Add A Product</a></li>
+                <li><a class="active">Add A Product</a></li>
 
 
 

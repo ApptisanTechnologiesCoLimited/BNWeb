@@ -51,7 +51,7 @@
                                   <div class="col-xs-6 text-right">
 
                                       <a class="black editPcsButton" @click="edit_pcs(index)"><span class="iconfont icon-edit"></span></a>
-                                      <a class="black" @click="delete_roomtype(index)" ><span class="iconfont icon-delete"></span></a>
+                                      <a class="black" @click="delete_roomtype(i.name,i.id)" ><span class="iconfont icon-delete"></span></a>
 
                                    
                                   </div>
@@ -124,14 +124,13 @@
              edit_pcs(){
                  this.isshow = !this.isshow;
              },
-             delete_roomtype(rt) {
+             delete_roomtype(name,ID) {
                  const h = this.$createElement;
                  this.$msgbox({
                      title: 'DELETE ROOM TYPE',
                      message: h('p', null, [
-                         h('span', null, 'Are you sure you want to delete?'),
-                         h('br',null,' '),
-                         h('span', null , rt.name +'?')
+                         h('span', null, 'Are you sure you want to delete '),
+                         h('span', { style: 'color: red' } , name +'?')
                      ]),
                      showCancelButton: true,
                      confirmButtonText: 'Yes',
@@ -141,7 +140,7 @@
                              instance.confirmButtonLoading = true;
                              instance.confirmButtonText = 'Deleting...';
                              axios
-                                 .delete('http://localhost:3000/roomtype/api/' + rt.id)
+                                 .delete('http://localhost:3000/product/api/' + ID)
                                  .then(
                                      res => {
                                          // window.console.log(res.data);
@@ -150,10 +149,10 @@
                                              done();
                                              this.$message({
                                                  type: 'success',
-                                                 message: 'Delete Successful!'
+                                                 message: 'Delete Successfully!'
                                              })
 
-                                             this.getRoomtypes();
+                                             this.getProductList();
                                          }else{
                                              instance.confirmButtonLoading = false;
                                              done();

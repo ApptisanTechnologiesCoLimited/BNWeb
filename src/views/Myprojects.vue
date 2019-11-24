@@ -527,7 +527,7 @@ export default {
                                         done();
                                         this.$message({
                                             type: 'success',
-                                            message: 'Delete Successful!'
+                                            message: 'Delete Successfully!'
                                         })
 
                                         this.getData();

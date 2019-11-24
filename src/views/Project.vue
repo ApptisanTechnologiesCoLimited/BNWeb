@@ -300,7 +300,7 @@
                     message: h('p', null, [
                         h('span', null, 'Are you sure you want to delete?'),
                         h('br',null,' '),
-                        h('span', null , rt.name +'?')
+                        h('span', { style: 'color: red' } , rt.name +'?')
                     ]),
                     showCancelButton: true,
                     confirmButtonText: 'Yes',
@@ -319,7 +319,7 @@
                                             done();
                                             this.$message({
                                                 type: 'success',
-                                                message: 'Delete Successful!'
+                                                message: 'Delete Successfully!'
                                             })
 
                                             this.getRoomtypes();
