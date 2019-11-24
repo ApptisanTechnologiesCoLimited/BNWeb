@@ -37,20 +37,20 @@
                                 <div class="img-box p20" :style="{backgroundImage:'url('+require('../assets/images/pic1.jpg')+')'}">
                                   
                                 </div>
-                                <p class="font18 mt20">{{i.name}}11</p>
+                                <p class="font18 mt20">{{i.name}}</p>
                                 <div class="row editbox">
                                   <div class="col-xs-6">
 
                                     <p class="showPcs1 pcs" v-show="!isshow">
-                                       <span class="mr20"> QTY</span> 45
+                                       <span class="mr20"> QTY</span> {{i.quantity}}
                                     </p>
                                     <p class="editPcs1 " v-show="isshow">
-                                      <span class="mr20">QTY</span> <input type="tel" class="w30" value="45">
+                                      <span class="mr20">QTY</span> <input type="tel" class="w30" v-model="i.quantity">
                                     </p>
                                   </div>
                                   <div class="col-xs-6 text-right">
-                                      <a class="black editPcsButton" @click="edit_pcs()"><span class="iconfont icon-edit"></span></a>
-                                      <a class="black" data-toggle="modal" data-target="#delete"><span class="iconfont icon-delete"></span></a>
+                                      <a class="black editPcsButton" @click="edit_pcs(index)"><span class="iconfont icon-edit"></span></a>
+                                      <a class="black" @click="delete_roomtype(index)" ><span class="iconfont icon-delete"></span></a>
                                   </div>
                                 </div>
 
@@ -104,12 +104,6 @@
              })
 
              })//get a
-
-             
-
-
-
-
 
              this.getProductList();
 
