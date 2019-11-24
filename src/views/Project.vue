@@ -6,6 +6,8 @@
 
             <li><a href="#/myprojects">My Projects</a></li>
             <li class="active">{{project.name}}</li>
+
+
         </ol>
     </div>
     <div class="content login middle" >

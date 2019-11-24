@@ -1,16 +1,19 @@
 <template>
   <div id="addproduct">
-    <Navbar/>
     <div class="bg-gray">
             <ol class="breadcrumb">
-                <li><a href="#">My projects</a></li>
-                <li><a href="#">MGM Cotai</a></li>
-                <li class="active">Suite 1</li>
+                <li><a href="#/dash">Dashboard</a></li>
+                <li><a href="#/myprojects">My Projects</a></li>
+          <li><a class="active">Add A Product</a></li>
+
+
+
               </ol>
         </div>
         <div class="prl30 font18">
           ADD A PRODUCT
-            <a href="" class="pull-right font20 black" @click="this.$router.go(-1)">✕</a>
+
+            <div class="pull-right font20 black" @click="$router.go(-1)">✕</div>
         </div>
        
         <div class="content login middle" >
@@ -83,7 +86,6 @@
 
 <script>
 import "../assets/css/project.css";
-import Navbar from '../components/Navbar';
 import axios from "axios";
 export default {
   name: 'addproduct',
@@ -97,9 +99,7 @@ export default {
             
         }
       },
-  components:{
-    Navbar
-  },
+  
   mounted () {
        this.getData();
        
@@ -124,11 +124,11 @@ export default {
         },
      select(ID){
        axios
-          .post('http://localhost:3000/product/api/'+ ID,{
+          .post('http://localhost:3000/product/api/',{
                     "name":this.current.name,
-                    "type":this.current.type,
+                    "type":1,
                     "aid": ID,
-                    "quantity":0,
+                    "quantity":1,
                     "rid":this.$route.params.id
 
                 })
@@ -137,7 +137,7 @@ export default {
                     if(res.data.affectedRows == 1){
                         this.$message({
                             type: 'success',
-                            message: 'Add Successfully!'
+                            message: 'Product Added Successfully!'
                         }),
                         this.$router.go(-1)
                     }else{

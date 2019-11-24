@@ -49,8 +49,11 @@
                                     </p>
                                   </div>
                                   <div class="col-xs-6 text-right">
+
                                       <a class="black editPcsButton" @click="edit_pcs(index)"><span class="iconfont icon-edit"></span></a>
                                       <a class="black" @click="delete_roomtype(index)" ><span class="iconfont icon-delete"></span></a>
+
+                                   
                                   </div>
                                 </div>
 
