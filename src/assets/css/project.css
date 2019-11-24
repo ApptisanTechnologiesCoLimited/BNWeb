@@ -76,7 +76,7 @@ tr:hover td:first-child{
 }
 .h200{
   height:200px;
-  overflow-y: scroll;
+  overflow-y: auto;
 }
 .active .border,
 .active p{

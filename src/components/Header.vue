@@ -1,5 +1,5 @@
 <template>
-   <div class="header relative">
+   <div class="header relative" style="height:80px">
       
        <!-- Right Bar Menu -->
     

@@ -30,6 +30,10 @@ const routes = [
   {
     path: '/addproduct/:id/',
     component: () => import('./views/Addproduct.vue')
+  },
+  {
+    path: '/dealer/',
+    component: () => import('./views/Dashboard-dealer.vue')
   }
 ]
 

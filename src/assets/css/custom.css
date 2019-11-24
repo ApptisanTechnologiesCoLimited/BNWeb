@@ -196,6 +196,14 @@ hr{
 .brmore{
     border-radius: 50%;
 }
+.bg-gray{
+    background-color: #f5f5f5;
+}
+.wh200{
+    width:200px;
+    height:200px;
+    line-height:200px;
+}
 /* header style */
 .navbar{
     border-radius:0;
