@@ -18,6 +18,15 @@
               </router-link>
 
             </div>
+            <div class="col-xs-3 prl30 text-center">
+              <router-link class="black" to="/">
+                <div class="wh200 border click inlineb">
+                  <i class="el-icon-user font30"></i>
+                </div>
+                <p class="lh3">Manage users</p>
+              </router-link>
+
+            </div>
 
           </div>
           <div class="row mt50">

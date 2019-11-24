@@ -641,3 +641,10 @@ hr.gray{
     background-color: #EF5923;
     color:#fff;
 }
+a.black:hover,
+a.black:hover .border,
+a.black:hover p{
+    color:#EF5923;
+    border-color:#EF5923;
+    text-decoration:none;
+}
