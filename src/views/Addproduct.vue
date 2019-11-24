@@ -2,9 +2,14 @@
   <div id="addproduct">
     <div class="bg-gray">
             <ol class="breadcrumb">
-                <li><a href="#">My projects</a></li>
-                <li><a href="#">MGM Cotai</a></li>
-                <li class="active">Suite 1</li>
+                <li><a href="#/dash">Dashboard</a></li>
+                <li><a href="#/myprojects">My Projects</a></li>
+                <li><a href="#/myprojects">project</a></li>
+              <li><a href="#/roomtype/">roomtype</a></li>
+              <li><a href="#/myprojects">Add A Product</a></li>
+
+
+
               </ol>
         </div>
         <div class="prl30 font18">
@@ -122,11 +127,11 @@ export default {
         },
      select(ID){
        axios
-          .post('http://localhost:3000/product/api/'+ ID,{
+          .post('http://localhost:3000/product/api/',{
                     "name":this.current.name,
-                    "type":this.current.type,
+                    "type":1,
                     "aid": ID,
-                    "quantity":0,
+                    "quantity":1,
                     "rid":this.$route.params.id
 
                 })
@@ -135,7 +140,7 @@ export default {
                     if(res.data.affectedRows == 1){
                         this.$message({
                             type: 'success',
-                            message: 'Add Successfully!'
+                            message: 'Product Added Successfully!'
                         }),
                         this.getData();
                     }else{

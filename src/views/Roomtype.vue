@@ -39,7 +39,7 @@
                                 <div class="img-box p20" :style="{backgroundImage:'url('+require('../assets/images/pic1.jpg')+')'}">
                                   
                                 </div>
-                                <p class="font18 mt20">{{i.name}}11</p>
+                                <p class="font18 mt20">{{i.name}}</p>
                                 <div class="row editbox">
                                   <div class="col-xs-6">
 
@@ -51,7 +51,7 @@
                                     </p>
                                   </div>
                                   <div class="col-xs-6 text-right">
-                                      <a class="black editPcsButton" @click="edit_pcs()"><span class="iconfont icon-edit"></span></a>
+                                      <!-- <a class="black editPcsButton" @click="edit_pcs()"><span class="iconfont icon-edit"></span></a> -->
                                       <a class="black" data-toggle="modal" data-target="#delete"><span class="iconfont icon-delete"></span></a>
                                   </div>
                                 </div>
