@@ -1,5 +1,6 @@
 <template>
   <div id="addproduct">
+    <Navbar/>
     <div class="bg-gray">
             <ol class="breadcrumb">
                 <li><a href="#/dash">Dashboard</a></li>
@@ -42,22 +43,17 @@
                         <span class="iconfont icon-add button-icon border"></span>
                         <p class="mt10">Create<br> New Artwork</p>
                       </div>
-                       <div class="col-xs-4 text-center click">
+                       <div class="col-xs-4 text-center click" :class="activeClass2 == 1 ? 'active':''" @click="change(1);">
                         <span class="glyphicon glyphicon-search button-icon border font20"></span>
                         <p class="mt10">Add<br> an Existing Artwork</p>
                       </div>
-                       <div class="col-xs-4 text-center click">
+                       <div class="col-xs-4 text-center click" :class="activeClass2 == 2 ? 'active':''" @click="change(2);">
                         <span class="glyphicon glyphicon-th-large button-icon border font20"></span>
                         <p class="mt10">Add<br> a Socket Frame</p>
                       </div>
                     </div>
                     <hr>
-                    <el-input
-                      size="medium"
-                      placeholder="Place search your keyword"
-                      suffix-icon="el-icon-search"
-                      >
-                    </el-input>
+                    <el-input size="medium" placeholder="Place search your keyword" suffix-icon="el-icon-search"  v-model="artwork_query"> </el-input>
                     <div>
                       <table class="table mt30">
                             <tr>
@@ -69,7 +65,7 @@
                     <div class="h200">
                         <table class="table list-box">
                             <!-- loop start -->
-                              <tr v-for="(i,index) in artworkList" :key="index" class="click" :class="activeClass == index ? 'active':''" @click="sendData(index)">
+                              <tr v-for="(i,index) in filtered_artwork" :key="index" class="click" :class="activeClass == index ? 'active':''" @click="sendData(index)">
                                 <td class="w40">{{i.name}}</td>
                                 <td class="text-center">{{new Date(i.changedate) | dateFormat('DD.MM.YYYY')}}</td>
                               </tr>
@@ -92,6 +88,7 @@
 
 <script>
 import "../assets/css/project.css";
+import Navbar from '../components/Navbar';
 import axios from "axios";
 export default {
   name: 'addproduct',
@@ -99,10 +96,15 @@ export default {
         return {
             artworkList:{},
             current:{},
+            artwork_query: '',
             activeClass:0,
+            activeClass2:1
             
         }
       },
+  components:{
+    Navbar
+  },
   mounted () {
        this.getData();
        
@@ -142,7 +144,7 @@ export default {
                             type: 'success',
                             message: 'Product Added Successfully!'
                         }),
-                        this.getData();
+                        this.$router.go(-1)
                     }else{
                         this.$message({
                             type: 'error',
@@ -153,9 +155,19 @@ export default {
                 .catch(function (error) { // 请求失败处理
                     alert(error);
                 });
+     },
+     change(code){
+       this.activeClass2 = code
      }
         
-  }
+  },
+  computed: {
+        filtered_artwork:function() {
+            return this.artworkList.filter(artwork => {
+                return artwork.name.toLowerCase().includes(this.artwork_query.toLowerCase())
+            })
+        }
+    }
 }
 </script>
 
