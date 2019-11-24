@@ -13,7 +13,7 @@
         <div class="prl30 font18">
           ADD A PRODUCT
 
-            <div class="pull-right font20 black" @click="$router.go(-1)">✕</div>
+            <div class="pull-right font20 black click" @click="$router.go(-1)">✕</div>
         </div>
        
         <div class="content login middle" >
@@ -21,7 +21,10 @@
               <div class="container">
                 <div class="row">
                   <div class="col-xs-4 col-xs-offset-2 text-center">
-                    <div class="product-img bg inlineb" :style="{backgroundImage: 'url(' + current.img  + ')' }"></div>
+                    <div class="product-img bg inlineb p20" v-viewer>
+                      <img :src="current.img" class="w100" alt="">
+                    </div>
+                    
                     <p class="click"> Click to zoom</p>
                     <div class="row mt20">
                       <div class="col-xs-8 text-left">

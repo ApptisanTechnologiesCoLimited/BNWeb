@@ -49,7 +49,10 @@ hr{
     width:40%;
 }
 .w100{
-    width:100%;
+    width:100%!important;
+}
+.w50px{
+    width:50px;
 }
 .mw100{
     max-width:100%;

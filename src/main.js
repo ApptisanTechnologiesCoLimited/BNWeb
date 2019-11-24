@@ -8,6 +8,14 @@ import 'element-ui/lib/theme-chalk/index.css';
 import '../src/assets/css/iconfont.css';
 import '../src/assets/css/custom.css';
 import VueFilterDateFormat from 'vue-filter-date-format';
+import Viewer from 'v-viewer'
+import 'viewerjs/dist/viewer.css'
+
+
+Vue.use(Viewer)
+Viewer.setDefaults({
+  Options: { 'inline': true, 'button': true, 'navbar': false, 'title': true, 'toolbar': true, 'tooltip': true, 'movable': true, 'zoomable': true, 'rotatable': false, 'scalable': false, 'transition': true, 'fullscreen': true, 'keyboard': true, 'url': 'data-source' }
+})
 
 
 
