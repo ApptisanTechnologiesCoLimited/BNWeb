@@ -78,3 +78,8 @@ tr:hover td:first-child{
   height:200px;
   overflow-y: scroll;
 }
+.active .border,
+.active p{
+   border-color:#EF5923;
+   color:#EF5923
+}
