@@ -1,13 +1,10 @@
 <template>
   <div id="addproduct">
-    <Navbar/>
     <div class="bg-gray">
             <ol class="breadcrumb">
                 <li><a href="#/dash">Dashboard</a></li>
                 <li><a href="#/myprojects">My Projects</a></li>
-                <li><a href="#/myprojects">project</a></li>
-              <li><a href="#/roomtype/">roomtype</a></li>
-              <li><a href="#/myprojects">Add A Product</a></li>
+          <li><a class="active">Add A Product</a></li>
 
 
 
@@ -15,7 +12,8 @@
         </div>
         <div class="prl30 font18">
           ADD A PRODUCT
-            <a href="" class="pull-right font20 black" @click="this.$router.go(-1)">✕</a>
+
+            <div class="pull-right font20 black" @click="$router.go(-1)">✕</div>
         </div>
        
         <div class="content login middle" >
@@ -88,7 +86,6 @@
 
 <script>
 import "../assets/css/project.css";
-import Navbar from '../components/Navbar';
 import axios from "axios";
 export default {
   name: 'addproduct',
@@ -102,9 +99,7 @@ export default {
             
         }
       },
-  components:{
-    Navbar
-  },
+  
   mounted () {
        this.getData();
        
