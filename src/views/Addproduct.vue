@@ -1,5 +1,6 @@
 <template>
   <div id="addproduct">
+    <Navbar/>
     <div class="bg-gray">
             <ol class="breadcrumb">
                 <li><a href="#">My projects</a></li>
@@ -82,6 +83,7 @@
 
 <script>
 import "../assets/css/project.css";
+import Navbar from '../components/Navbar';
 import axios from "axios";
 export default {
   name: 'addproduct',
@@ -95,6 +97,9 @@ export default {
             
         }
       },
+  components:{
+    Navbar
+  },
   mounted () {
        this.getData();
        

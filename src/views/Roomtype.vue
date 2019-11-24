@@ -2,14 +2,12 @@
     <div id="roomtype">
        <div class="bg-gray">
             <ol class="breadcrumb">
+              <li><a href="#/dash">Dashboard</a></li>
+              <li><a href="#/myprojects">My Projects</a></li>
+              <li><a :href="'#/project/'+project.id">{{project.name}}</a></li>
+              <li class="active">{{roomtype.name}}</li>
 
-                                <li><a href="#/dash">Dashboard</a></li>
-
-                <li><a href="#/myprojects">My Projects</a></li>
-                <li><a :href="'#/project/'+project.id">{{project.name}}</a></li>
-                <li class="active">{{roomtype.name}}</li>
-
-              </ol>
+            </ol>
         </div>
         <div class="content project middle" >
           <div class="cell">
