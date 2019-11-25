@@ -2,8 +2,8 @@
  <div id="myproject">
    <div class="bg-gray">
       <ol class="breadcrumb">
-          <li><a href="#">Dashboard</a></li>
-          <li class="active"> <a href="#">My Projects</a></li>
+          <li><a href="#/dashboard">Dashboard</a></li>
+          <li class="active"> <a >My Projects</a></li>
 
         </ol>
   </div>

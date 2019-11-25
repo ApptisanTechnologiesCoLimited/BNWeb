@@ -1,7 +1,7 @@
 const routes = [
   {
     path: '/',
-    component: () => import('./views/Myartworks.vue')
+    component: () => import('./views/Dashboard.vue')
   },
   {
     path: '/myartworks',
@@ -32,8 +32,8 @@ const routes = [
     component: () => import('./views/Addproduct-EA.vue')
   },
   {
-    path: '/dealer/',
-    component: () => import('./views/Dashboard-dealer.vue')
+    path: '/dashboard/',
+    component: () => import('./views/Dashboard.vue')
   },
   {
     path: '/sales/',
