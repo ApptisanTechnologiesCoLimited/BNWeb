@@ -3,7 +3,7 @@
 
 <div class="bg-gray">
       <ol class="breadcrumb">
-          <li><a href="#/dash">Dashboard</a></li>
+          <li><a href="#/dashboard">Dashboard</a></li>
           <li class="active"><a href="#/myartworks">My Artworks</a></li>
         </ol>
   </div>

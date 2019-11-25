@@ -1,5 +1,5 @@
 <template>
-  <div id="dealer">
+  <div id="dashboard">
     <div class="content project middle">
       <div class="cell">
         <div class="container">
@@ -56,7 +56,7 @@
 import "../assets/css/project.css";
 // import axios from "axios";
 export default {
-  name: 'dealer'
+  name: 'dashboard'
 }
 </script>
 
