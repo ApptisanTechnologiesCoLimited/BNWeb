@@ -23,7 +23,7 @@
                             <div class="col-sm-4 prl30"  >
 
                               <div class="product-box">
-                                <router-link :to="'/addproduct/' + roomtype.id" class="img-box p20 text-center">
+                                <router-link :to="'/addproduct-keypad/' + roomtype.id" class="img-box p20 text-center">
                                    <span class="iconfont icon-add button-icon font30"></span>
                                 </router-link>
                                
@@ -50,7 +50,7 @@
                                   </div>
                                   <div class="col-xs-6 text-right">
 
-                                      <a class="black editPcsButton" @click="edit_pcs(index)"><span class="iconfont icon-edit"></span></a>
+                                      <!-- <a class="black editPcsButton" @click="edit_pcs(index)"><span class="iconfont icon-edit"></span></a> -->
                                       <a class="black" @click="delete_roomtype(i.name,i.id)" ><span class="iconfont icon-delete"></span></a>
 
                                    
@@ -121,9 +121,9 @@
                  })
 
              },
-             edit_pcs(){
-                 this.isshow = !this.isshow;
-             },
+            //  edit_pcs(){
+            //      this.isshow = !this.isshow;
+            //  },
              delete_roomtype(name,ID) {
                  const h = this.$createElement;
                  this.$msgbox({

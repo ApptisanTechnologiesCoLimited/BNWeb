@@ -10,55 +10,84 @@
 
               </ol>
         </div>
-        <div class="prl30 font18">
-          ADD A PRODUCT
+        <div class="row mlr0 font18">
+          <div class="col-xs-6 prl30">
+            ADD A PRODUCT
+          </div>
+          <div class="col-xs-6 text-right prl30">
+            <div class="row font16 lh2">
+              <div class="pull-right">
+                <span class="font20 black click" @click="$router.go(-1)">✕</span>
+              </div>
+              <div class="pull-right mr20">
+                <router-link :to="'/addproduct-keypad/' + $route.params.id">
+                  <span class="glyphicon glyphicon-th-large button-icon border font20 click" title="SOCKET"></span>
+                </router-link>
+              </div>
+               <div class="pull-right mr20"><span class="glyphicon el-icon-office-building button-icon border active font25" title="KEYPAD"></span><br>KEYPAD
+               </div>
+              
+            </div>
 
-            <div class="pull-right font20 black click" @click="$router.go(-1)">✕</div>
+              
+                    
+            
+            
+          </div>
+          
+
+            
         </div>
        
-        <div class="content login middle" >
-           <div class="cell">
+        <div class="content middle mt20" >
+          
               <div class="container">
                 <div class="row">
-                  <div class="col-xs-4 col-xs-offset-2 text-center">
-                    <div class="product-img bg inlineb p20" v-viewer>
+                  <div class="col-xs-4 text-center">
+                    <div class="product-img bg inlineb p10" v-viewer>
                       <img :src="current.img" class="w100" alt="">
                     </div>
+                    <table class="table text-left">
+                      <tr>
+                        <td class="w40 gray">Product:</td>
+                        <td>{{current.name}}</td>
+                      </tr>
+                      <tr>
+                        <td class="w40 gray">Finish:</td>
+                        <td>{{current.finish}}</td>
+                      </tr>
+                      <tr>
+                        <td class="w40 gray">Protocol:</td>
+                        <td>{{current.protocol}}</td>
+                      </tr>
+                    </table>
+                   
                     
-                    <p class="click"> Click to zoom</p>
-                    <div class="row mt20">
-                      <div class="col-xs-8 text-left">
-                        {{current.product}}
-                      </div>
-                      <div class="col-xs-4 text-right">
-                        {{current.name}}
-                      </div>
-                      <div class="col-xs-12 mt20">
-                        <a class="click button-select w100" @click="select(current.id)">Select</a>
-                      </div>
-                    </div>
                   </div>
-                  <div class="col-xs-5 col-xs-offset-1">
-                    <div class="row">
-                      <div class="col-xs-4 text-center click">
-                        <span class="iconfont icon-add button-icon border"></span>
-                        <p class="mt10">Create<br> New Artwork</p>
-                      </div>
-                       <div class="col-xs-4 text-center click" :class="activeClass2 == 1 ? 'active':''" @click="change(1);">
-                        <span class="glyphicon glyphicon-search button-icon border font20"></span>
-                        <p class="mt10">Add<br> an Existing Artwork</p>
-                      </div>
-                       <div class="col-xs-4 text-center click" :class="activeClass2 == 2 ? 'active':''" @click="change(2);">
-                        <span class="glyphicon glyphicon-th-large button-icon border font20"></span>
-                        <p class="mt10">Add<br> a Socket Frame</p>
-                      </div>
+                  <div class="col-xs-7 col-xs-offset-1">
+                    <div> 
+                      <a href="#" data-toggle="modal" data-target="#addnew">
+                        <span class="iconfont icon-add button-icon mr20"></span>
+                        <span class="font16 black text-middle">ADD A PROJECT</span>
+                      </a>
                     </div>
-                    <hr>
-                    <el-input size="medium" placeholder="Place search your keyword" suffix-icon="el-icon-search"  v-model="artwork_query"> </el-input>
+                    
+                    <hr class="mt10 mb10">
+                     <div class="row">
+                        <div class="col-xs-5">
+                          <span class="iconfont icon-iconfind button-icon mr20 font25"></span>
+                          <span class="font16 black text-middle mr20">FIND AN ARTWORK</span>
+                        </div>
+                        <div class="col-xs-7 mt10">
+                           <el-input size="medium" placeholder="Place search your keyword"  v-model="artwork_query"> </el-input>
+                        </div>
+                      </div>
+                   
                     <div>
                       <table class="table mt30">
                             <tr>
                                 <th class="w40">Name</th>
+                                <th class="w40">Product</th>
                                 <th class="text-center pr15">Latest change</th>
                             </tr>
                         </table>
@@ -68,18 +97,31 @@
                             <!-- loop start -->
                               <tr v-for="(i,index) in filtered_artwork" :key="index" class="click" :class="activeClass == index ? 'active':''" @click="sendData(index)">
                                 <td class="w40">{{i.name}}</td>
+                                <td class="w40">{{i.product}}</td>
                                 <td class="text-center">{{new Date(i.changedate) | dateFormat('DD.MM.YYYY')}}</td>
                               </tr>
                             
                             <!-- loop end -->
 
                         </table>
+                        
+                    </div>
+                    <div class="row">
+                      <div class="col-xs-2 text-right lh25">
+                        Quantity
+                      </div>
+                      <div class="col-xs-4">
+                         <el-input size="medium" placeholder=""  v-model="product_quantity"> </el-input>
+                      </div>
+                      <div class="col-xs-6 text-center">
+                        <a class="click button-select w100" @click="select(current.id)">Select and Add</a>
+                      </div>
                     </div>
                    
                   </div>
                </div>
             
-          </div>
+        
            </div>
          
           
@@ -98,7 +140,7 @@ export default {
             current:{},
             artwork_query: '',
             activeClass:0,
-            activeClass2:1
+            product_quantity:0
             
         }
       },
@@ -129,9 +171,10 @@ export default {
        axios
           .post('http://localhost:3000/product/api/',{
                     "name":this.current.name,
+                    "product":this.current.product,
                     "type":1,
                     "aid": ID,
-                    "quantity":1,
+                    "quantity":this.product_quantity,
                     "rid":this.$route.params.id
 
                 })
@@ -157,7 +200,6 @@ export default {
      change(code){
        this.activeClass2 = code
      }
-        
   },
   computed: {
         filtered_artwork:function() {

@@ -20,7 +20,7 @@
                   <span class="font18 black text-middle mr20">SEARCH FOR A PROJECT</span>
                 </div>
                 <div class="col-xs-7">
-                  <el-input v-model="artwork_query" size="medium" suffix-icon="el-icon-search"  placeholder="Place input you keyword!" class="mt20"></el-input>
+                  <el-input v-model="artwork_query" size="medium"  placeholder="Place input you keyword!" class="mt20"></el-input>
                 </div>
               </div>
               

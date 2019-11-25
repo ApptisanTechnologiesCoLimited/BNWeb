@@ -71,15 +71,15 @@ tr:hover td:first-child{
 }
 
 .product-img{
-  width:300px;
-  height:300px;
+  width:350px;
 }
 .h200{
   height:200px;
   overflow-y: auto;
 }
-.active .border,
-.active p{
+.active.border,
+.click.border:hover{
    border-color:#EF5923;
-   color:#EF5923
+   color:#EF5923;
+   text-decoration:none;
 }

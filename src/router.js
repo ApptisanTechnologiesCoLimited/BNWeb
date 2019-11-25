@@ -28,8 +28,8 @@ const routes = [
     component: () => import('./views/Roomtype.vue')
   },
   {
-    path: '/addproduct/:id/',
-    component: () => import('./views/Addproduct.vue')
+    path: '/addproduct-keypad/:id/',
+    component: () => import('./views/Addproduct-EA.vue')
   },
   {
     path: '/dealer/',
