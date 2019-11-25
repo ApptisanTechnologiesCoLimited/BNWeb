@@ -32,6 +32,10 @@ const routes = [
     component: () => import('./views/Addproduct-EA.vue')
   },
   {
+    path: '/addproduct-sockets/:id/',
+    component: () => import('./views/Addproduct-SK.vue')
+  },
+  {
     path: '/dashboard/',
     component: () => import('./views/Dashboard.vue')
   },

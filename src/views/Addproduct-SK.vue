@@ -5,9 +5,6 @@
                 <li><a href="#/dash">Dashboard</a></li>
                 <li><a href="#/myprojects">My Projects</a></li>
                 <li><a class="active">Add A Product</a></li>
-
-
-
               </ol>
         </div>
         <div class="row mlr0 font18">
@@ -19,12 +16,14 @@
               <div class="pull-right">
                 <span class="font20 black click" @click="$router.go(-1)">✕</span>
               </div>
-              <div class="pull-right mr20">
-                <router-link :to="'/addproduct-sockets/' + $route.params.id">
-                  <span class="glyphicon glyphicon-th-large button-icon border font20 click" title="SOCKET"></span>
-                </router-link>
+              <div class="pull-right mr20 text-center">
+                  <span class="glyphicon glyphicon-th-large button-icon border active font20 click" title="SOCKET"></span><br>SOCKET
               </div>
-               <div class="pull-right mr20 text-center"><span class="glyphicon el-icon-office-building button-icon border active font25" title="KEYPAD"></span><br>KEYPAD
+              
+               <div class="pull-right mr20">
+                 <router-link :to="'/addproduct-keypad/' + $route.params.id">
+                    <span class="glyphicon el-icon-office-building button-icon border font25" title="KEYPAD"></span>
+                  </router-link>
                </div>
               
             </div>
@@ -39,32 +38,20 @@
             
         </div>
        
-        <div class="content middle mt20" >
+        <div class="content middle" >
           
               <div class="container">
                 <div class="row">
-                  <div class="col-xs-4 text-center">
+                  <div class="col-xs-12 text-center">
+                    <p class="font20">Triple Socket Frame, York Black Glass</p>
                     <div class="product-img bg inlineb p10" v-viewer>
                       <img :src="current.img" class="w100" alt="">
                     </div>
-                    <table class="table text-left">
-                      <tr>
-                        <td class="w40 gray">Product:</td>
-                        <td>{{current.name}}</td>
-                      </tr>
-                      <tr>
-                        <td class="w40 gray">Finish:</td>
-                        <td>{{current.finish}}</td>
-                      </tr>
-                      <tr>
-                        <td class="w40 gray">Protocol:</td>
-                        <td>{{current.protocol}}</td>
-                      </tr>
-                    </table>
-                   
+                    <p>Click to zoom</p>
+                    <p>Frame only, Mechanical part is not provided</p>
                     
                   </div>
-                  <div class="col-xs-7 col-xs-offset-1">
+                  <div class="col-xs-12">
                     <div> 
                       <a href="#" data-toggle="modal" data-target="#addnew">
                         <span class="iconfont icon-add button-icon mr20"></span>
