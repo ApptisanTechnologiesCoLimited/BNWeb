@@ -18,11 +18,11 @@
                         <img src="../assets/images/ybg.png" class="h350" alt="">
                       </div>
                       <div class="col-xs-6 text-center mt30">
-                        <p class="font20">SELECT COLLECTION</p>
-                        <router-link :to="'/collection-ab/'" class="button-b w100 mt30">
+                        <p class="font20 white">SELECT COLLECTION</p>
+                        <router-link :to="'/collection-ab/'" class="button-b white w100 mt30">
                           ALBA
                         </router-link>
-                        <router-link :to="'/collection-ar/step'" class="button-b w100 mt30 active">
+                        <router-link :to="'/collection-ar/step'" class="button-b white w100 mt30 active">
                           ARIA
                         </router-link>
 
@@ -115,5 +115,8 @@ export default {
 }
 </script>
 
-<style>
+<style lang="css">
+ body{
+   background-image: url(../assets/images/bg2.jpeg);
+ }
 </style>

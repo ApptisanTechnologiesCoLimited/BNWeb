@@ -38,8 +38,8 @@
             
         </div>
        
-        <div class="content middle" >
-          
+        <div class="content middle addsk" >
+           <div class="cell">
               <div class="container">
                 <div class="row">
                   <div class="col-xs-12 text-center">
@@ -59,26 +59,33 @@
                 <div class="row">
                   <div class="col-xs-4 text-center">
                     <p class="mb20">FORMAT</p>
-                    <div class="mr20 inlineb">
-                      <div class="border inlineb mb10" @click="act(1,'One Frame');" :class="format == 1 ? 'active':''">
+                    <div class="mr20 inlineb" @click="act(1,'One Frame');" :class="format == 1 ? 'active':''">
+                      <div class="border inlineb">
                         <span title="SOCKET" class="glyphicon glyphicon-th-large button-icon-small font20 click"></span>
-                      </div><br>
-                      One Frame
+                      </div>
+                      <p class="name-f">
+                        One Frame
+                      </p>
                     </div>
-                    <div class="mr20 inlineb">
-                      <div class="border inlineb mb10" @click="act(2,'Double Frame');" :class="format == 2 ? 'active':''">
+                    <div class="mr20 inlineb" @click="act(2,'Double Frame');" :class="format == 2 ? 'active':''">
+                      <div class="border inlineb">
                         <span title="SOCKET" class="glyphicon glyphicon-th-large button-icon-small font20 click"></span>
                         <span title="SOCKET" class="glyphicon glyphicon-th-large button-icon-small font20 click"></span>
-                      </div><br>
-                      Double Frame
+                      </div>
+                      <p class="name-f">
+                        Double Frame
+                      </p>
+                      
                     </div>
-                    <div class="inlineb">
-                      <div class="border inlineb mb10" @click="act(3,'Threeble Frame');" :class="format == 3 ? 'active':''">
+                    <div class="inlineb" @click="act(3,'Threeble Frame');" :class="format == 3 ? 'active':''">
+                      <div class="border inlineb">
                         <span title="SOCKET" class="glyphicon glyphicon-th-large button-icon-small font20 click"></span>
                         <span title="SOCKET" class="glyphicon glyphicon-th-large button-icon-small font20 click"></span>
                         <span title="SOCKET" class="glyphicon glyphicon-th-large button-icon-small font20 click"></span>
-                      </div><br>
-                      Threeble Frame
+                      </div>
+                      <p class="name-f">
+                        Threeble Frame
+                      </p>
                     </div>
                   </div>
                   <div class="col-xs-4 text-center">
@@ -128,6 +135,7 @@
                </div>
             
         
+             </div>
            </div>
          
           

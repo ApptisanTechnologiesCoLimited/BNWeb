@@ -19,10 +19,10 @@
                       </div>
                       <div class="col-xs-6 text-center mt30">
                         <p class="font20">SELECT COLLECTION</p>
-                        <router-link :to="'/collection-ab/step'" class="button-b w100 mt30 active">
+                        <router-link :to="'/collection-ab/step'" class="button-b black w100 mt30 active">
                           ALBA
                         </router-link>
-                        <router-link :to="'/collection-ar/'" class="button-b w100 mt30">
+                        <router-link :to="'/collection-ar/'" class="button-b black w100 mt30">
                           ARIA
                         </router-link>
 
@@ -44,76 +44,15 @@
 
 <script>
 import "../assets/css/project.css";
-import axios from "axios";
+
 export default {
-  name: 'addproduct',
-  data(){
-        return {
-            artworkList:{},
-            current:{},
-            artwork_query: '',
-            format:1,
-            material:1,
-            product_quantity:0,
-            fName:'One Frame',
-            mName:'York black (Glass)',
-            
-            
-        }
-      },
-  
-  mounted () {
-      
-       
-     },
-  methods:{
-   
-     select(){
-       axios
-          .post('http://localhost:3000/product/api/',{
-                    "name":this.fName + this.mName,
-                    "type":2,
-                    "quantity":this.product_quantity,
-                    "format":this.format,
-                    "material":this.material,
-                    "aid": 0,
-                    "rid":this.$route.params.id
-                })
-                .then(res => {
-                    // window.console.log(res.data);
-                    if(res.data.affectedRows == 1){
-                        this.$message({
-                            type: 'success',
-                            message: 'Product Added Successfully!'
-                        })
-                    }else{
-                        this.$message({
-                            type: 'error',
-                            message: 'Add Failed!'
-                        })
-                    }
-                })
-                .catch(function (error) { // 请求失败处理
-                    alert(error);
-                });
-     },
-     act(index,fName){
-        this.fName = fName,
-        this.format = index
-        // alert(this.activeClass);
-        
-     },
-     act2(index,mName){
-        this.mName = mName,
-        this.material = index
-        // alert(this.activeClass);
-        
-     }
-    
-  },
+  name: 'addproduct'
  
 }
 </script>
 
-<style>
+<style lang="css">
+body{
+   background-image: url(../assets/images/bg1.jpeg);
+ }
 </style>

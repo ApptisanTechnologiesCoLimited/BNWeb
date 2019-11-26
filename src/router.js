@@ -50,6 +50,10 @@ const routes = [
   {
     path: '/collection-ar/',
     component: () => import('./views/Collection-AR.vue')
+  },
+  {
+    path: '/alba/step',
+    component: () => import('./views/Collection-AB-step.vue')
   }
 ]
 

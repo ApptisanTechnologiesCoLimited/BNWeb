@@ -52,6 +52,13 @@ tr:hover td:first-child{
 .content.project{
   min-height: calc(100vh - 220px);
 }
+.content.collect{
+  min-height: calc(100vh - 250px);
+}
+.content.addsk{
+  min-height: calc(100vh - 340px);
+}
+
 .img-box{
   display:block;
   border:1px solid #999;
@@ -90,7 +97,9 @@ tr:hover td:first-child{
 }
 .active.border,
 .click.border:hover,
-.active.border span{
+.active.border span,
+.active .border,
+.active .border span{
    border-color:#EF5923;
    color:#EF5923;
    text-decoration:none;
@@ -104,22 +113,32 @@ tr:hover td:first-child{
     bottom: -35px;
     left: -55%;
 }
-.active .name-mc{
+.active .name-mc,
+.active .name-f{
   display: block;
+  opacity:1;
 }
 .active .h50{
   border-color:#EF5923;
 }
 .button-b{
    display: inline-block;
-   height:50px;
+   height:50px!important;
    border:1px solid;
-   color:#333;
-   line-height:50px;
+   line-height:50px!important;
 }
 .button-b:hover,
 .button-b.active{
   border-color:#EF5923;
   color:#EF5923;
   text-decoration: none;
+}
+.name-f{
+  opacity:0;
+  font-size: 12px;
+  margin-top:7px;
+}
+.button-img{
+  position:absolute;
+  left:15px;
 }
