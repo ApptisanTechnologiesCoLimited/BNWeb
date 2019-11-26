@@ -19,10 +19,10 @@
                       </div>
                       <div class="col-xs-6 text-center mt30">
                         <p class="font20">SELECT COLLECTION</p>
-                        <router-link :to="'/collection-ab/step'" class="button-b w100 mt30 active">
+                        <router-link :to="'/collection-ab/'" class="button-b w100 mt30">
                           ALBA
                         </router-link>
-                        <router-link :to="'/collection-ar/'" class="button-b w100 mt30">
+                        <router-link :to="'/collection-ar/step'" class="button-b w100 mt30 active">
                           ARIA
                         </router-link>
 

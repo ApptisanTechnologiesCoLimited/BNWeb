@@ -46,6 +46,10 @@ const routes = [
   {
     path: '/collection-ab/',
     component: () => import('./views/Collection-AB.vue')
+  },
+  {
+    path: '/collection-ar/',
+    component: () => import('./views/Collection-AR.vue')
   }
 ]
 
