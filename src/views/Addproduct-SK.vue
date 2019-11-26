@@ -43,69 +43,91 @@
               <div class="container">
                 <div class="row">
                   <div class="col-xs-12 text-center">
-                    <p class="font20">Triple Socket Frame, York Black Glass</p>
-                    <div class="product-img bg inlineb p10" v-viewer>
-                      <img :src="current.img" class="w100" alt="">
+                      <p class="font20">{{fName}} , {{mName}} </p>
+                      <div class=" inlineb p10" v-viewer>
+                        <img v-if="format == 1 && material == 1" src="../assets/images/ybg.png" class="h245" alt="">
+                        <img v-if="format == 2 && material == 1" src="../assets/images/ybg-2.png" class="h245" alt="">
+                        <img v-if="format == 3 && material == 1" src="../assets/images/ybg-3.png" class="h245" alt="">
+                      </div>
+                      <!-- <p>Click to zoom</p> -->
+                      <p class="mt20">Frame only, Mechanical part is not provided</p>
+                      
                     </div>
-                    <p>Click to zoom</p>
-                    <p>Frame only, Mechanical part is not provided</p>
-                    
+                  
                   </div>
-                  <div class="col-xs-12">
-                    <div> 
-                      <a href="#" data-toggle="modal" data-target="#addnew">
-                        <span class="iconfont icon-add button-icon mr20"></span>
-                        <span class="font16 black text-middle">ADD A PROJECT</span>
-                      </a>
+                  <hr class="gray mt20 mb20">
+                <div class="row">
+                  <div class="col-xs-4 text-center">
+                    <p class="mb20">FORMAT</p>
+                    <div class="mr20 inlineb">
+                      <div class="border inlineb mb10" @click="act(1,'One Frame');" :class="format == 1 ? 'active':''">
+                        <span title="SOCKET" class="glyphicon glyphicon-th-large button-icon-small font20 click"></span>
+                      </div><br>
+                      One Frame
                     </div>
-                    
-                    <hr class="mt10 mb10">
-                     <div class="row">
-                        <div class="col-xs-5">
-                          <span class="iconfont icon-iconfind button-icon mr20 font25"></span>
-                          <span class="font16 black text-middle mr20">FIND AN ARTWORK</span>
-                        </div>
-                        <div class="col-xs-7 mt10">
-                           <el-input size="medium" placeholder="Place search your keyword"  v-model="artwork_query"> </el-input>
-                        </div>
-                      </div>
-                   
-                    <div>
-                      <table class="table mt30">
-                            <tr>
-                                <th class="w40">Name</th>
-                                <th class="w40">Product</th>
-                                <th class="text-center pr15">Latest change</th>
-                            </tr>
-                        </table>
+                    <div class="mr20 inlineb">
+                      <div class="border inlineb mb10" @click="act(2,'Double Frame');" :class="format == 2 ? 'active':''">
+                        <span title="SOCKET" class="glyphicon glyphicon-th-large button-icon-small font20 click"></span>
+                        <span title="SOCKET" class="glyphicon glyphicon-th-large button-icon-small font20 click"></span>
+                      </div><br>
+                      Double Frame
                     </div>
-                    <div class="h200">
-                        <table class="table list-box">
-                            <!-- loop start -->
-                              <tr v-for="(i,index) in filtered_artwork" :key="index" class="click" :class="activeClass == index ? 'active':''" @click="sendData(index)">
-                                <td class="w40">{{i.name}}</td>
-                                <td class="w40">{{i.product}}</td>
-                                <td class="text-center">{{new Date(i.changedate) | dateFormat('DD.MM.YYYY')}}</td>
-                              </tr>
-                            
-                            <!-- loop end -->
+                    <div class="inlineb">
+                      <div class="border inlineb mb10" @click="act(3,'Threeble Frame');" :class="format == 3 ? 'active':''">
+                        <span title="SOCKET" class="glyphicon glyphicon-th-large button-icon-small font20 click"></span>
+                        <span title="SOCKET" class="glyphicon glyphicon-th-large button-icon-small font20 click"></span>
+                        <span title="SOCKET" class="glyphicon glyphicon-th-large button-icon-small font20 click"></span>
+                      </div><br>
+                      Threeble Frame
+                    </div>
+                  </div>
+                  <div class="col-xs-4 text-center">
+                    <p class="mb20">MATERIAL AND COLOR</p>
+                    <div class="inlineb mr20" @click="act2(1,'York black (Glass)');" :class="material == 1 ? 'active':''" >
+                      <img src="../assets/images/ybg.png" class="h50" alt="York black (Glass)" title="York black (Glass)">
+                      <p class="name-mc">
+                        York black (Glass)
+                      </p>
+                      
+                    </div>
+                    <div class="inlineb mr20" @click="act2(2,'Mars Black');" :class="material == 2 ? 'active':''" >
+                      <img src="../assets/images/mbf.png" class="h50" alt="Mars Black" title="Mars Black">
+                      <p class="name-mc">
+                        Mars Black
+                      </p>
+                    </div>
+                    <div class="inlineb mr20" @click="act2(3,'Silver');" :class="material == 3 ? 'active':''" >
+                      <img src="../assets/images/sf.png" class="h50" alt="Silver" title="Silver">
+                      <p class="name-mc">
+                        Silver
+                      </p>
+                    </div>
+                    <div class="inlineb" @click="act2(4,'Ice White Surface');" :class="material == 4 ? 'active':''" >
+                      <img src="../assets/images/iws.png" class="h50" alt="Ice White Surface" title="Ice White Surface">
+                      <p class="name-mc">
+                        Ice White Surface
+                      </p>
+                    </div>
 
-                        </table>
-                        
-                    </div>
+                  </div>
+                  <div class="col-xs-4">
                     <div class="row">
-                      <div class="col-xs-2 text-right lh25">
-                        Quantity
-                      </div>
-                      <div class="col-xs-4">
-                         <el-input size="medium" placeholder=""  v-model="product_quantity"> </el-input>
+                      <p class="text-center mb20">ADD TO THE ROOM</p>
+                      <div class="col-xs-4 text-center">
+                         <el-input size="medium" placeholder=""  v-model="product_quantity"> </el-input><br>
+                         Quantity
                       </div>
                       <div class="col-xs-6 text-center">
-                        <a class="click button-select w100" @click="select(current.id)">Select and Add</a>
+                        <a class="click button-select w100" @click="select()">Select and Add</a>
                       </div>
                     </div>
-                   
+
                   </div>
+                  
+                   
+                    
+                   
+                  
                </div>
             
         
@@ -126,44 +148,32 @@ export default {
             artworkList:{},
             current:{},
             artwork_query: '',
-            activeClass:0,
-            product_quantity:0
+            format:1,
+            material:1,
+            product_quantity:0,
+            fName:'One Frame',
+            mName:'York black (Glass)',
+            
             
         }
       },
   
   mounted () {
-       this.getData();
+      
        
      },
   methods:{
-    getData:function(){
-        axios
-          .get('http://localhost:3000/artwork/api')
-          .then(response =>
-         {
-             this.artworkList = response.data;
-             this.current = this.artworkList[0]; 
-
-         })
-          .catch(function (error) { // 请求失败处理
-            alert(error);
-          });
-      },
-      sendData(index){
-          this.current =  this.artworkList[index]
-          this.activeClass = index
-        },
-     select(ID){
+   
+     select(){
        axios
           .post('http://localhost:3000/product/api/',{
-                    "name":this.current.name,
-                    "product":this.current.product,
-                    "type":1,
-                    "aid": ID,
+                    "name":this.fName + this.mName,
+                    "type":2,
                     "quantity":this.product_quantity,
+                    "format":this.format,
+                    "material":this.material,
+                    "aid": 0,
                     "rid":this.$route.params.id
-
                 })
                 .then(res => {
                     // window.console.log(res.data);
@@ -171,8 +181,7 @@ export default {
                         this.$message({
                             type: 'success',
                             message: 'Product Added Successfully!'
-                        }),
-                        this.$router.go(-1)
+                        })
                     }else{
                         this.$message({
                             type: 'error',
@@ -184,17 +193,21 @@ export default {
                     alert(error);
                 });
      },
-     change(code){
-       this.activeClass2 = code
+     act(index,fName){
+        this.fName = fName,
+        this.format = index
+        // alert(this.activeClass);
+        
+     },
+     act2(index,mName){
+        this.mName = mName,
+        this.material = index
+        // alert(this.activeClass);
+        
      }
+    
   },
-  computed: {
-        filtered_artwork:function() {
-            return this.artworkList.filter(artwork => {
-                return artwork.name.toLowerCase().includes(this.artwork_query.toLowerCase())
-            })
-        }
-    }
+ 
 }
 </script>
 

@@ -77,9 +77,33 @@ tr:hover td:first-child{
   height:200px;
   overflow-y: auto;
 }
+.h245{
+  height:245px;
+}
+.h50{
+  height: 48px;
+    padding: 4px;
+    border: 1px solid #fff;
+}
 .active.border,
-.click.border:hover{
+.click.border:hover,
+.active.border span{
    border-color:#EF5923;
    color:#EF5923;
    text-decoration:none;
+}
+.name-mc{
+  display: none;
+  width: 100px;
+    text-align: center;
+    font-size: 12px;
+    position: absolute;
+    bottom: -35px;
+    left: -55%;
+}
+.active .name-mc{
+  display: block;
+}
+.active .h50{
+  border-color:#EF5923;
 }

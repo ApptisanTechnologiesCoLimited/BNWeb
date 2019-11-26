@@ -164,7 +164,7 @@ hr{
     margin-top: 10px;
 }
 .mt20{
-    margin-top: 20px;
+    margin-top: 20px!important;
 }
 .mt30{
     margin-top: 30px;
@@ -188,13 +188,14 @@ hr{
     margin-bottom: 10px;
 }
 .mb20{
-    margin-bottom: 20px;
+    margin-bottom: 20px!important;
 }
 .mb30{
     margin-bottom: 30px;
 }
 .inlineb{
     display: inline-block;
+    position: relative;
 }
 .brmore{
     border-radius: 50%;
@@ -547,7 +548,8 @@ hr{
     width: 20px;
 }
 /* Icon button style */
-.button-icon{
+.button-icon,
+.button-icon-small{
     display: inline-block;
     width:65px;
     height:65px;
@@ -556,6 +558,11 @@ hr{
     font-size: 34px;
     color:#979797;
     vertical-align: middle;
+}
+.button-icon-small{
+    width:45px;
+    height:45px;
+    line-height:45px;
 }
 .text-middle{
     vertical-align: middle!important;
