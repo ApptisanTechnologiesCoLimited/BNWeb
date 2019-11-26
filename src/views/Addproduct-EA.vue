@@ -114,7 +114,7 @@
                          <el-input size="medium" placeholder=""  v-model="product_quantity"> </el-input>
                       </div>
                       <div class="col-xs-6 text-center">
-                        <a class="click button-select w100" @click="select(current.id)">Select and Add</a>
+                        <div class="click button-select w100" @click="select(current.id)">Select and Add</div>
                       </div>
                     </div>
                    

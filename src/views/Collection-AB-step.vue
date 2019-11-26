@@ -1,45 +1,20 @@
 <template>
   <div id="addproduct">
     <div class="bg-gray">
-            <ol class="breadcrumb">
-                <li><a href="#/dash">Dashboard</a></li>
-                <li><a href="#/myprojects">My Projects</a></li>
-                <li><a class="active">Add A Product</a></li>
-              </ol>
-        </div>
-        <div class="row mlr0 font18">
-          <div class="col-xs-6 prl30">
-            ADD A PRODUCT
-          </div>
-          <div class="col-xs-6 text-right prl30">
-            <div class="row font13 lh25">
-              <div class="pull-right">
-                <span class="font20 black click" @click="$router.go(-1)">✕</span>
-              </div>
-              <div class="pull-right mr20 text-center">
-                  <span class="glyphicon glyphicon-th-large button-icon border active font20 click" title="SOCKET"></span><br>SOCKET
-              </div>
-              
-               <div class="pull-right mr20">
-                 <router-link :to="'/addproduct-keypad/' + $route.params.id">
-                    <span class="glyphicon el-icon-office-building button-icon border font25" title="KEYPAD"></span>
-                  </router-link>
-               </div>
-              
-            </div>
-
-              
-                    
-            
-            
-          </div>
+      <el-steps :active="0" finish-status="success" simple>
+          <el-step title="1. Collection"></el-step>
+          <el-step title="2. Materials"></el-step>
+          <el-step title="3. Format"></el-step>
+          <el-step title="4. Function"></el-step>
+          <el-step title="5. Engraving"></el-step>
+          <el-step title="6. Backlights"></el-step>
+          <el-step title="7. Details"></el-step>
           
-
-            
-        </div>
+        </el-steps>
+            <span class="font20 black click" @click="$router.go(-1)">✕</span>
+      </div>
        
         <div class="content middle" >
-          
               <div class="container">
                 <div class="row">
                   <div class="col-xs-12 text-center">
@@ -118,11 +93,14 @@
                          Quantity
                       </div>
                       <div class="col-xs-6 text-center">
-                        <div class="click button-select w100" @click="select()">Select and Add</div>
+                        <a class="click button-select w100" @click="select()">Select and Add</a>
                       </div>
                     </div>
 
                   </div>
+                  
+                   
+                    
                    
                   
                </div>
@@ -178,8 +156,7 @@ export default {
                         this.$message({
                             type: 'success',
                             message: 'Product Added Successfully!'
-                        }),
-                         this.$router.go(-1)
+                        })
                     }else{
                         this.$message({
                             type: 'error',

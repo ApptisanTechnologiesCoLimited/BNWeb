@@ -80,6 +80,9 @@ tr:hover td:first-child{
 .h245{
   height:245px;
 }
+.h350{
+  height:350px;
+}
 .h50{
   height: 48px;
     padding: 4px;
@@ -106,4 +109,17 @@ tr:hover td:first-child{
 }
 .active .h50{
   border-color:#EF5923;
+}
+.button-b{
+   display: inline-block;
+   height:50px;
+   border:1px solid;
+   color:#333;
+   line-height:50px;
+}
+.button-b:hover,
+.button-b.active{
+  border-color:#EF5923;
+  color:#EF5923;
+  text-decoration: none;
 }
