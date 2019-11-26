@@ -16,7 +16,7 @@
        
         <div class="content middle collect" >
           <div class="cell">
-            <div id="step2" v-if="active == 0">
+            <div v-if="active == 0">
               <div class="container">
                 <div class="row mt10">
                   <div class="col-xs-10 col-xs-offset-1">
@@ -91,6 +91,49 @@
                 </div>
                  
                 </div>
+              </div>
+            </div>
+            <div v-if="active == 1">
+              <div class="container">
+                <div class="row">
+                  <p class="font20">SELECT FORMAT</p>
+                  <div class="col-xs-12 text-center mt30">
+                     
+                      <div class=" inlineb p10" v-viewer>
+                        <img v-if="format == 1" src="../assets/images/ybg.png" class="h350" alt="">
+                        <img v-if="format == 2" src="../assets/images/ybg-2.png" class="h350" alt="">
+                      </div>
+                      <!-- <p>Click to zoom</p> -->
+                      
+                      
+                    </div>
+                    <div class="col-xs-4 col-xs-offset-4 text-center mt30">
+                        
+                        <div class="mr20 inlineb" @click="act(1);" :class="format == 1 ? 'active':''">
+                          <div class="border inlineb">
+                            <span title="SOCKET" class="glyphicon glyphicon-th-large button-icon-small font20 click"></span>
+                          </div>
+                          <p class="name-f">
+                            One Frame
+                          </p>
+                        </div>
+                        <div class="mr20 inlineb" @click="act(2);" :class="format == 2 ? 'active':''">
+                          <div class="border inlineb">
+                            <span title="SOCKET" class="glyphicon glyphicon-th-large button-icon-small font20 click"></span>
+                            <span title="SOCKET" class="glyphicon glyphicon-th-large button-icon-small font20 click"></span>
+                          </div>
+                          <p class="name-f">
+                            Double Frame
+                          </p>
+                          
+                        </div>
+                   
+                    </div>
+
+
+                </div>
+               
+
               </div>
             </div>
              
