@@ -1,5 +1,5 @@
 <template>
-  <div id="addproduct">
+  <div id="addstep">
     <div class="bg-gray">
       <el-steps :active="active" finish-status="success" simple>
          
@@ -158,7 +158,7 @@
 import "../assets/css/project.css";
 // import axios from "axios";
 export default {
-  name: 'addproduct',
+  name: 'addstep',
   data(){
         return {
             artworkList:{},

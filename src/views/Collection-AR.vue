@@ -1,8 +1,8 @@
 <template>
-  <div id="addproduct2">
+  <div id="collectionB">
     <div class="bg-gray">
        <ol class="breadcrumb">
-          <li>1. Collection</li>
+          <li>Place Select the Collection</li>
           
           <span class="font16 black click pull-right" @click="$router.go(-1)">✕</span>
         </ol>
@@ -15,7 +15,7 @@
                   <div class="col-xs-10 col-xs-offset-1">
                     <div class="row">
                       <div class="col-xs-6">
-                        <img src="../assets/images/ybg.png" class="h350" alt="">
+                        <img src="../assets/images/ar-product.png" class="h350" alt="">
                       </div>
                       <div class="col-xs-6 text-center mt30">
                         <p class="font20 white">SELECT COLLECTION</p>
@@ -46,7 +46,7 @@
 import "../assets/css/project.css";
 import axios from "axios";
 export default {
-  name: 'addproduct2',
+  name: 'collectionB',
   data(){
         return {
             artworkList:{},
@@ -117,7 +117,8 @@ export default {
 </script>
 
 <style lang="css">
- #addproduct2{
-   background-image: url(../assets/images/bg2.jpeg);
+ #collectionB{
+   background-image: url(../assets/images/bg2.jpg);
+   background-size:cover;
  }
 </style>
