@@ -65,6 +65,7 @@
                       </div>
                       <!-- <p>Click to zoom</p> -->
                       <p class="mt20">Frame only, Mechanical part is not provided</p>
+                      <p class="text-center"><el-input class="w30" v-model="pName" suffix-icon="el-icon-edit" placeholder="Place edit the product name"></el-input></p>
                       
                     </div>
                   
@@ -172,6 +173,7 @@ export default {
             product_quantity:0,
             fName:'One Frame',
             mName:'York black (Glass)',
+            pName:''
             
             
         }
@@ -186,11 +188,11 @@ export default {
      select(){
        axios
           .post('http://localhost:3000/product/api/',{
-                    "name":this.fName + this.mName,
+                    "name":this.pName,
                     "type":2,
                     "quantity":this.product_quantity,
-                    "format":this.format,
-                    "material":this.material,
+                    "format":this.fName,
+                    "material":this.mName,
                     "aid": 0,
                     "rid":this.$route.params.id
                 })
