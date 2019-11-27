@@ -1,5 +1,5 @@
 <template>
-  <div id="addproduct">
+  <div id="addproduct2">
     <div class="bg-gray">
        <ol class="breadcrumb">
           <li>1. Collection</li>
@@ -46,7 +46,7 @@
 import "../assets/css/project.css";
 import axios from "axios";
 export default {
-  name: 'addproduct',
+  name: 'addproduct2',
   data(){
         return {
             artworkList:{},
@@ -57,6 +57,7 @@ export default {
             product_quantity:0,
             fName:'One Frame',
             mName:'York black (Glass)',
+            type:2
             
             
         }
@@ -72,7 +73,7 @@ export default {
        axios
           .post('http://localhost:3000/product/api/',{
                     "name":this.fName + this.mName,
-                    "type":2,
+                    "type":this.type,
                     "quantity":this.product_quantity,
                     "format":this.format,
                     "material":this.material,
@@ -116,7 +117,7 @@ export default {
 </script>
 
 <style lang="css">
- body{
+ #addproduct2{
    background-image: url(../assets/images/bg2.jpeg);
  }
 </style>

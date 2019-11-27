@@ -19,7 +19,7 @@
                       </div>
                       <div class="col-xs-6 text-center mt30">
                         <p class="font20">SELECT COLLECTION</p>
-                        <router-link :to="'/collection-ab/step'" class="button-b black w100 mt30 active">
+                        <router-link :to="'/alba/step'" class="button-b black w100 mt30 active">
                           ALBA
                         </router-link>
                         <router-link :to="'/collection-ar/'" class="button-b black w100 mt30">
@@ -46,13 +46,18 @@
 import "../assets/css/project.css";
 
 export default {
-  name: 'addproduct'
+  name: 'addproduct',
+  data(){
+        return {
+            type:1
+        }
+      },
  
 }
 </script>
 
 <style lang="css">
-body{
+#addproduct{
    background-image: url(../assets/images/bg1.jpeg);
  }
 </style>
