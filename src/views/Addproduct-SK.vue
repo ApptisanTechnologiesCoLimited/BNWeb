@@ -40,9 +40,28 @@
                   <div class="col-xs-12 text-center">
                       <p class="font20">{{fName}} , {{mName}} </p>
                       <div class=" inlineb p10" v-viewer>
-                        <img v-if="format == 1 && material == 1" src="../assets/images/ybg.png" class="h245" alt="">
-                        <img v-if="format == 2 && material == 1" src="../assets/images/ybg-2.png" class="h245" alt="">
-                        <img v-if="format == 3 && material == 1" src="../assets/images/ybg-3.png" class="h245" alt="">
+                        <div v-if="material == 1">
+                          <img v-if="format == 1 || format == 2 ||format == 3" src="../assets/images/ybg-socket.jpg" class="h245" alt="">
+                          <img v-if="format == 2 || format == 3" src="../assets/images/ybg-socket.jpg" class="h245" alt="">
+                          <img v-if="format == 3" src="../assets/images/ybg-socket.jpg" class="h245" alt="">
+                        </div>
+                        <div v-if="material == 2">
+                          <img v-if="format == 1 || format == 2 ||format == 3" src="../assets/images/mbf-socket.jpg" class="h245" alt="">
+                          <img v-if="format == 2 || format == 3" src="../assets/images/mbf-socket.jpg" class="h245" alt="">
+                          <img v-if="format == 3" src="../assets/images/mbf-socket.jpg" class="h245" alt="">
+                        </div>
+                        <div v-if="material == 3">
+                          <img v-if="format == 1 || format == 2 ||format == 3" src="../assets/images/sf-socket.jpg" class="h245" alt="">
+                          <img v-if="format == 2 || format == 3" src="../assets/images/sf-socket.jpg" class="h245" alt="">
+                          <img v-if="format == 3" src="../assets/images/sf-socket.jpg" class="h245" alt="">
+                        </div>
+                        <div v-if="material == 4">
+                          <img v-if="format == 1 || format == 2 ||format == 3" src="../assets/images/iws-socket.jpg" class="h245" alt="">
+                          <img v-if="format == 2 || format == 3" src="../assets/images/iws-socket.jpg" class="h245" alt="">
+                          <img v-if="format == 3" src="../assets/images/iws-socket.jpg" class="h245" alt="">
+                        </div>
+                       
+                       
                       </div>
                       <!-- <p>Click to zoom</p> -->
                       <p class="mt20">Frame only, Mechanical part is not provided</p>
