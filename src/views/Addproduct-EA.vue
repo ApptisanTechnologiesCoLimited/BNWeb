@@ -21,10 +21,10 @@
               </div>
               <div class="pull-right mr20">
                 <router-link :to="'/addproduct-sockets/' + $route.params.id">
-                  <span class="glyphicon glyphicon-th-large button-icon border font20 click" title="SOCKET"></span>
+                  <i class="glyphicon glyphicon-th-large button-icon border font20 click" title="SOCKET"></i>
                 </router-link>
               </div>
-               <div class="pull-right mr20 text-center"><span class="glyphicon el-icon-office-building button-icon border active font25" title="KEYPAD"></span><br>KEYPAD
+               <div class="pull-right mr20 text-center"><i class="glyphicon el-icon-office-building button-icon border active font25" title="KEYPAD"></i><br>KEYPAD
                </div>
               
             </div>
@@ -47,17 +47,18 @@
                     <div class="product-img bg inlineb p10" v-viewer>
                       <img :src="current.img" class="w100" alt="">
                     </div>
-                    <table class="table text-left">
+                   
+                    <table class="table text-left mt20">
                       <tr>
-                        <td class="w40 gray">Product:</td>
-                        <td>{{current.name}}</td>
+                        <td class="w30 gray">Product:</td>
+                        <td>{{current.product}}</td>
                       </tr>
                       <tr>
-                        <td class="w40 gray">Finish:</td>
-                        <td>{{current.finish}}</td>
+                        <td class="gray">Finish:</td>
+                        <td>{{current.material}}</td>
                       </tr>
                       <tr>
-                        <td class="w40 gray">Protocol:</td>
+                        <td class="gray">Protocol:</td>
                         <td>{{current.protocol}}</td>
                       </tr>
                     </table>
@@ -107,13 +108,14 @@
                         
                     </div>
                     <div class="row">
-                      <div class="col-xs-2 text-right lh25">
-                        Quantity
+                      <div class="col-xs-5 text-right lh25">
+                        <el-input size="medium" v-model="current.product" suffix-icon="el-icon-edit" placeholder="Place edit the product name"></el-input>
                       </div>
-                      <div class="col-xs-4">
+                      <div class="col-xs-3 text-center">
                          <el-input size="medium" placeholder=""  v-model="product_quantity"> </el-input>
+                         Quantity
                       </div>
-                      <div class="col-xs-6 text-center">
+                      <div class="col-xs-4 text-center">
                         <div class="click button-select w100" @click="select(current.id)">Select and Add</div>
                       </div>
                     </div>

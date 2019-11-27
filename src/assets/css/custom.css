@@ -650,7 +650,7 @@ hr.gray{
     display: block;
     box-shadow:0 0 5px #EF5923;
     color:#000;
-    line-height:3;
+    line-height:3.5;
 } 
 .button-select:hover{
     text-decoration:none;

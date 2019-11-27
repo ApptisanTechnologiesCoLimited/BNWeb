@@ -17,12 +17,12 @@
                 <span class="font20 black click" @click="$router.go(-1)">✕</span>
               </div>
               <div class="pull-right mr20 text-center">
-                  <span class="glyphicon glyphicon-th-large button-icon border active font20 click" title="SOCKET"></span><br>SOCKET
+                  <i class="glyphicon glyphicon-th-large button-icon border active font20 click" title="SOCKET"></i><br>SOCKET
               </div>
               
                <div class="pull-right mr20">
                  <router-link :to="'/addproduct-keypad/' + $route.params.id">
-                    <span class="glyphicon el-icon-office-building button-icon border font25" title="KEYPAD"></span>
+                    <i class="glyphicon el-icon-office-building button-icon border font25" title="KEYPAD"></i>
                   </router-link>
                </div>
               
@@ -65,7 +65,7 @@
                       </div>
                       <!-- <p>Click to zoom</p> -->
                       <p class="mt20">Frame only, Mechanical part is not provided</p>
-                      <p class="text-center"><el-input class="w30" v-model="pName" suffix-icon="el-icon-edit" placeholder="Place edit the product name"></el-input></p>
+                      <p class="text-center"><el-input size="medium" class="w30" v-model="pName" suffix-icon="el-icon-edit" placeholder="Place edit the product name"></el-input></p>
                       
                     </div>
                   
