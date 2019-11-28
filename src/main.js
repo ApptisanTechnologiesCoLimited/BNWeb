@@ -31,6 +31,12 @@ Vue.use(VueFilterDateFormat)
 const router = new VueRouter({
   routes
 })
+router.beforeEach((to, from, next) => {
+  if (to.meta.title) {
+    document.title = to.meta.title
+  }
+  next()
+})
 new Vue({
   router,
   render: h => h(App),

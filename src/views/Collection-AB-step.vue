@@ -25,8 +25,8 @@
                       <img v-if="material == 2" src="../assets/images/mbf.png" class="h350" alt="">
                       <img v-if="material == 3" src="../assets/images/sf.png" class="h350" alt="">
                       <img v-if="material == 4" src="../assets/images/iws.png" class="h350" alt="">
-                      <img v-if="buttonC == 1" src="../assets/images/yb1.png" class="h350 button-img" alt="">
-                      <img v-if="buttonC == 2" src="../assets/images/iw1.png" class="h350 button-img" alt="">
+                      <img v-if="buttonC == 1" src="../assets/images/button-b4.png" class="h350 button-img" alt="">
+                      <img v-if="buttonC == 2" src="../assets/images/button-w4.png" class="h350 button-img" alt="">
 
                     </div>
                   <div class="col-xs-6 text-center">
@@ -66,14 +66,14 @@
                         <div class="col-xs-12">
                           <p class="mb20 mt20">BUTTONS</p>
                           <div class="inlineb mr20" @click="actButton(1);" :class="buttonC == 1 ? 'active':''" >
-                            <img src="../assets/images/yb1.png" class="h50" alt="York black (Glass)" title="York black (Glass)">
+                            <img src="../assets/images/button-b4.png" class="h50" alt="York black (Glass)" title="York black (Glass)">
                             <p class="name-mc">
                               York black (Glass)
                             </p>
                           
                          </div>
                          <div class="inlineb" @click="actButton(2);" :class="buttonC == 2 ? 'active':''" >
-                            <img src="../assets/images/iw1.png" class="h50" alt="Ice White Surface" title="Ice White Surface">
+                            <img src="../assets/images/button-w4.png" class="h50" alt="Ice White Surface" title="Ice White Surface">
                             <p class="name-mc">
                               Ice White Surface
                             </p>

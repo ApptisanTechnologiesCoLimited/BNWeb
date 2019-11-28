@@ -1,5 +1,6 @@
 <template>
   <div id="collectionA">
+    <div class="bg-img1"></div>
     <div class="bg-gray">
        <ol class="breadcrumb">
           <li>Place Select the Collection</li>
@@ -57,8 +58,14 @@ export default {
 </script>
 
 <style lang="css">
-#collectionA{
+.bg-img1{
+   width:100vw;
+   height:100vh;
+   position: fixed;
+   top:0;
+   left:0;
    background-image: url(../assets/images/bg1.jpg);
    background-size:cover;
+   z-index:-1;
  }
 </style>
