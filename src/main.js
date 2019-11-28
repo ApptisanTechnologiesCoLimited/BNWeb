@@ -12,8 +12,8 @@ import Viewer from 'v-viewer'
 import 'viewerjs/dist/viewer.css'
 //https://chenxuan1993.gitee.io/component-document/index_prod#/component/seamless-switch
 // 滚动图插件
-// import scroll from 'vue-seamless-scroll' 
-// Vue.use(scroll,{componentName: 'scroll'})
+import scroll from 'vue-seamless-scroll' 
+Vue.use(scroll,{componentName: 'scroll'})
 
 Vue.use(Viewer)
 Viewer.setDefaults({

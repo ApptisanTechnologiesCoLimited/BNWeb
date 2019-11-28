@@ -62,7 +62,7 @@ tr:hover td:first-child{
   min-height: calc(100vh - 190px);
 }
 .content.collect{
-  min-height: calc(100vh - 166px);
+  min-height: calc(100vh - 176px);
 }
 .img-box{
   display:block;
@@ -145,7 +145,10 @@ tr:hover td:first-child{
 }
 .button-img{
   position:absolute;
-  left:15px;
+  width:100%;
+  text-align: center;
+  bottom:0;
+  left:0;
 }
 .bg-black a,
 .bg-black{
@@ -153,7 +156,7 @@ tr:hover td:first-child{
 }
 .button-next{
   position:fixed;
-  bottom:10px;
+  bottom:15px;
   right:10%;
 }
 .button-next:hover,
@@ -162,6 +165,21 @@ tr:hover td:first-child{
 }
 .button-back{
   position:fixed;
-  bottom:10px;
+  bottom:15px;
   left:10%;
+}
+.el-step.is-simple .el-step__title{
+  font-size:14px;
+}
+.seamless-warp3{
+  width:120px;
+  overflow: hidden;
+}
+ul.item{
+  width:240px;
+}
+ul.item li{
+  float:none;
+  display: inline-block;
+  width:60px;
 }
