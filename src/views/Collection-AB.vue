@@ -9,7 +9,7 @@
         </ol>
     </div>
        
-        <div class="content middle project">
+        <div class="content middle collection">
           <div class="cell">
               <div class="container">
                 <div class="row">
@@ -36,6 +36,7 @@
                
            </div>
           </div>
+          <router-link :to="'/alba/step'" class="button-next click orange">NEXT <i class="el-icon-d-arrow-right"></i></router-link>
             
          
           
@@ -53,6 +54,10 @@ export default {
             type:1
         }
       },
+  created:function () {
+        this.$parent.headerB();
+        this.$parent.footerB();
+  }
  
 }
 </script>

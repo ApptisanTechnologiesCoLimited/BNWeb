@@ -58,7 +58,12 @@ tr:hover td:first-child{
 .content.addsk{
   min-height: calc(100vh - 340px);
 }
-
+.content.collection{
+  min-height: calc(100vh - 190px);
+}
+.content.collect{
+  min-height: calc(100vh - 166px);
+}
 .img-box{
   display:block;
   border:1px solid #999;
@@ -141,4 +146,22 @@ tr:hover td:first-child{
 .button-img{
   position:absolute;
   left:15px;
+}
+.bg-black a,
+.bg-black{
+  color:#fff;
+}
+.button-next{
+  position:fixed;
+  bottom:10px;
+  right:10%;
+}
+.button-next:hover,
+.button-back:hover{
+  color:#EF5923;
+}
+.button-back{
+  position:fixed;
+  bottom:10px;
+  left:10%;
 }

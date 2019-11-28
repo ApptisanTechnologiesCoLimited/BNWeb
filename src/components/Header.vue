@@ -1,9 +1,7 @@
 <template>
-   <div class="header relative" style="height:80px">
+   <div class="header relative" style="height:50px">
       
-       <!-- Right Bar Menu -->
-    
-   
+       <!-- Right Bar Menu -->  
    </div>
 </template>
 

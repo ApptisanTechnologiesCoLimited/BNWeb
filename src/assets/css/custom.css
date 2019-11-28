@@ -108,6 +108,9 @@ hr{
 .white{
     color:#fff
 }
+.orange{
+    color:#EF5923;
+}
 .gray{
     color:#979797;
 }
@@ -324,6 +327,10 @@ hr{
     color:#000;
     font-size: 12px;
     line-height: 2.5;
+}
+.sub-footer{
+    height:40px;
+    line-height:40px;
 }
 /*************** SCROLLBAR BASE CSS ***************/
 
@@ -663,4 +670,7 @@ a.black:hover p{
     color:#EF5923;
     border-color:#EF5923;
     text-decoration:none;
+}
+.bg-black{
+    background-color:#000;
 }

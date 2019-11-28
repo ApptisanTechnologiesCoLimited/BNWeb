@@ -142,14 +142,17 @@
           
         </div>
         
-        <div class="container">
+        <!-- <div class="container">
           <hr class="gray">
           <div class="row">
           <div class="col-xs-4 click" @click="back()"><i class="el-icon-d-arrow-left"></i> BACK</div>
           <div class="col-xs-4 text-center click" @click="save()">SAVE THE ARTWORK</div>
           <div class="col-xs-4 text-right click" @click="next()">NEXT <i class="el-icon-d-arrow-right"></i></div>
         </div>
-        </div>
+        </div> -->
+        <div class="button-back click white" v-if="active !== 0 " @click="back()"><i class="el-icon-d-arrow-left"></i> BACK</div>
+        <router-link :to="'/collection-ab/'" class="button-back click white" v-if="active == 0 "><i class="el-icon-d-arrow-left"></i> BACK</router-link>
+        <div class="button-next click orange" @click="next()">NEXT <i class="el-icon-d-arrow-right"></i></div>
         
   </div>
 </template>
@@ -203,6 +206,10 @@ export default {
      }
     
   },
+  created:function () {
+        this.$parent.headerB();
+        this.$parent.footerB();
+  }
  
 }
 </script>

@@ -1,8 +1,8 @@
 <template>
 <div id="app">
-    <Header/>
+    <Header :class="header_show ? '':'bg-black'"/>
     <router-view></router-view>
-    <Footer/>
+    <Footer :class="footer_show ? '':'bg-black'"/>
 
   </div>
 </template>
@@ -16,8 +16,23 @@ export default {
   components: {
       Header,
       Footer
-
+  },
+  data(){
+        return {
+            header_show:true,
+            footer_show:true
+        }
+      },
+    methods:{ 
+      headerB:function () {
+        this.header_show = false;
+      },
+      //是否显示底部
+      footerB:function () {
+          this.footer_show = false;
+      }
   }
+  
 }
 </script>
 
