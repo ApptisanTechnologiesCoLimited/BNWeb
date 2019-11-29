@@ -1,14 +1,14 @@
 <template>
   <div id="addstep">
     <div class="bg-gray">
-      <el-steps :active="2" finish-status="success" simple>
-         
-          <el-step title="1. Materials"></el-step>
-          <el-step title="2. Format"></el-step>
-          <el-step title="3. Function"></el-step>
-          <el-step title="4. Engraving"></el-step>
-          <el-step title="5. Backlights"></el-step>
-          <el-step title="6. Details"></el-step>
+      <el-steps :active="active" finish-status="success" simple>
+         <el-step title="1. Materials"></el-step>
+          <el-step title="2. Materials"></el-step>
+          <el-step title="3. Format"></el-step>
+          <el-step title="4. Function"></el-step>
+          <el-step title="5. Engraving"></el-step>
+          <el-step title="6. Backlights"></el-step>
+          <el-step title="7. Details"></el-step>
           
         </el-steps>
            
@@ -249,17 +249,20 @@
           
         </div>
         
-        <!-- <div class="container">
+        <div class="container">
           <hr class="gray">
           <div class="row">
-          <div class="col-xs-4 click" @click="back()"><i class="el-icon-d-arrow-left"></i> BACK</div>
-          <div class="col-xs-4 text-center click" @click="save()">SAVE THE ARTWORK</div>
-          <div class="col-xs-4 text-right click" @click="next()">NEXT <i class="el-icon-d-arrow-right"></i></div>
+          <div class="col-xs-4 click" v-if="active !== 1 " @click="back()"><i class="el-icon-d-arrow-left"></i> BACK</div>
+          <div class="col-xs-4 click" v-if="active == 1 ">
+            <router-link :to="'/collection-ab/'" class="black-noh"><i class="el-icon-d-arrow-left"></i> BACK</router-link>
+          </div>
+
+            <div class="col-xs-4 text-center click" @click="save()">SAVE THE ARTWORK</div>
+            <div class="col-xs-4 text-right click orange" @click="next()">NEXT <i class="el-icon-d-arrow-right"></i></div>
+          </div>
         </div>
-        </div> -->
-        <div class="button-back click white" v-if="active !== 0 " @click="back()"><i class="el-icon-d-arrow-left"></i> BACK</div>
-        <router-link :to="'/collection-ab/'" class="button-back click white" v-if="active == 0 "><i class="el-icon-d-arrow-left"></i> BACK</router-link>
-        <div class="button-next click orange" @click="next()">NEXT <i class="el-icon-d-arrow-right"></i></div>
+        
+      
         
   </div>
 </template>
@@ -277,10 +280,9 @@ export default {
             format:1,
             material:1,
             product_quantity:0,
-            active: 2,
+            active: 1,
             buttonColor:1,
             buttonType:1,
-            listData: [1, 2, 3, 4, 5, 6, 7, 8],
             bTypeImg:{
               'buttonW2':require('../assets/images/button-w2.png'),
               'buttonW4':require('../assets/images/button-w4.png'),
@@ -303,11 +305,11 @@ export default {
      },
   methods:{
      next() {
-        if (this.active++ > 5) 
-        this.active = 5;
+        if (this.active++ > 6) 
+        this.active = 6;
       },
       back(){
-        if (this.active -- > 5) this.active = 0;
+        if (this.active -- > 6) this.active = 1;
       },
       save(){},
      act(index){

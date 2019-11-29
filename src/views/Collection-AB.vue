@@ -11,7 +11,7 @@
        
         <div class="content middle collection">
           <div class="cell">
-              <div class="container">
+              <div class="container relative">
                 <div class="row">
                   <div class="col-xs-10 col-xs-offset-1">
                     <div class="row">
@@ -32,11 +32,24 @@
                   </div>
                  
                 </div>
+                 
+                <div class="row next-nav">
+                  <div class="col-xs-12"><hr class="gray"></div>
+                  <div class="col-xs-4 click"></div>
+                  <div class="col-xs-4 text-center click"></div>
+                  <div class="col-xs-4 text-right click">
+                    <router-link :to="'/alba/step'" class="black">NEXT <i class="el-icon-d-arrow-right"></i></router-link>
+                  </div>
+                </div>
                 
                
-           </div>
+              </div>
+             
+              
+              
           </div>
-          <router-link :to="'/alba/step'" class="button-next click orange">NEXT <i class="el-icon-d-arrow-right"></i></router-link>
+          <!-- <router-link :to="'/alba/step'" class="button-next click orange">NEXT <i class="el-icon-d-arrow-right"></i></router-link> -->
+         
             
          
           

@@ -53,17 +53,15 @@ tr:hover td:first-child{
   min-height: calc(100vh - 220px);
 }
 .content.collect{
-  min-height: calc(100vh - 250px);
+  min-height: calc(100vh - 217px);
 }
 .content.addsk{
   min-height: calc(100vh - 340px);
 }
 .content.collection{
-  min-height: calc(100vh - 190px);
+  min-height: calc(100vh - 200px);
 }
-.content.collect{
-  min-height: calc(100vh - 176px);
-}
+
 .img-box{
   display:block;
   border:1px solid #999;
@@ -182,4 +180,13 @@ ul.item li{
   float:none;
   display: inline-block;
   width:60px;
+}
+.next-nav{
+  position: absolute;
+  left:0;
+  bottom:-17vh;
+  width:100%;
+}
+.black-noh{
+  color:#000
 }
