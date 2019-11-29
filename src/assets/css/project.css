@@ -38,6 +38,7 @@ tr:hover td:first-child{
 .breadcrumb{
   padding:15px;
   margin-bottom:20px;
+  background-color: transparent;
 }
 .breadcrumb a{
   color:#777;

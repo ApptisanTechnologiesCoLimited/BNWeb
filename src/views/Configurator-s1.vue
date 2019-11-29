@@ -2,9 +2,9 @@
   <div id="collectionA">
     <div class="bg-img1" v-if="type == 0"></div>
     <div class="bg-img2" v-if="type == 1"></div>
-    <div class="bg-gray">
+    <div class="">
        <ol class="breadcrumb">
-          <li>Place Select the Collection</li>
+          <li class="orange">1. Collection</li>
           
           <span class="font16 black click pull-right" @click="$router.go(-1)">✕</span>
         </ol>
@@ -39,12 +39,13 @@
                   <div class="col-xs-12"><hr class="gray"></div>
                   <div class="col-xs-4 click"></div>
                   <div class="col-xs-4 text-center click"></div>
-                  <div class="col-xs-4 text-right click" v-if="type == 0">
-                    <router-link :to="'/alba/step'" class="black">NEXT <i class="el-icon-d-arrow-right"></i></router-link>
+                  <div class="col-xs-4 text-right click">
+                    <div class="black" @click="next()">NEXT <i class="el-icon-d-arrow-right"></i></div>
                   </div>
-                  <div class="col-xs-4 text-right click" v-if="type == 1">
-                    <router-link :to="'/aria/step'" class="white">NEXT <i class="el-icon-d-arrow-right"></i></router-link>
-                  </div>
+
+                  <!-- <div class="col-xs-4 text-right click" v-if="type == 1">
+                    <router-link :to="'/collection/step2'" class="white">NEXT <i class="el-icon-d-arrow-right"></i></router-link>
+                  </div> -->
                 </div>
                 
                
@@ -77,16 +78,17 @@ export default {
         this.$parent.footerB();
   },
   methods:{
-    setType(ID){
-      
+    setType(ID){    
       this.type = ID
+    },
+    next(){
       var configurator = {
-        "step":1,
-        "collection":ID
+        "collection":this.type
       }
-        localStorage.setItem("configurator",JSON.stringify(configurator))
+        localStorage.setItem("configurator",JSON.stringify(configurator)),
         // 读取 var configurator = JSON.parse(localStorage.getItem("configurator"))
         // 再保存 configurator.material = "black"; localStorage.setItem("configurator",JSON.stringify(configurator))
+        this.$router.push({path: '/collection/step2'});
     }
   }
  

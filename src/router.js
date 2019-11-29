@@ -77,7 +77,7 @@ const routes = [
     }
   },
   {
-    path: '/collection/',
+    path: '/collection/step1',
     component: () => import('./views/Configurator-s1.vue'),
     meta: {
       title: 'Add a Collection'
@@ -90,9 +90,16 @@ const routes = [
   //     title: 'Add a Collection'
   //   }
   // },
+  // {
+  //   path: '/alba/step',
+  //   component: () => import('./views/Collection-AB-step.vue'),
+  //   meta: {
+  //     title: 'Add a Collection'
+  //   }
+  // },
   {
-    path: '/alba/step',
-    component: () => import('./views/Collection-AB-step.vue'),
+    path: '/collection/step2',
+    component: () => import('./views/Configurator-s2.vue'),
     meta: {
       title: 'Add a Collection'
     }
