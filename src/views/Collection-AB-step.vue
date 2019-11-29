@@ -16,7 +16,7 @@
        
         <div class="content middle collect" >
           <div class="cell">
-            <div v-if="active == 0">
+            <div v-if="active == 1">
               <div class="container">
                 <div class="row mt10">
                   <div class="col-xs-10 col-xs-offset-1">
@@ -96,7 +96,7 @@
                 </div>
               </div>
             </div>
-            <div v-if="active == 1">
+            <div v-if="active == 2">
               <div class="container">
                 <div class="row">
                   <p class="font20">SELECT FORMAT</p>
@@ -164,7 +164,7 @@
 
               </div>
             </div>
-            <div v-if="active == 2">
+            <div v-if="active == 3">
               <div class="container">
                 <div class="row">
                   <p class="font20">SELECT FUNCTION</p>
