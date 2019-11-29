@@ -78,7 +78,15 @@ export default {
   },
   methods:{
     setType(ID){
+      
       this.type = ID
+      var configurator = {
+        "step":1,
+        "collection":ID
+      }
+        localStorage.setItem("configurator",JSON.stringify(configurator))
+        // 读取 var configurator = JSON.parse(localStorage.getItem("configurator"))
+        // 再保存 configurator.material = "black"; localStorage.setItem("configurator",JSON.stringify(configurator))
     }
   }
  
