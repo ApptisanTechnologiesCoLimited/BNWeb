@@ -83,13 +83,13 @@ const routes = [
       title: 'Add a Collection'
     }
   },
-  {
-    path: '/collection-ar/',
-    component: () => import('./views/Collection-AR.vue'),
-    meta: {
-      title: 'Add a Collection'
-    }
-  },
+  // {
+  //   path: '/collection-ar/',
+  //   component: () => import('./views/Collection-AR.vue'),
+  //   meta: {
+  //     title: 'Add a Collection'
+  //   }
+  // },
   {
     path: '/alba/step',
     component: () => import('./views/Collection-AB-step.vue'),
