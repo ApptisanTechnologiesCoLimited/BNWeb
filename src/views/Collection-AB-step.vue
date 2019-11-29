@@ -16,6 +16,7 @@
        
         <div class="content middle collect" >
           <div class="cell">
+            <!-- Step 1 Start -->
             <div v-if="active == 1">
               <div class="container">
                 <div class="row mt10">
@@ -95,7 +96,8 @@
                  
                 </div>
               </div>
-            </div>
+            </div><!-- Step 1 End -->
+            <!-- Step 2 Start -->
             <div v-if="active == 2">
               <div class="container">
                 <div class="row">
@@ -163,7 +165,8 @@
                
 
               </div>
-            </div>
+            </div><!-- Step 2 End -->
+            <!-- Step 3 Start -->
             <div v-if="active == 3">
               <div class="container">
                 <div class="row">
@@ -242,7 +245,7 @@
                 </div>
               </div>
 
-            </div>
+            </div><!-- Step 3 End -->
              
           </div>
          

@@ -77,19 +77,19 @@ const routes = [
     }
   },
   {
-    path: '/collection-ab/',
-    component: () => import('./views/Collection-AB.vue'),
+    path: '/collection/',
+    component: () => import('./views/Configurator-s1.vue'),
     meta: {
       title: 'Add a Collection'
     }
   },
-  {
-    path: '/collection-ar/',
-    component: () => import('./views/Collection-AR.vue'),
-    meta: {
-      title: 'Add a Collection'
-    }
-  },
+  // {
+  //   path: '/collection-ar/',
+  //   component: () => import('./views/Collection-AR.vue'),
+  //   meta: {
+  //     title: 'Add a Collection'
+  //   }
+  // },
   {
     path: '/alba/step',
     component: () => import('./views/Collection-AB-step.vue'),
