@@ -77,8 +77,8 @@ const routes = [
     }
   },
   {
-    path: '/collection-ab/',
-    component: () => import('./views/Collection-AB.vue'),
+    path: '/collection/',
+    component: () => import('./views/Configurator-s1.vue'),
     meta: {
       title: 'Add a Collection'
     }
