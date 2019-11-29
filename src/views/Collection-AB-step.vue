@@ -2,7 +2,7 @@
   <div id="addstep">
     <div class="bg-gray">
       <el-steps :active="active" finish-status="success" simple>
-         <el-step title="1. Materials"></el-step>
+          <el-step title="1. Materials"></el-step>
           <el-step title="2. Materials"></el-step>
           <el-step title="3. Format"></el-step>
           <el-step title="4. Function"></el-step>
