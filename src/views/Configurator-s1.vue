@@ -83,7 +83,9 @@ export default {
     },
     next(){
       var configurator = {
+        "step":1,
         "collection":this.type
+        
       }
         localStorage.setItem("configurator",JSON.stringify(configurator)),
         // 读取 var configurator = JSON.parse(localStorage.getItem("configurator"))

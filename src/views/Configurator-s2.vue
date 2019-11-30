@@ -134,13 +134,26 @@ export default {
       },
   
   mounted () {
+    
+      if(localStorage.getItem("configurator")){//在每一步都应加入次行代码，用于判断用户是否从第一步开始一直配置到当先这步
       
+      var configurator = JSON.parse(localStorage.getItem("configurator"))//若是，则取出configurator
+
+      if(configurator.material && configurator.buttonColor){//若material和buttonColor都不为空值时，才恢复数据。
+        this.material = configurator.material
+        this.buttonColor = configurator.buttonColor
+      }
+    
+      }else{
+          this.$router.push({path: '/collection/step1'});//若不是，则跳到第一步开始
+      }
        
      },
   methods:{
     next(){
       
         var configurator = JSON.parse(localStorage.getItem("configurator"))//把configurator从本地储存中取出
+        configurator.step = 2
         configurator.material = this.material
         configurator.buttonColor = this.buttonColor
         localStorage.setItem("configurator",JSON.stringify(configurator))//再放回去
