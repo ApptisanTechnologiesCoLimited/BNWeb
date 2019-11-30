@@ -125,7 +125,7 @@ export default {
   name: 'addstep',
   data(){
         return {
-            format:1,
+            
             material:1,
             active: 1,
             buttonColor:1
@@ -139,16 +139,12 @@ export default {
      },
   methods:{
     next(){
-      alert(12);
-      var configurator = {
-        "format":this.format,
-        "material":this.material,
-        "buttonColor":this.buttonColor
-      }
-        localStorage.setItem("configurator",JSON.stringify(configurator))
-        // 读取 var configurator = JSON.parse(localStorage.getItem("configurator"))
-        // 再保存 configurator.material = "black"; localStorage.setItem("configurator",JSON.stringify(configurator))
-        // this.$router.push({path: '/collection/step3'});
+      
+        var configurator = JSON.parse(localStorage.getItem("configurator"))//把configurator从本地储存中取出
+        configurator.material = this.material
+        configurator.buttonColor = this.buttonColor
+        localStorage.setItem("configurator",JSON.stringify(configurator))//再放回去
+        
     },
     back(){
       this.$router.push({path: '/collection/step1'});
