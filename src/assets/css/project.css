@@ -54,7 +54,7 @@ tr:hover td:first-child{
   min-height: calc(100vh - 220px);
 }
 .content.collect{
-  min-height: calc(100vh - 217px);
+  min-height: calc(100vh - 241px);
 }
 .content.addsk{
   min-height: calc(100vh - 340px);

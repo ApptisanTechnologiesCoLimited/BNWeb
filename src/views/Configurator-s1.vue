@@ -70,24 +70,32 @@ export default {
   name: 'collectionA',
   data(){
         return {
-            type:0
+            type:{},
+
         }
       },
   created:function () {
         this.$parent.headerB();
         this.$parent.footerB();
   },
+  mounted () {
+    
+      if(localStorage.getItem("collection")){
+        this.type = localStorage.getItem("collection")
+         }else{
+           this.type = 0
+        }//若collection为空值时，设置默认选项。
+       
+     },
   methods:{
     setType(ID){    
       this.type = ID
     },
     next(){
-      var configurator = {
-        "step":1,
-        "collection":this.type
-        
-      }
-        localStorage.setItem("configurator",JSON.stringify(configurator)),
+      var step = 1;
+      var collection = this.type;
+        localStorage.setItem("collection",collection),
+        localStorage.setItem("step",step),
         // 读取 var configurator = JSON.parse(localStorage.getItem("configurator"))
         // 再保存 configurator.material = "black"; localStorage.setItem("configurator",JSON.stringify(configurator))
         this.$router.push({path: '/collection/step2'});
