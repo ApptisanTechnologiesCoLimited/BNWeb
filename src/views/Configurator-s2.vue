@@ -17,19 +17,19 @@
        
         <div class="content middle collect" >
           <div class="cell">
-            <!-- Step 1 Start -->
-            <div v-if="active == 1">
+            <!-- Alba -->
+            <div v-if="configurator.collection==0">
               <div class="container">
                 <div class="row mt10">
                   <div class="col-xs-10 col-xs-offset-1">
                     <div class="col-xs-6 relative text-center">
-                      <img v-if="material == 1" src="../assets/images/ybg.png" class="h350" alt="">
-                      <img v-if="material == 2" src="../assets/images/mbf.png" class="h350" alt="">
-                      <img v-if="material == 3" src="../assets/images/sf.png" class="h350" alt="">
-                      <img v-if="material == 4" src="../assets/images/iws.png" class="h350" alt="">
+                      <img v-if="configurator.material == 1" src="../assets/images/ybg.png" class="h350" alt="">
+                      <img v-if="configurator.material == 2" src="../assets/images/mbf.png" class="h350" alt="">
+                      <img v-if="configurator.material == 3" src="../assets/images/sf.png" class="h350" alt="">
+                      <img v-if="configurator.material == 4" src="../assets/images/iws.png" class="h350" alt="">
                       <div class="button-img">
-                         <img v-if="buttonColor == 1" src="../assets/images/button-b4.png" class="h350" alt="">
-                         <img v-if="buttonColor == 2" src="../assets/images/button-w4.png" class="h350" alt="">
+                         <img v-if="configurator.buttonColor == 1" src="../assets/images/button-b4.png" class="h350" alt="">
+                         <img v-if="configurator.buttonColor == 2" src="../assets/images/button-w4.png" class="h350" alt="">
                       </div>
                      
 
@@ -40,26 +40,26 @@
                     <div class="row">
                       <p class="mb20">FRAME</p>
                       <div class="col-xs-12">
-                        <div class="inlineb mr20" @click="actMate(1);" :class="material == 1 ? 'active':''" >
+                        <div class="inlineb mr20" @click="actMate(1);" :class="configurator.material == 1 ? 'active':''" >
                           <img src="../assets/images/ybg.png" class="h50" alt="York black (Glass)" title="York black (Glass)">
                           <p class="name-mc">
                             York black (Glass)
                           </p>
                           
                         </div>
-                        <div class="inlineb mr20" @click="actMate(2);" :class="material == 2 ? 'active':''" >
+                        <div class="inlineb mr20" @click="actMate(2);" :class="configurator.material == 2 ? 'active':''" >
                           <img src="../assets/images/mbf.png" class="h50" alt="Mars Black" title="Mars Black">
                           <p class="name-mc">
                             Mars Black
                           </p>
                         </div>
-                        <div class="inlineb mr20" @click="actMate(3);" :class="material == 3 ? 'active':''" >
+                        <div class="inlineb mr20" @click="actMate(3);" :class="configurator.material == 3 ? 'active':''" >
                           <img src="../assets/images/sf.png" class="h50" alt="Silver" title="Silver">
                           <p class="name-mc">
                             Silver
                           </p>
                         </div>
-                        <div class="inlineb" @click="actMate(4);" :class="material == 4 ? 'active':''" >
+                        <div class="inlineb" @click="actMate(4);" :class="configurator.material == 4 ? 'active':''" >
                           <img src="../assets/images/iws.png" class="h50" alt="Ice White Surface" title="Ice White Surface">
                           <p class="name-mc">
                             Ice White Surface
@@ -70,14 +70,14 @@
                         </div>
                         <div class="col-xs-12">
                           <p class="mb20 mt20">BUTTONS</p>
-                          <div class="inlineb mr20" @click="actButton(1);" :class="buttonColor == 1 ? 'active':''" >
+                          <div class="inlineb mr20" @click="actButton(1);" :class="configurator.buttonColor == 1 ? 'active':''" >
                             <img src="../assets/images/button-b4.png" class="h50" alt="York black (Glass)" title="York black (Glass)">
                             <p class="name-mc">
                               York black (Glass)
                             </p>
                           
                          </div>
-                         <div class="inlineb" @click="actButton(2);" :class="buttonColor == 2 ? 'active':''" >
+                         <div class="inlineb" @click="actButton(2);" :class="configurator.buttonColor == 2 ? 'active':''" >
                             <img src="../assets/images/button-w4.png" class="h50" alt="Ice White Surface" title="Ice White Surface">
                             <p class="name-mc">
                               Ice White Surface
@@ -98,6 +98,72 @@
                 </div>
               </div>
             </div><!-- Step 1 End -->
+
+
+            <!-- Aria -->
+            <div v-if="configurator.collection==1">
+              <div class="container">
+                <div class="row mt10">
+                  <div class="col-xs-10 col-xs-offset-1">
+                    <div class="col-xs-6 relative text-center">
+                      <img v-if="configurator.material == 1" src="../assets/images/ybg.png" class="h350" alt="">
+                      <img v-if="configurator.material == 2" src="../assets/images/mbf.png" class="h350" alt="">
+                      <img v-if="configurator.material == 3" src="../assets/images/sf.png" class="h350" alt="">
+                      <img v-if="configurator.material == 4" src="../assets/images/iws.png" class="h350" alt="">
+                      <div class="button-img">
+                         <img v-if="configurator.buttonColor == 1" src="../assets/images/button-b4.png" class="h350" alt="">
+                         <img v-if="configurator.buttonColor == 2" src="../assets/images/button-w4.png" class="h350" alt="">
+                      </div>
+                     
+
+                    </div>
+                  <div class="col-xs-6 text-center">
+                    <p class="font20 mb20">SELECT MATERIAL AND COLOR</p>
+                    
+                    <div class="row">
+                      <p class="mb20">FRAME</p>
+                      <div class="col-xs-12">
+                        <div class="inlineb mr20" @click="actMate(1);" :class="configurator.material == 1 ? 'active':''" >
+                          <img src="../assets/images/ybg.png" class="h50" alt="York black (Glass)" title="York black (Glass)">
+                          <p class="name-mc">
+                            York black (Glass)
+                          </p>
+                          
+                        </div>
+                        <div class="inlineb mr20" @click="actMate(2);" :class="configurator.material == 2 ? 'active':''" >
+                          <img src="../assets/images/mbf.png" class="h50" alt="Mars Black" title="Mars Black">
+                          <p class="name-mc">
+                            Mars Black
+                          </p>
+                        </div>
+                        <div class="inlineb mr20" @click="actMate(3);" :class="configurator.material == 3 ? 'active':''" >
+                          <img src="../assets/images/sf.png" class="h50" alt="Silver" title="Silver">
+                          <p class="name-mc">
+                            Silver
+                          </p>
+                        </div>
+                        <div class="inlineb" @click="actMate(4);" :class="configurator.material == 4 ? 'active':''" >
+                          <img src="../assets/images/iws.png" class="h50" alt="Ice White Surface" title="Ice White Surface">
+                          <p class="name-mc">
+                            Ice White Surface
+                          </p>
+                        </div>
+                        <div class="col-xs-12 mt30">
+                          <hr class="gray ">
+                        </div>
+                     
+
+                        
+                      </div>
+                        
+                    </div>
+                   
+                  </div>
+                </div>
+                 
+                </div>
+              </div>
+            </div><!-- -->
            
           </div>
          
@@ -126,9 +192,8 @@ export default {
   data(){
         return {
             
-            material:1,
-            active: 1,
-            buttonColor:1
+            
+            configurator:{}
             
         }
       },
@@ -137,12 +202,12 @@ export default {
     
       if(localStorage.getItem("configurator")){//在每一步都应加入次行代码，用于判断用户是否从第一步开始一直配置到当先这步
       
-      var configurator = JSON.parse(localStorage.getItem("configurator"))//若是，则取出configurator
+      this.configurator = JSON.parse(localStorage.getItem("configurator"))//若是，则取出configurator
 
-      if(configurator.material && configurator.buttonColor){//若material和buttonColor都不为空值时，才恢复数据。
-        this.material = configurator.material
-        this.buttonColor = configurator.buttonColor
-      }
+       if(!this.configurator.material)this.configurator.material = 1;//若material为空值时，设置默认选项。
+       if(!this.configurator.buttonColor)this.configurator.buttonColor = 1;//若buttonColor为空值时，设置默认选项。
+       
+      
     
       }else{
           this.$router.push({path: '/collection/step1'});//若不是，则跳到第一步开始
@@ -152,11 +217,10 @@ export default {
   methods:{
     next(){
       
-        var configurator = JSON.parse(localStorage.getItem("configurator"))//把configurator从本地储存中取出
-        configurator.step = 2
-        configurator.material = this.material
-        configurator.buttonColor = this.buttonColor
-        localStorage.setItem("configurator",JSON.stringify(configurator))//再放回去
+        this.configurator.step = 2
+        this.configurator.material = this.material
+        this.configurator.buttonColor = this.buttonColor
+        localStorage.setItem("configurator",JSON.stringify(this.configurator))//再放回去
         
     },
     back(){
@@ -164,12 +228,11 @@ export default {
     },
     
      actButton(index){
-       this.buttonColor = index
+       this.configurator.buttonColor = index
      },
 
      actMate(index){
-        this.material = index
-        // alert(this.activeClass);
+        this.configurator.material = index
         
      }
     
