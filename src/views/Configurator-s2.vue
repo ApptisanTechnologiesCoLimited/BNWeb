@@ -4,12 +4,12 @@
       <ol class="breadcrumb">
           <li class="black">1. Collection</li>
           <li class="orange">2. Materials</li>
-          <li class="gray-w">3. Materials</li>
-          <li class="gray-w">4. Materials</li>
-          <li class="gray-w">5. Materials</li>
-          <li class="gray-w">6. Materials</li>
-          <li class="gray-w">7. Materials</li>
-          <li class="gray-w">8. Materials</li>
+          <li class="gray-w">3. Frame</li>
+          <li class="gray-w">4. Product</li>
+          <li class="gray-w">5. Engraving</li>
+          <li class="gray-w">6. Backlights</li>
+          <li class="gray-w">7. Details</li>
+          <li class="gray-w">8. Create</li>
           <span class="font16 black click pull-right">✕</span>
         </ol>
            
@@ -108,7 +108,7 @@
           <hr class="gray">
           <div class="row">
           <div class="col-xs-4 click" @click="back()"><i class="el-icon-d-arrow-left"></i> BACK</div>
-            <div class="col-xs-4 text-center click" @click="save()">SAVE THE ARTWORK</div>
+            <div class="col-xs-4"></div>
             <div class="col-xs-4 text-right click orange" @click="next()">NEXT <i class="el-icon-d-arrow-right"></i></div>
           </div>
         </div>

@@ -40,7 +40,7 @@
                   <div class="col-xs-4 click"></div>
                   <div class="col-xs-4 text-center click"></div>
                   <div class="col-xs-4 text-right click">
-                    <div class="black" @click="next()">NEXT <i class="el-icon-d-arrow-right"></i></div>
+                    <div :class="type == 0 ? 'black':'white'" @click="next()">NEXT <i class="el-icon-d-arrow-right"></i></div>
                   </div>
 
                   <!-- <div class="col-xs-4 text-right click" v-if="type == 1">
