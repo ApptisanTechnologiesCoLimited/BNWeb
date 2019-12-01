@@ -21,7 +21,7 @@
                         <img src="../assets/images/ar-product.png" v-if="type == 1" class="h350" alt="">
                       </div>
                       <div class="col-xs-6 text-center mt30">
-                        <p class="font20" :class="type == 1 ? 'white':''">SELECT COLLECTION</p>
+                        <p class="font20" :class="type == 1 ? 'white':''">SELECT MATERIAL AND COLOR</p>
                         <div class="button-b black w100 mt30" :class="type == 0 ? 'active':'white'" @click="setType(0);">
                           ALBA
                         </div>
