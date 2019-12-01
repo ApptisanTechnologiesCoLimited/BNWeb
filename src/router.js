@@ -103,6 +103,13 @@ const routes = [
     meta: {
       title: 'Add a Collection'
     }
+  },
+  {
+    path: '/collection/step3',
+    component: () => import('./views/Configurator-s3.vue'),
+    meta: {
+      title: 'Add a Collection'
+    }
   }
 ]
 

@@ -40,26 +40,26 @@
                     <div class="row">
                       <p class="mb20">FRAME</p>
                       <div class="col-xs-12">
-                        <div class="inlineb mr20" @click="actMate(1,'../assets/images/ybg.png');" :class="material == 1 ? 'active':''" >
+                        <div class="inlineb mr20" @click="actMate(1,'/img/ybg.png');" :class="material == 1 ? 'active':''" >
                           <img :src="frameImg.frame1" class="h50" alt="York black (Glass)" title="York black (Glass)">
                           <p class="name-mc">
                             York black (Glass)
                           </p>
                           
                         </div>
-                        <div class="inlineb mr20" @click="actMate(2,'../assets/images/ybg.png');" :class="material == 2 ? 'active':''" >
+                        <div class="inlineb mr20" @click="actMate(2,'/img/mbf.png');" :class="material == 2 ? 'active':''" >
                           <img :src="frameImg.frame2" class="h50" alt="Mars Black" title="Mars Black">
                           <p class="name-mc">
                             Mars Black
                           </p>
                         </div>
-                        <div class="inlineb mr20" @click="actMate(3,'../assets/images/ybg.png');" :class="material == 3 ? 'active':''" >
+                        <div class="inlineb mr20" @click="actMate(3,'/img/sf.png');" :class="material == 3 ? 'active':''" >
                           <img :src="frameImg.frame3" class="h50" alt="Silver" title="Silver">
                           <p class="name-mc">
                             Silver
                           </p>
                         </div>
-                        <div class="inlineb" @click="actMate(4,'../assets/images/ybg.png');" :class="material == 4 ? 'active':''" >
+                        <div class="inlineb" @click="actMate(4,'/img/iws.png');" :class="material == 4 ? 'active':''" >
                           <img :src="frameImg.frame4" class="h50" alt="Ice White Surface" title="Ice White Surface">
                           <p class="name-mc">
                             Ice White Surface
@@ -70,14 +70,14 @@
                         </div>
                         <div class="col-xs-12">
                           <p class="mb20 mt20">BUTTONS</p>
-                          <div class="inlineb mr20" @click="actButton(1,'../assets/images/button-b4.png');" :class="buttonColor == 1 ? 'active':''" >
+                          <div class="inlineb mr20" @click="actButton(1,'/img/button-b4.png');" :class="buttonColor == 1 ? 'active':''" >
                             <img :src="bTypeImg.buttonB4" class="h50" alt="York black (Glass)" title="York black (Glass)">
                             <p class="name-mc">
                               York black (Glass)
                             </p>
                           
                          </div>
-                         <div class="inlineb" @click="actButton(2,'../assets/images/button-w4.png');" :class="buttonColor == 2 ? 'active':''" >
+                         <div class="inlineb" @click="actButton(2,'/img/button-w4.png');" :class="buttonColor == 2 ? 'active':''" >
                             <img :src="bTypeImg.buttonW4" class="h50" alt="Ice White Surface" title="Ice White Surface">
                             <p class="name-mc">
                               Ice White Surface
@@ -106,8 +106,8 @@
                 <div class="row mt10">
                   <div class="col-xs-10 col-xs-offset-1">
                     <div class="col-xs-6 relative text-center">
-                      <img v-if="material == 1" src="../assets/images/ar-product.png" class="h350" alt="">
-                      <img v-if="material == 2" src="../assets/images/ar-product.png" class="h350" alt="">
+                      <img v-if="material == 1" :src="frameImg.frame1" class="h350" alt="">
+                      <img v-if="material == 2" :src="frameImg.frame4" class="h350" alt="">
 
                     </div>
                   <div class="col-xs-6 text-center">
@@ -116,14 +116,14 @@
                     <div class="row mt15p">
                       <p class="mb20">Surface</p>
                       <div class="col-xs-12">
-                        <div class="inlineb mr20" @click="actMate(1);" :class="material == 1 ? 'active':''" >
+                        <div class="inlineb mr20" @click="actMate(1,'/img/ybg.png');" :class="material == 1 ? 'active':''" >
                           <img :src="frameImg.frame1"  class="h50" alt="York black (Glass)" title="York black (Glass)">
                           <p class="name-mc">
                             York black (Glass)
                           </p>
                           
                         </div>
-                        <div class="inlineb mr20" @click="actMate(2);" :class="material == 2 ? 'active':''" >
+                        <div class="inlineb mr20" @click="actMate(2,'/img/images/iws.png');" :class="material == 2 ? 'active':''" >
                           <img :src="frameImg.frame4"  class="h50" alt="Mars Black" title="Mars Black">
                           <p class="name-mc">
                             Ice White (Glass)
