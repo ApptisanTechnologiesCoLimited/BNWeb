@@ -106,26 +106,26 @@
                   <div class="col-xs-4 text-center">
                     <p class="mb20">MATERIAL AND COLOR</p>
                     <div class="inlineb mr20" @click="act2(1,'York black (Glass)');" :class="material == 1 ? 'active':''" >
-                      <img src="../assets/images/ybg.png" class="h50" alt="York black (Glass)" title="York black (Glass)">
+                      <img src="../assets/images/collection/alba/frame/single/ybg.png" class="h50" alt="York black (Glass)" title="York black (Glass)">
                       <p class="name-mc">
                         York black (Glass)
                       </p>
                       
                     </div>
                     <div class="inlineb mr20" @click="act2(2,'Mars Black');" :class="material == 2 ? 'active':''" >
-                      <img src="../assets/images/mbf.png" class="h50" alt="Mars Black" title="Mars Black">
+                      <img src="../assets/images/collection/alba/frame/single/mbf.png" class="h50" alt="Mars Black" title="Mars Black">
                       <p class="name-mc">
                         Mars Black
                       </p>
                     </div>
                     <div class="inlineb mr20" @click="act2(3,'Silver');" :class="material == 3 ? 'active':''" >
-                      <img src="../assets/images/sf.png" class="h50" alt="Silver" title="Silver">
+                      <img src="../assets/images/collection/alba/frame/single/sf.png" class="h50" alt="Silver" title="Silver">
                       <p class="name-mc">
                         Silver
                       </p>
                     </div>
                     <div class="inlineb" @click="act2(4,'Ice White Surface');" :class="material == 4 ? 'active':''" >
-                      <img src="../assets/images/iws.png" class="h50" alt="Ice White Surface" title="Ice White Surface">
+                      <img src="../assets/images/collection/alba/frame/single/iws.png" class="h50" alt="Ice White Surface" title="Ice White Surface">
                       <p class="name-mc">
                         Ice White Surface
                       </p>

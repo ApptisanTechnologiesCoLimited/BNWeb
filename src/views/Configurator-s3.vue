@@ -26,12 +26,12 @@
                      
                       <div class="inlineb p10 w100" v-viewer>
                         <div class="text-center">
-                          <img :src="mateImg"  class="h350" alt="" title="">
+                          <img :src="albaImages.frame[format][frame]"  class="h350" alt="" title="">
                         </div>
                      
                           <div class="button-img">
                             <div>
-                              <img :src="buttonColorImg" class="h350" alt="">
+                              <img :src="albaImages.button[buttonColor][0]" class="h350" alt="">
                             </div>
                         
                           </div>
@@ -42,15 +42,15 @@
                     </div>
                     <div class="col-xs-4 col-xs-offset-4 text-center mt30">
                         
-                        <div class="mr20 inlineb" @click="actFormat(1);" :class="format == 1 ? 'active':''">
+                        <div class="mr20 inlineb" @click="format=0" :class="format == 0 ? 'active':''">
                           <div class="border inlineb">
                             <span title="SOCKET" class="glyphicon glyphicon-th-large button-icon-small font20 click"></span>
                           </div>
                           <p class="name-f">
-                            One Frame
+                            Single Frame
                           </p>
                         </div>
-                        <div class="mr20 inlineb" @click="actFormat(2);" :class="format == 2 ? 'active':''">
+                        <div class="mr20 inlineb" @click="format=1" :class="format == 1 ? 'active':''">
                           <div class="border inlineb">
                             <span title="SOCKET" class="glyphicon glyphicon-th-large button-icon-small font20 click"></span>
                             <span title="SOCKET" class="glyphicon glyphicon-th-large button-icon-small font20 click"></span>
@@ -103,9 +103,39 @@ export default {
         return {
             
             collection:{},//用于判断ab或ar
-            format:{},
-            mateImg:{},
-            buttonColorImg:{}
+            format:0,
+            frame:{},
+            buttonColor:{},
+            albaImages:{
+              'frame':[
+                  [//single
+              require('../assets/images/collection/alba/frame/single/ybg.png'),
+              require('../assets/images/collection/alba/frame/single/mbf.png'),
+              require('../assets/images/collection/alba/frame/single/sf.png'),
+              require('../assets/images/collection/alba/frame/single/iws.png')
+              ],
+                  [//double
+              require('../assets/images/collection/alba/frame/double/ybg2.png'),
+              require('../assets/images/collection/alba/frame/double/mbf2.png'),
+              require('../assets/images/collection/alba/frame/double/sf2.png'),
+              require('../assets/images/collection/alba/frame/double/iws2.png')
+
+
+                  ]
+                ],
+               "button":[
+                  [//black
+              
+              require('../assets/images/collection/alba/button/single/button-b4.png')
+             
+            ],
+                 [//white
+              require('../assets/images/collection/alba/button/single/button-w4.png')
+                 ]
+                ]
+
+              
+            }
             
 
             
@@ -119,14 +149,14 @@ export default {
       if(localStorage.getItem("collection")){
         this.collection = localStorage.getItem("collection");
       }
-      if(localStorage.getItem("mateImg")){
-        this.mateImg = localStorage.getItem("mateImg");
-        // window.console.log(this.mateImg);
+      if(localStorage.getItem("frame")){
+        this.frame = localStorage.getItem("frame");
       }
-      if(localStorage.getItem("ButtonColorImg")){
-        this.buttonColorImg = localStorage.getItem("ButtonColorImg");
-        // window.console.log(this.buttonColorImg);
+
+       if(localStorage.getItem("buttonColor")){
+        this.buttonColor = localStorage.getItem("buttonColor");
       }
+      window.console.log(this.albaImages.frame[0])
       
        
      },

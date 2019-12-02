@@ -1,7 +1,7 @@
 <template>
   <div id="collectionA">
-    <div class="bg-img1" v-if="type == 0"></div>
-    <div class="bg-img2" v-if="type == 1"></div>
+    <div class="bg-img1" v-if="collection == 0"></div>
+    <div class="bg-img2" v-if="collection == 1"></div>
     <div class="">
        <ol class="breadcrumb">
           <li class="orange">1. Collection</li>
@@ -17,15 +17,14 @@
                   <div class="col-xs-10 col-xs-offset-1">
                     <div class="row">
                       <div class="col-xs-6">
-                        <img src="../assets/images/ab-product.png" v-if="type == 0" class="h350" alt="">
-                        <img src="../assets/images/ar-product.png" v-if="type == 1" class="h350" alt="">
+                        <img :src="collectionImages[collection]"  class="h350" alt="">
                       </div>
                       <div class="col-xs-6 text-center mt30">
-                        <p class="font20" :class="type == 1 ? 'white':''">SELECT MATERIAL AND COLOR</p>
-                        <div class="button-b black w100 mt30" :class="type == 0 ? 'active':'white'" @click="setType(0);">
+                        <p class="font20" :class="collection == 1 ? 'white':''">SELECT COLLECTION</p>
+                        <div class="button-b black w100 mt30" :class="collection == 0 ? 'active':'white'" @click="collection=0">
                           ALBA
                         </div>
-                        <div class="button-b black w100 mt30" :class="type == 1 ? 'active':''" @click="setType(1);">
+                        <div class="button-b black w100 mt30" :class="collection == 1 ? 'active':''" @click="collection=1">
                           ARIA
                         </div>
 
@@ -40,7 +39,7 @@
                   <div class="col-xs-4 click"></div>
                   <div class="col-xs-4 text-center click"></div>
                   <div class="col-xs-4 text-right click">
-                    <div :class="type == 0 ? 'black':'white'" @click="next()">NEXT <i class="el-icon-d-arrow-right"></i></div>
+                    <div :class="collection == 0 ? 'black':'white'" @click="next()">NEXT <i class="el-icon-d-arrow-right"></i></div>
                   </div>
 
                   <!-- <div class="col-xs-4 text-right click" v-if="type == 1">
@@ -70,7 +69,11 @@ export default {
   name: 'collectionA',
   data(){
         return {
-            type:{},
+            collection:0,
+            collectionImages:[
+              require("../assets/images/collection/alba/ab-product.png"),
+              require("../assets/images/collection/aria/ar-product.png")
+            ]
 
         }
       },
@@ -81,23 +84,18 @@ export default {
   mounted () {
     
       if(localStorage.getItem("collection")){
-        this.type = localStorage.getItem("collection")
+        this.collection = localStorage.getItem("collection")
          }else{
-           this.type = 0
+           this.collection = 0
         }//若collection为空值时，设置默认选项。
        
      },
   methods:{
-    setType(ID){    
-      this.type = ID
-    },
+    
     next(){
-      var step = 1;
-      var collection = this.type;
-        localStorage.setItem("collection",collection),
-        localStorage.setItem("step",step),
-        // 读取 var configurator = JSON.parse(localStorage.getItem("configurator"))
-        // 再保存 configurator.material = "black"; localStorage.setItem("configurator",JSON.stringify(configurator))
+        localStorage.setItem("step",1),
+        localStorage.setItem("collection",this.collection),
+        
         this.$router.push({path: '/collection/step2'});
     }
   }

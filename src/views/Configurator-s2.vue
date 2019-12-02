@@ -23,13 +23,10 @@
                 <div class="row mt10">
                   <div class="col-xs-10 col-xs-offset-1">
                     <div class="col-xs-6 relative text-center">
-                      <img v-if="material == 1" :src="frameImg.frame1" class="h350" alt="">
-                      <img v-if="material == 2" :src="frameImg.frame2" class="h350" alt="">
-                      <img v-if="material == 3" :src="frameImg.frame3" class="h350" alt="">
-                      <img v-if="material == 4" :src="frameImg.frame4" class="h350" alt="">
+                      <img  :src="albaImages.frame[0][frame]" class="h350" alt="">
+                      
                       <div class="button-img">
-                         <img v-if="buttonColor == 1" :src="bTypeImg.buttonB4" class="h350" alt="">
-                         <img v-if="buttonColor == 2" :src="bTypeImg.buttonW4" class="h350" alt="">
+                         <img  :src="albaImages.button[buttonColor][0]" class="h350" alt="">
                       </div>
                      
 
@@ -40,27 +37,27 @@
                     <div class="row">
                       <p class="mb20">FRAME</p>
                       <div class="col-xs-12">
-                        <div class="inlineb mr20" @click="actMate(1,'/img/ybg.png');" :class="material == 1 ? 'active':''" >
-                          <img :src="frameImg.frame1" class="h50" alt="York black (Glass)" title="York black (Glass)">
+                        <div class="inlineb mr20" @click="frame=0" :class="frame == 0 ? 'active':''" >
+                          <img :src="albaImages.frame[0][0]" class="h50" alt="York black (Glass)" title="York black (Glass)">
                           <p class="name-mc">
                             York black (Glass)
                           </p>
                           
                         </div>
-                        <div class="inlineb mr20" @click="actMate(2,'/img/mbf.png');" :class="material == 2 ? 'active':''" >
-                          <img :src="frameImg.frame2" class="h50" alt="Mars Black" title="Mars Black">
+                        <div class="inlineb mr20" @click="frame=1" :class="frame == 1 ? 'active':''" >
+                          <img :src="albaImages.frame[0][1]" class="h50" alt="Mars Black" title="Mars Black">
                           <p class="name-mc">
                             Mars Black
                           </p>
                         </div>
-                        <div class="inlineb mr20" @click="actMate(3,'/img/sf.png');" :class="material == 3 ? 'active':''" >
-                          <img :src="frameImg.frame3" class="h50" alt="Silver" title="Silver">
+                        <div class="inlineb mr20" @click="frame=2" :class="frame == 2 ? 'active':''" >
+                          <img :src="albaImages.frame[0][2]" class="h50" alt="Silver" title="Silver">
                           <p class="name-mc">
                             Silver
                           </p>
                         </div>
-                        <div class="inlineb" @click="actMate(4,'/img/iws.png');" :class="material == 4 ? 'active':''" >
-                          <img :src="frameImg.frame4" class="h50" alt="Ice White Surface" title="Ice White Surface">
+                        <div class="inlineb" @click="frame=3" :class="frame == 3 ? 'active':''" >
+                          <img :src="albaImages.frame[0][3]" class="h50" alt="Ice White Surface" title="Ice White Surface">
                           <p class="name-mc">
                             Ice White Surface
                           </p>
@@ -70,15 +67,15 @@
                         </div>
                         <div class="col-xs-12">
                           <p class="mb20 mt20">BUTTONS</p>
-                          <div class="inlineb mr20" @click="actButton(1,'/img/button-b4.png');" :class="buttonColor == 1 ? 'active':''" >
-                            <img :src="bTypeImg.buttonB4" class="h50" alt="York black (Glass)" title="York black (Glass)">
+                          <div class="inlineb mr20" @click="buttonColor=0" :class="buttonColor == 0 ? 'active':''" >
+                            <img :src="albaImages.button[0][0]" class="h50" alt="York black (Glass)" title="York black (Glass)">
                             <p class="name-mc">
                               York black (Glass)
                             </p>
                           
                          </div>
-                         <div class="inlineb" @click="actButton(2,'/img/button-w4.png');" :class="buttonColor == 2 ? 'active':''" >
-                            <img :src="bTypeImg.buttonW4" class="h50" alt="Ice White Surface" title="Ice White Surface">
+                         <div class="inlineb" @click="buttonColor=1" :class="buttonColor == 1 ? 'active':''" >
+                            <img :src="albaImages.button[1][0]" class="h50" alt="Ice White Surface" title="Ice White Surface">
                             <p class="name-mc">
                               Ice White Surface
                             </p>
@@ -106,8 +103,7 @@
                 <div class="row mt10">
                   <div class="col-xs-10 col-xs-offset-1">
                     <div class="col-xs-6 relative text-center">
-                      <img v-if="material == 1" :src="frameImg.frame1" class="h350" alt="">
-                      <img v-if="material == 2" :src="frameImg.frame4" class="h350" alt="">
+                      <img :src="frameImages[1][frame]" class="h350" alt="">
 
                     </div>
                   <div class="col-xs-6 text-center">
@@ -116,15 +112,15 @@
                     <div class="row mt15p">
                       <p class="mb20">Surface</p>
                       <div class="col-xs-12">
-                        <div class="inlineb mr20" @click="actMate(1,'/img/ybg.png');" :class="material == 1 ? 'active':''" >
-                          <img :src="frameImg.frame1"  class="h50" alt="York black (Glass)" title="York black (Glass)">
+                        <div class="inlineb mr20" @click="frame=0" :class="frame == 4 ? 'active':''" >
+                          <img :src="frameImages[1][0]"  class="h50" alt="York black (Glass)" title="York black (Glass)">
                           <p class="name-mc">
                             York black (Glass)
                           </p>
                           
                         </div>
-                        <div class="inlineb mr20" @click="actMate(2,'/img/images/iws.png');" :class="material == 2 ? 'active':''" >
-                          <img :src="frameImg.frame4"  class="h50" alt="Mars Black" title="Mars Black">
+                        <div class="inlineb mr20" @click="frame=1" :class="frame == 5 ? 'active':''" >
+                          <img :src="frameImages[1][1]"  class="h50" alt="Mars Black" title="Mars Black">
                           <p class="name-mc">
                             Ice White (Glass)
                           </p>
@@ -172,26 +168,38 @@ export default {
         return {
             
             collection:{},
-            material:{},
+            frame:{},
             buttonColor:{},
-            mateImg:{},
-            buttonImg:{},
-            frameImg:{
-              'frame1':require('../assets/images/ybg.png'),
-              'frame2':require('../assets/images/mbf.png'),
-              'frame3':require('../assets/images/sf.png'),
-              'frame4':require('../assets/images/iws.png')
-            },
-            bTypeImg:{
-              'buttonW2':require('../assets/images/button-w2.png'),
-              'buttonW4':require('../assets/images/button-w4.png'),
-              'buttonW5':require('../assets/images/button-w5.png'),
-              'buttonW8':require('../assets/images/button-w8.png'),
-              'buttonB2':require('../assets/images/button-b2.png'),
-              'buttonB4':require('../assets/images/button-b4.png'),
-              'buttonB5':require('../assets/images/button-b5.png'),
-              'buttonB8':require('../assets/images/button-b8.png')
-            },
+            albaImages:{
+              'frame':[
+                  [//single
+              require('../assets/images/collection/alba/frame/single/ybg.png'),
+              require('../assets/images/collection/alba/frame/single/mbf.png'),
+              require('../assets/images/collection/alba/frame/single/sf.png'),
+              require('../assets/images/collection/alba/frame/single/iws.png')
+              ],
+                  [//double
+              require('../assets/images/collection/alba/frame/double/ybg2.png'),
+              require('../assets/images/collection/alba/frame/double/mbf2.png'),
+              require('../assets/images/collection/alba/frame/double/sf2.png'),
+              require('../assets/images/collection/alba/frame/double/iws2.png')
+
+
+                  ]
+                ],
+                "button":[
+                  [//black
+              
+              require('../assets/images/collection/alba/button/single/button-b4.png')
+             
+            ],
+                 [//white
+              require('../assets/images/collection/alba/button/single/button-w4.png')
+                 ]
+                ]
+
+              
+            }
 
             
         }
@@ -202,59 +210,43 @@ export default {
           this.$router.push({path: '/collection/step1'});
          }//若collection为空值时，设置默认选项。
 
-      if(localStorage.getItem("material") == null){
-        this.material = 1;
-      }else{
-        this.material = localStorage.getItem("material");
+
+      if(localStorage.getItem("collection")){
+        this.collection = localStorage.getItem("collection");
+
       }
+
+      if(localStorage.getItem("frame") == null){
+        this.frame =0
+        
+      }else{
+        this.frame = localStorage.getItem("frame");
+      }
+      
+
       if(localStorage.getItem("buttonColor") == null){
-        this.buttonColor = 1;
+        this.buttonColor = 0;
       }else{
         this.buttonColor = localStorage.getItem("buttonColor")
       }
-      if(localStorage.getItem("collection")){
-        this.collection = localStorage.getItem("collection");
-      }
-      if(localStorage.getItem("mateImg")){
-        this.mateImg = localStorage.getItem("mateImg")
-      }
-      if(localStorage.getItem("ButtonColorImg")){
-        this.buttonImg = localStorage.getItem("ButtonColorImg")
-      }
+
+      
        
      },
   methods:{
     next(){
-        var step = 2;
-        var materialL = this.material;
-        var buttonColorL = this.buttonColor;
-        var imgMate = this.mateImg;
-        var imgButton = this.buttonImg;
-        localStorage.setItem("step",step),
-        localStorage.setItem("buttonColor",buttonColorL),
-        localStorage.setItem("material",materialL),
-        localStorage.setItem("mateImg",imgMate),
-        localStorage.setItem("ButtonColorImg",imgButton)
+        
+        
+        localStorage.setItem("step",2),
+        localStorage.setItem("buttonColor",this.buttonColor),
+        localStorage.setItem("frame",this.frame),
 
         this.$router.push({path: '/collection/step3'});
         
     },
     back(){
       this.$router.push({path: '/collection/step1'});
-    },
-    
-     actButton(index,img){
-       this.buttonColor = index,
-       this.buttonImg = img
-
-     },
-
-     actMate(index,img){
-        this.material = index,
-        this.mateImg = img
-
-        
-     }
+    }
     
   },
   
