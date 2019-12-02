@@ -191,3 +191,7 @@ ul.item li{
 .black-noh{
   color:#000
 }
+.left,.right{
+  vertical-align: top; 
+  margin-top:20px;
+}

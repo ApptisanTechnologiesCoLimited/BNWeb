@@ -110,6 +110,13 @@ const routes = [
     meta: {
       title: 'Add a Collection'
     }
+  },
+  {
+    path: '/collection/step4',
+    component: () => import('./views/Configurator-s4.vue'),
+    meta: {
+      title: 'Add a Collection'
+    }
   }
 ]
 

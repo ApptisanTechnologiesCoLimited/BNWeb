@@ -107,7 +107,7 @@ export default {
         return {
             
             collection:{},//用于判断ab或ar
-            format:0,
+            format:{},//本页配置项
             frame:{},
             buttonColor:{},
             albaImages:{
@@ -163,6 +163,11 @@ export default {
       if(localStorage.getItem("frame")){
         this.frame = localStorage.getItem("frame");
       }
+      if(localStorage.getItem("format")){
+        this.format = localStorage.getItem("format");
+      }else{
+         this.format = 0
+        }
 
        if(localStorage.getItem("buttonColor")){
         this.buttonColor = localStorage.getItem("buttonColor");
@@ -175,8 +180,7 @@ export default {
     next(){
         var step = 3;
         localStorage.setItem("step",step),
-        
-
+        localStorage.setItem("format",this.format),
         this.$router.push({path: '/collection/step4'});
         
     },

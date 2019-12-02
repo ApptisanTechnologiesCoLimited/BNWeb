@@ -242,8 +242,7 @@ export default {
      },
   methods:{
     next(){
-        
-        
+      
         localStorage.setItem("step",2),
         localStorage.setItem("buttonColor",this.buttonColor),
         localStorage.setItem("frame",this.frame),
