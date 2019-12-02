@@ -190,11 +190,18 @@ export default {
                 "button":[
                   [//black
               
-              require('../assets/images/collection/alba/button/single/button-b4.png')
+              require('../assets/images/collection/alba/button/black/button-b2.png'),
+              require('../assets/images/collection/alba/button/black/button-b4.png'),
+              require('../assets/images/collection/alba/button/black/button-b5.png'),
+              require('../assets/images/collection/alba/button/black/button-b8.png')
+
              
             ],
                  [//white
-              require('../assets/images/collection/alba/button/single/button-w4.png')
+              require('../assets/images/collection/alba/button/white/button-w2.png'),
+              require('../assets/images/collection/alba/button/white/button-w4.png'),
+              require('../assets/images/collection/alba/button/white/button-w5.png'),
+              require('../assets/images/collection/alba/button/white/button-w8.png')
                  ]
                 ]
 

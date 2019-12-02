@@ -32,7 +32,11 @@
                           <div class="button-img">
                             <div>
                               <img :src="albaImages.button[buttonColor][0]" class="h350" alt="">
+                              <img v-if="format" :src="albaImages.button[buttonColor][2]" class="h350" alt="">
+
                             </div>
+
+                             
                         
                           </div>
                       </div>
@@ -126,11 +130,18 @@ export default {
                "button":[
                   [//black
               
-              require('../assets/images/collection/alba/button/single/button-b4.png')
+              require('../assets/images/collection/alba/button/black/button-b2.png'),
+              require('../assets/images/collection/alba/button/black/button-b4.png'),
+              require('../assets/images/collection/alba/button/black/button-b5.png'),
+              require('../assets/images/collection/alba/button/black/button-b8.png')
+
              
             ],
                  [//white
-              require('../assets/images/collection/alba/button/single/button-w4.png')
+              require('../assets/images/collection/alba/button/white/button-w2.png'),
+              require('../assets/images/collection/alba/button/white/button-w4.png'),
+              require('../assets/images/collection/alba/button/white/button-w5.png'),
+              require('../assets/images/collection/alba/button/white/button-w8.png')
                  ]
                 ]
 
