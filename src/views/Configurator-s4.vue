@@ -31,7 +31,7 @@
                     <div class="button-img">
                       <div>
                         <img :src="albaImages.button[buttonColor][buttonType]" class="h350" alt="">
-                        <img v-if="format" :src="albaImages.button[buttonColor][buttonType2]" class="h350" alt="">
+                        <img v-if="format==1" :src="albaImages.button[buttonColor][buttonType2]" class="h350" alt="">
                       </div>
                     </div>
                   </div>
@@ -148,11 +148,11 @@ export default {
         return {
             
             collection:{},//用于判断ab或ar
-            format:{},
+            format:0,
             frame:{},
             buttonColor:{},
-            buttonType:{},//本页配置项
-            buttonType2:{},//本页配置项
+            buttonType:0,//本页配置项
+            buttonType2:0,//本页配置项
             albaImages:{
               'frame':[
                   [//single
@@ -208,25 +208,18 @@ export default {
       }
       if(localStorage.getItem("format")){
         this.format = localStorage.getItem("format");
-      }else{
-         this.format = 0
-        }
+      }
 
       if(localStorage.getItem("buttonType")){
         this.buttonType = localStorage.getItem("buttonType");
-      }else{
-         this.buttonType = 0
-        }
+      }
       if(localStorage.getItem("buttonType2")){
         this.buttonType2 = localStorage.getItem("buttonType2");
-      }else if(localStorage.getItem("format") == 1){
-        this.buttonType2 = 0
       }
 
        if(localStorage.getItem("buttonColor")){
         this.buttonColor = localStorage.getItem("buttonColor");
       }
-      window.console.log(this.albaImages.frame[0])
       
        
      },

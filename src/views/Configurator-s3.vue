@@ -32,7 +32,7 @@
                           <div class="button-img">
                             <div>
                               <img :src="albaImages.button[buttonColor][0]" class="h350" alt="">
-                              <img v-if="format" :src="albaImages.button[buttonColor][2]" class="h350" alt="">
+                              <img v-if="format==1" :src="albaImages.button[buttonColor][2]" class="h350" alt="">
 
                             </div>
 
@@ -186,13 +186,8 @@ export default {
     },
     back(){
       this.$router.push({path: '/collection/step2'});
-    },
-     actMate(index,img){
-        this.material = index,
-        this.mateImg = img
-
-        
-     }
+    }
+    
     
   },
   
