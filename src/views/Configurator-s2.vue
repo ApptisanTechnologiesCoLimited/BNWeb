@@ -24,6 +24,10 @@
                   <div class="col-xs-10 col-xs-offset-1">
                     <div class="col-xs-6 relative text-center">
                       <img  :src="albaImages.frame[0][frame]" class="h350" alt="">
+
+                      <div class="hold-img">
+                         <img src="../assets/images/collection/alba/hold/YorkBlack-Button-Base.png" class="h350" alt="">
+                      </div>
                       
                       <div class="button-img">
                          <img  :src="albaImages.button[buttonColor][0]" class="h350" alt="">
