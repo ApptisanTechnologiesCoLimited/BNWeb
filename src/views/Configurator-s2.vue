@@ -23,14 +23,14 @@
                 <div class="row mt10">
                   <div class="col-xs-10 col-xs-offset-1">
                     <div class="col-xs-6 relative text-center">
-                      <img  :src="albaImages.frame[0][frame]" class="h350" alt="">
+                      <img  :src="selected_item.frame.img" class="h350" alt="">
 
                       <div class="hold-img">
                          <img src="../assets/images/collection/alba/hold/YorkBlack-Button-Base.png" class="h350" alt="">
                       </div>
                       
                       <div class="button-img">
-                         <img  :src="albaImages.button[buttonColor][0]" class="h350" alt="">
+                         <img  class="h350" alt="">
                       </div>
                      
 
@@ -41,50 +41,31 @@
                     <div class="row">
                       <p class="mb20">FRAME</p>
                       <div class="col-xs-12">
-                        <div class="inlineb mr20" @click="frame=0" :class="frame == 0 ? 'active':''" >
-                          <img :src="albaImages.frame[0][0]" class="h50" alt="York black (Glass)" title="York black (Glass)">
+
+                        <div v-for="(i,index) in frameData" :key="index" class="inlineb mr20" @click="selected_item.frame=i,changeFrame(i.id)" :class="selected_item.frame==i? 'active':''" >
+                          <img :src="i.img" class="h50" alt="York black (Glass)" title="York black (Glass)">
                           <p class="name-mc">
-                            York black (Glass)
+                            {{i.name}}
                           </p>
                           
                         </div>
-                        <div class="inlineb mr20" @click="frame=1" :class="frame == 1 ? 'active':''" >
-                          <img :src="albaImages.frame[0][1]" class="h50" alt="Mars Black" title="Mars Black">
-                          <p class="name-mc">
-                            Mars Black
-                          </p>
-                        </div>
-                        <div class="inlineb mr20" @click="frame=2" :class="frame == 2 ? 'active':''" >
-                          <img :src="albaImages.frame[0][2]" class="h50" alt="Silver" title="Silver">
-                          <p class="name-mc">
-                            Silver
-                          </p>
-                        </div>
-                        <div class="inlineb" @click="frame=3" :class="frame == 3 ? 'active':''" >
-                          <img :src="albaImages.frame[0][3]" class="h50" alt="Ice White Surface" title="Ice White Surface">
-                          <p class="name-mc">
-                            Ice White Surface
-                          </p>
-                        </div>
+                        
+                        
+                        
                         <div class="col-xs-12 mt30">
                           <hr class="gray ">
                         </div>
                         <div class="col-xs-12">
                           <p class="mb20 mt20">BUTTONS</p>
-                          <div class="inlineb mr20" @click="buttonColor=0" :class="buttonColor == 0 ? 'active':''" >
-                            <img :src="albaImages.button[0][0]" class="h50" alt="York black (Glass)" title="York black (Glass)">
+
+                          <div v-for="(i,index) in buttonData" :key="index" class="inlineb mr20" @click="selected_item.button=i" :class="selected_item.button== i ? 'active':''" >
+                            <img :src="i.img" class="h50" alt="York black (Glass)" title="York black (Glass)">
                             <p class="name-mc">
-                              York black (Glass)
+                              {{i.name}}
                             </p>
                           
                          </div>
-                         <div class="inlineb" @click="buttonColor=1" :class="buttonColor == 1 ? 'active':''" >
-                            <img :src="albaImages.button[1][0]" class="h50" alt="Ice White Surface" title="Ice White Surface">
-                            <p class="name-mc">
-                              Ice White Surface
-                            </p>
-                          
-                         </div>
+                        
 
                         </div>
 
@@ -165,12 +146,37 @@
 
 <script>
 import "../assets/css/project.css";
-// import axios from "axios";
+import axios from "axios";
+
 export default {
   name: 'addstep',
   data(){
         return {
-            
+          selected_item:{},
+          selected_color:{},
+            // items:[
+            // {
+            //   frame:{name:'York black (Glass)',img:require('../assets/images/collection/alba/frame/single/ybg.png')},
+            //   buttonType:[{name:2,hole:'default'},{name:4,hole:'default'},{name:8,hole:'default'},{name:5,hole:'tt'},{name:1,hole:'socket'}],
+            //   buttonColor:[{name:'York black (Glass)',img:require('../assets/images/collection/alba/button/black/button-b2.png')}]
+              
+            // },
+            // {
+            //   frame:{name:'Mars black (Metal)',img:require('../assets/images/collection/alba/frame/single/mbf.png')},
+            //   buttonColor:[{name:'York black (Glass)',img:require('../assets/images/collection/alba/button/black/button-b2.png')}]
+              
+            // },
+            // {
+            //   frame:{name:'Siler (Metal)',img:require('../assets/images/collection/alba/frame/single/sf.png')},
+            //   buttonColor:[{name:'York black (Glass)',img:require('../assets/images/collection/alba/button/black/button-b2.png')},
+            //   {name:'Ice White (Glass)',img:require('../assets/images/collection/alba/button/white/button-w2.png')}]
+            // },
+            // {
+            //   frame:{name:'Ice White (Glass)',img:require('../assets/images/collection/alba/frame/single/iws.png')},
+            //   buttonColor:[{name:'Ice White (Glass)',img:require('../assets/images/collection/alba/button/white/button-w2.png')}]
+            // }],
+            frameData:[],
+            buttonData:[],
             collection:{},
             frame:{},
             buttonColor:{},
@@ -241,6 +247,21 @@ export default {
         this.buttonColor = localStorage.getItem("buttonColor")
       }
 
+      axios
+          .get('http://localhost:3000/step2/frames')
+          .then(response =>
+         {
+             this.frameData = response.data;
+             this.selected_item.frame = this.frameData[0]
+                 
+
+         })
+          .catch(function (error) { // 请求失败处理
+            alert(error);
+          });
+
+           
+
       
        
      },
@@ -256,6 +277,20 @@ export default {
     },
     back(){
       this.$router.push({path: '/collection/step1'});
+    },
+    changeFrame(fid){
+      axios
+          .get('http://localhost:3000/step2/buttons/'+fid)
+          .then(response =>
+         {
+             this.buttonData = response.data;
+             
+                 
+
+         })
+          .catch(function (error) { // 请求失败处理
+            alert(error);
+          });
     }
     
   },
