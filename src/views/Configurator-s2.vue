@@ -42,7 +42,7 @@
                       <p class="mb20">FRAME</p>
                       <div class="col-xs-12">
 
-                        <div v-for="(i,index) in frameData" :key="index" class="inlineb mr20" @click="changeFrame(index)" :class="frame==i.id? 'active':''" >
+                        <div v-for="(i,index) in frameData" :key="index" class="inlineb mr20" @click="changeFrame(i.id)" :class="i.id==frame? 'active':''" >
                           <img :src="i.img" class="h50" alt="York black (Glass)" title="York black (Glass)">
                           <p class="name-mc">
                             {{i.name}}
@@ -58,7 +58,7 @@
                         <div class="col-xs-12">
                           <p class="mb20 mt20">BUTTONS</p>
 
-                          <div v-for="(i,index) in buttonData" :key="index" class="inlineb mr20" @click="changeButton(index)" :class="button== i.id ? 'active':''" >
+                          <div v-for="(i,index) in buttonData" :key="index" class="inlineb mr20" @click="changeButton(i.id)" :class="i.id == button ? 'active':''" >
                             <img :src="i.img" class="h50" alt="York black (Glass)" title="York black (Glass)">
                             <p class="name-mc">
                               {{i.name}}
@@ -154,6 +154,7 @@ export default {
         return {
           selectedFrameImage:"",
           selectedButtonImage:"",
+          hightLightedButtonId:0,
             // items:[
             // {
             //   frame:{name:'York black (Glass)',img:require('../assets/images/collection/alba/frame/single/ybg.png')},
@@ -178,7 +179,7 @@ export default {
             frameData:[],
             buttonData:[],
             collection:{},
-            frame:{},
+            frame: null,
             button:{},
             albaImages:{
               'frame':[
@@ -233,48 +234,46 @@ export default {
          }//若collection为空值时，设置默认选项。
 
 
-      // if(localStorage.getItem("collection")){
-      //   this.collection = localStorage.getItem("collection");
 
-      // }
-
-      // if(localStorage.getItem("frame") == null){
-      //   this.frame =0
-        
-      // }else{
-      //   this.frame = localStorage.getItem("frame");
-      // }
-      
-
-      // if(localStorage.getItem("buttonColor") == null){
-      //   this.buttonColor = 0;
-      // }else{
-      //   this.buttonColor = localStorage.getItem("buttonColor")
-      // }
-
-      axios// 读取frame数据
+      axios// 读取frame控制区数据
           .get('http://localhost:3000/step2/frames')
           .then(response =>
          {
              this.frameData = response.data 
-             this.selectedFrameImage = response.data[this.frame-1].img 
+             
 
          }).catch(function (error) { // 请求失败处理
             window.console.log(error);
           });
-
-        axios// 读取button数据, 根据选中frame而定
+          
+         axios// 读取button控制区数据
           .get('http://localhost:3000/step2/buttons/'+this.frame)
           .then(response =>
          {
-             this.buttonData = response.data
-             this.selectedButtonImage = response.data[this.button-1].img  
-            
+             this.buttonData = response.data            
 
          })
           .catch(function (error) { // 请求失败处理
             window.console.log(error);
           });
+        
+         axios// 读取第显示区frame部分数据
+          .get('http://localhost:3000/step2/frame/'+this.frame)
+          .then(response =>
+         {    
+           var frame = response.data[0]
+             this.selectedFrameImage = frame.img 
+             
+
+         }).catch(function (error) { // 请求失败处理
+            window.console.log(error);
+          });
+
+      
+
+       
+
+          
 
 
 
@@ -287,7 +286,7 @@ export default {
     next(){
       
         localStorage.setItem("step",2),
-        localStorage.setItem("buttonColor",this.buttonColor),
+        localStorage.setItem("button",this.button),
         localStorage.setItem("frame",this.frame),
 
         this.$router.push({path: '/collection/step3'});
@@ -296,14 +295,47 @@ export default {
     back(){
       this.$router.push({path: '/collection/step1'});
     },
-    changeFrame(index){
-      this.frame = this.frameData[index].id
-      this.selectedFrameImage = this.frameData[index].img
-      axios
+    changeFrame(fid){
+      this.frame=fid
+      axios //切换button 控制区图片
           .get('http://localhost:3000/step2/buttons/'+this.frame)
           .then(response =>
          {
-             this.buttonData = response.data;
+             this.buttonData = response.data;   
+             this.button =  this.buttonData[0].id   
+             this.selectedButtonImage=this.buttonData[0].img      
+
+         })
+          .catch(function (error) { // 请求失败处理
+          
+            alert(error);
+          });
+
+      axios// 切换frame图片
+          .get('http://localhost:3000/step2/frame/'+this.frame)
+          .then(response =>
+         {
+             
+             this.selectedFrameImage = response.data[0].img
+                 
+
+         })
+          .catch(function (error) { // 请求失败处理
+          
+            alert(error);
+          });
+
+      // this.frame = this.frameData[index].id
+      // this.selectedFrameImage = this.frameData[index].img
+      
+    },
+    changeButton(bid){
+      this.button = bid
+      axios// 切换button图片
+          .get('http://localhost:3000/step2/button/'+bid)
+          .then(response =>
+         {
+             
              this.selectedButtonImage = response.data[0].img
                  
 
@@ -312,10 +344,7 @@ export default {
           
             alert(error);
           });
-    },
-    changeButton(index){
-      this.button = this.buttonData[index].id
-      this.selectedButtonImage = this.buttonData[index].img
+      
     }
     
   },
