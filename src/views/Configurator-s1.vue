@@ -83,18 +83,22 @@ export default {
   },
   mounted () {
     
-      if(localStorage.getItem("collection")){
-        this.collection = localStorage.getItem("collection")
-         }else{
-           this.collection = 0
-        }//若collection为空值时，设置默认选项。
+      // if(localStorage.getItem("collection")){
+      //   this.collection = localStorage.getItem("collection")
+      //    }else{
+      //      this.collection = 0
+      //   }//若collection为空值时，设置默认选项。
        
      },
   methods:{
     
     next(){
-        localStorage.setItem("step",1),
-        localStorage.setItem("collection",this.collection),
+        localStorage.setItem("step",1)
+        localStorage.setItem("collection",this.collection)
+        localStorage.setItem("frame",1)
+        localStorage.setItem("button",1),
+
+
         
         this.$router.push({path: '/collection/step2'});
     }
