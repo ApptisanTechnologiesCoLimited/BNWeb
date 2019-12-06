@@ -95,8 +95,9 @@ export default {
     next(){
         localStorage.setItem("step",1)
         localStorage.setItem("collection",this.collection)
-        localStorage.setItem("frame",1)
-        localStorage.setItem("button",1),
+        localStorage.setItem("frame",0)
+        localStorage.setItem("button",0),
+        
 
 
         

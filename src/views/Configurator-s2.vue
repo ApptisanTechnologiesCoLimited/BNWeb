@@ -23,14 +23,14 @@
                 <div class="row mt10">
                   <div class="col-xs-10 col-xs-offset-1">
                     <div class="col-xs-6 relative text-center">
-                      <img  :src="selectedFrameImage" class="h350" alt="">
+                      <img  :src="frameData[frame].img" class="h350" alt="">
 
                       <div class="hold-img">
-                         <img src="../assets/images/collection/alba/hold/YorkBlack-Button-Base.png" class="h350" alt="">
-                      </div>
+                         <img :src="holeData[frame][button].img" class="h350" alt="">
+                      </div> 
                       
                       <div class="button-img">
-                         <img  :src="selectedButtonImage" class="h350" alt="">
+                         <img  :src="buttonData[frame][button].img" class="h350" alt="">
                       </div>
                      
 
@@ -42,7 +42,7 @@
                       <p class="mb20">FRAME</p>
                       <div class="col-xs-12">
 
-                        <div v-for="(i,index) in frameData" :key="index" class="inlineb mr20" @click="changeFrame(i.id)" :class="i.id==frame? 'active':''" >
+                        <div v-for="(i,index) in frameData" :key="index" class="inlineb mr20" @click="changeFrame(index)" :class="index==frame? 'active':''" >
                           <img :src="i.img" class="h50" alt="York black (Glass)" title="York black (Glass)">
                           <p class="name-mc">
                             {{i.name}}
@@ -58,7 +58,7 @@
                         <div class="col-xs-12">
                           <p class="mb20 mt20">BUTTONS</p>
 
-                          <div v-for="(i,index) in buttonData" :key="index" class="inlineb mr20" @click="changeButton(i.id)" :class="i.id == button ? 'active':''" >
+                          <div v-for="(i,index) in buttonData[frame]" :key="index" class="inlineb mr20" @click="changeButton(index)" :class="index == button ? 'active':''" >
                             <img :src="i.img" class="h50" alt="York black (Glass)" title="York black (Glass)">
                             <p class="name-mc">
                               {{i.name}}
@@ -68,6 +68,9 @@
                         
 
                         </div>
+
+
+                       
 
                         
                       </div>
@@ -80,7 +83,10 @@
                 </div>
               </div>
             </div><!-- Alba End -->
-
+ <div>
+                          <p @click="changeFormat(0)" >single</p>
+                           <p @click="changeFormat(1)" >double</p>
+                        </div>
 
             <!-- Aria Start -->
             <div v-if="collection==1">
@@ -146,12 +152,21 @@
 
 <script>
 import "../assets/css/project.css";
-import axios from "axios";
+//import axios from "axios";
 
 export default {
   name: 'addstep',
   data(){
         return {
+          smartSwitch:{
+            frame:{},
+            button:{}
+          },
+          controlArea:{
+            selectedThumb:{},
+            thumbs:[],
+            
+          },
           selectedFrameImage:"",
           selectedButtonImage:"",
           hightLightedButtonId:0,
@@ -176,8 +191,29 @@ export default {
             //   frame:{name:'Ice White (Glass)',img:require('../assets/images/collection/alba/frame/single/iws.png')},
             //   buttonColor:[{name:'Ice White (Glass)',img:require('../assets/images/collection/alba/button/white/button-w2.png')}]
             // }],
-            frameData:[],
-            buttonData:[],
+            frameData:[
+              {name:'York black (Glass)',img:require('../assets/images/collection/alba/frame/single/ybg.png')},
+              {name:'Mars black (Metal)',img:require('../assets/images/collection/alba/frame/single/mbf.png')},
+              {name:'Siler (Metal)',img:require('../assets/images/collection/alba/frame/single/sf.png')},
+              {name:'Ice White (Glass)',img:require('../assets/images/collection/alba/frame/single/iws.png')}
+
+            ],
+            buttonData:[
+              [{name:'York black (Glass)',img:'images/collection/alba/button/black/button-b2.png'}],
+              [{name:'York black (Glass)',img:'images/collection/alba/button/black/button-b2.png'}],
+              [{name:'York black (Glass)',img:'images/collection/alba/button/black/button-b2.png'},
+               {name:'Ice White (Glass)',img:'images/collection/alba/button/white/button-w2.png'}],
+               [{name:'Ice White (Glass)',img:'images/collection/alba/button/white/button-w2.png'}]
+            ],
+            holeData:[
+               [{name:'York black (Glass)',img:require('../assets/images/collection/alba/hole/YorkBlack-Button-Base.png')}],
+               [{name:'York black (Glass)',img:require('../assets/images/collection/alba/hole/MarsBlack-Button-Base.png')}],
+              [{name:'York black (Glass)',img:require('../assets/images/collection/alba/hole/SilverBlack-Button-Base.png')},
+               {name:'Ice White (Glass)',img:require('../assets/images/collection/alba/hole/SilverWhite-Button-Base.png')}],
+               [{name:'Ice White (Glass)',img:require('../assets/images/collection/alba/hole/IceWhite-Button-Base.png')}]
+
+              
+            ],
             collection:{},
             frame: null,
             button:{},
@@ -228,59 +264,12 @@ export default {
       this.collection = localStorage.getItem("collection")
       this.frame = localStorage.getItem("frame")
       this.button = localStorage.getItem("button")
+      this.format = 0
 
      if(step == null){
           this.$router.push({path: '/collection/step1'});
          }//若collection为空值时，设置默认选项。
-
-
-
-      axios// 读取frame控制区数据
-          .get('http://localhost:3000/step2/frames')
-          .then(response =>
-         {
-             this.frameData = response.data 
-             
-
-         }).catch(function (error) { // 请求失败处理
-            window.console.log(error);
-          });
-          
-         axios// 读取button控制区数据
-          .get('http://localhost:3000/step2/buttons/'+this.frame)
-          .then(response =>
-         {
-             this.buttonData = response.data            
-
-         })
-          .catch(function (error) { // 请求失败处理
-            window.console.log(error);
-          });
-        
-         axios// 读取第显示区frame部分数据
-          .get('http://localhost:3000/step2/frame/'+this.frame)
-          .then(response =>
-         {    
-           var frame = response.data[0]
-             this.selectedFrameImage = frame.img 
-             
-
-         }).catch(function (error) { // 请求失败处理
-            window.console.log(error);
-          });
-
-      
-
-       
-
-          
-
-
-
-           
-
-      
-       
+   
      },
   methods:{
     next(){
@@ -296,55 +285,20 @@ export default {
       this.$router.push({path: '/collection/step1'});
     },
     changeFrame(fid){
-      this.frame=fid
-      axios //切换button 控制区图片
-          .get('http://localhost:3000/step2/buttons/'+this.frame)
-          .then(response =>
-         {
-             this.buttonData = response.data;   
-             this.button =  this.buttonData[0].id   
-             this.selectedButtonImage=this.buttonData[0].img      
-
-         })
-          .catch(function (error) { // 请求失败处理
-          
-            alert(error);
-          });
-
-      axios// 切换frame图片
-          .get('http://localhost:3000/step2/frame/'+this.frame)
-          .then(response =>
-         {
-             
-             this.selectedFrameImage = response.data[0].img
-                 
-
-         })
-          .catch(function (error) { // 请求失败处理
-          
-            alert(error);
-          });
-
-      // this.frame = this.frameData[index].id
-      // this.selectedFrameImage = this.frameData[index].img
+      this.frame = fid
+      this.button = 0
+      
+     
+      
       
     },
     changeButton(bid){
       this.button = bid
-      axios// 切换button图片
-          .get('http://localhost:3000/step2/button/'+bid)
-          .then(response =>
-         {
-             
-             this.selectedButtonImage = response.data[0].img
-                 
-
-         })
-          .catch(function (error) { // 请求失败处理
-          
-            alert(error);
-          });
       
+      
+    },
+    changeFormat(foid){
+      this.format = foid
     }
     
   },
