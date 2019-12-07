@@ -26,7 +26,7 @@
                       <img  :src="frameImage" class="h350" alt="">
 
                       <div class="hold-img">
-                         <img :src="getHoleById().img" class="h350" alt="">
+                         <img :src="holeImage" class="h350" alt="">
                       </div> 
                       
                       <div class="button-img">
@@ -42,8 +42,8 @@
                       <p class="mb20">FRAME</p>
                       <div class="col-xs-12">
 
-                        <div v-for="(i,index) in getFrameController()" :key="index" class="inlineb mr20" @click="changeFrame(i.id)" :class="i.id==frame? 'active':''" >
-                          <img :src="format ==1?i.img[0]:i.img[1]" class="h50" alt="York black (Glass)" title="York black (Glass)">
+                        <div v-for="(i,index) in frameControl" :key="index" class="inlineb mr20" @click="changeFrame(i.id)" :class="i.id==frame? 'active':''" >
+                          <img :src="i.img[0]" class="h50" alt="York black (Glass)" title="York black (Glass)">
                           <p class="name-mc">
                             {{i.name}}
                           </p>
@@ -58,7 +58,7 @@
                         <div class="col-xs-12">
                           <p class="mb20 mt20">BUTTONS</p>
 
-                          <div v-for="(i,index) in getButtonController()" :key="index" class="inlineb mr20" @click="changeButton(i.id)" :class="i.id == button ? 'active':''" >
+                          <div v-for="(i,index) in buttonControl" :key="index" class="inlineb mr20" @click="changeButton(i.id)" :class="i.id == button ? 'active':''" >
                             <img :src="i.img" class="h50" alt="York black (Glass)" title="York black (Glass)">
                             <p class="name-mc">
                               {{i.name}}
@@ -83,10 +83,7 @@
                 </div>
               </div>
             </div><!-- Alba End -->
- <div>
-                          <button @click="changeFormat(1)" >single</button>
-                           <button @click="changeFormat(2)" >double</button>
-                        </div>
+ 
 
             <!-- Aria Start -->
             <div v-if="collection==1">
@@ -158,50 +155,12 @@ export default {
   name: 'addstep',
   data(){
         return {
-          smartSwitch:{
-            frame:{},
-            button:{}
-          },
-          controlArea:{
-            selectedThumb:{},
-            thumbs:[],
-            
-          },
-          selectedFrameImage:"",
-          selectedButtonImage:"",
-          hightLightedButtonId:0,
-            // items:[
-            // {
-            //   frame:{name:'York black (Glass)',img:require('../assets/images/collection/alba/frame/single/ybg.png')},
-            //   buttonType:[{name:2,hole:'default'},{name:4,hole:'default'},{name:8,hole:'default'},{name:5,hole:'tt'},{name:1,hole:'socket'}],
-            //   buttonColor:[{name:'York black (Glass)',img:require('../assets/images/collection/alba/button/black/button-b2.png')}]
-              
-            // },
-            // {
-            //   frame:{name:'Mars black (Metal)',img:require('../assets/images/collection/alba/frame/single/mbf.png')},
-            //   buttonColor:[{name:'York black (Glass)',img:require('../assets/images/collection/alba/button/black/button-b2.png')}]
-              
-            // },
-            // {
-            //   frame:{name:'Siler (Metal)',img:require('../assets/images/collection/alba/frame/single/sf.png')},
-            //   buttonColor:[{name:'York black (Glass)',img:require('../assets/images/collection/alba/button/black/button-b2.png')},
-            //   {name:'Ice White (Glass)',img:require('../assets/images/collection/alba/button/white/button-w2.png')}]
-            // },
-            // {
-            //   frame:{name:'Ice White (Glass)',img:require('../assets/images/collection/alba/frame/single/iws.png')},
-            //   buttonColor:[{name:'Ice White (Glass)',img:require('../assets/images/collection/alba/button/white/button-w2.png')}]
-            // }],
-            
-            frameData:[
+          frameData:[
               {id:1,name:'York black (Glass)',buttonColor:[1],img:[require('../assets/images/collection/alba/frame/single/ybg.png'),require('../assets/images/collection/alba/frame/double/ybg2.png')]},
               {id:2,name:'Mars black (Metal)',buttonColor:[1],img:[require('../assets/images/collection/alba/frame/single/mbf.png'),require('../assets/images/collection/alba/frame/double/mbf2.png')]},
               {id:3,name:'Siler (Metal)',buttonColor:[1,2],img:[require('../assets/images/collection/alba/frame/single/sf.png'),require('../assets/images/collection/alba/frame/double/sf2.png')]},
               {id:4,name:'Ice White (Glass)',buttonColor:[2],img:[require('../assets/images/collection/alba/frame/single/iws.png'),require('../assets/images/collection/alba/frame/double/iws2.png')]},
-              // {id:5,name:'York black (Glass)',format:2,buttonColor:[1],img:require('../assets/images/collection/alba/frame/double/ybg2.png')},
-              // {id:6,name:'Mars black (Metal)',format:2,buttonColor:[1],img:require('../assets/images/collection/alba/frame/double/mbf2.png')},
-              // {id:7,name:'Siler (Metal)',format:2,buttonColor:[1,2],img:require('../assets/images/collection/alba/frame/double/sf2.png')},
-              // {id:8,name:'Ice White (Glass)',format:2,buttonColor:[2],img:require('../assets/images/collection/alba/frame/double/iws2.png')},
-
+            
 
             ],
             buttonData:[
@@ -217,48 +176,10 @@ export default {
 
               
             ],
-            buttonAreaData:[],
-            collection:{},
+            collection:0,
             frame: 1,
-            button:1,
-            format:1,
-            albaImages:{
-              'frame':[
-                  [//single
-              require('../assets/images/collection/alba/frame/single/ybg.png'),
-              require('../assets/images/collection/alba/frame/single/mbf.png'),
-              require('../assets/images/collection/alba/frame/single/sf.png'),
-              require('../assets/images/collection/alba/frame/single/iws.png')
-              ],
-                  [//double
-              require('../assets/images/collection/alba/frame/double/ybg2.png'),
-              require('../assets/images/collection/alba/frame/double/mbf2.png'),
-              require('../assets/images/collection/alba/frame/double/sf2.png'),
-              require('../assets/images/collection/alba/frame/double/iws2.png')
-
-
-                  ]
-                ],
-                "button":[
-                  [//black
-              
-              require('../assets/images/collection/alba/button/black/button-b2.png'),
-              require('../assets/images/collection/alba/button/black/button-b4.png'),
-              require('../assets/images/collection/alba/button/black/button-b5.png'),
-              require('../assets/images/collection/alba/button/black/button-b8.png')
-
-             
-            ],
-                 [//white
-              require('../assets/images/collection/alba/button/white/button-w2.png'),
-              require('../assets/images/collection/alba/button/white/button-w4.png'),
-              require('../assets/images/collection/alba/button/white/button-w5.png'),
-              require('../assets/images/collection/alba/button/white/button-w8.png')
-                 ]
-                ]
-
-              
-            }
+            button:1
+            
 
             
         }
@@ -277,7 +198,6 @@ export default {
 
            
 
-             //this.changeHole();
    
      },
   methods:{
@@ -295,45 +215,51 @@ export default {
     },
     changeFrame(fid){
       this.frame = fid
-      var frame = this.getFramebyId()
+      var frame = this.frameData.find(f => f.id == this.frame)
       this.button = frame.buttonColor[0]
-      //this.changeHole();
-      //this.button=this.ControllerData[fid].buttonColor[0]
+     
    
       
     },
     changeButton(bid){
       this.button = bid
       
-      
+    },  
+  }, 
+  created:function () {
+        this.$parent.headerB();
+        this.$parent.footerB();
+  },
+  computed:{
+    frameImage:function(){
+      return this.frameData.find(f => f.id == this.frame).img[0];
     },
-    changeFormat(foid){
-      
-      this.format = foid
+    buttonImage: function(){
+
+      return this.buttonData.find(b => b.id == this.button).img
     },
+    holeImage: function(){
+      
+      var hole =1;
+      if(this.frame == 1 && this.button == 1)hole =1;
+      else if(this.frame == 2 && this.button == 1)hole=2;
+      else if (this.frame == 3 && this.button == 1)hole=3;
+      else if(this.frame == 3 && this.button == 2)hole=4;
+      else if(this.frame == 4 && this.button == 2)hole=5;
+
+      for(var i=0;i<this.holeData.length;i++){
+        if(this.holeData[i].id == hole)return this.holeData[i].img
+      }
+      return null;
+
     
-    getFramebyId(){
-
-      for(var i=0;i<this.frameData.length;i++)
-      {
-        if(this.frameData[i].id == this.frame) 
-        {
-          
-          return this.frameData[i];}
-      }
-
     },
-    getButtonById(){
-
-      for(var i=0;i<this.buttonData.length;i++)
-      {
-        if(this.buttonData[i].id == this.button) return this.buttonData[i];
-      }
+    frameControl: function(){
+      return this.frameData;
     },
-    getButtonController(){
-      
-      var resultButton =[]
-      var frame = this.getFramebyId()
+    buttonControl: function(){
+        var resultButton =[]
+      var frame = this.frameData.find(f => f.id == this.frame)
       
 
       for(var i=0;i<frame.buttonColor.length;i++){
@@ -350,44 +276,6 @@ export default {
           
 
       return resultButton
-
-
-
-
-    },
-    getHoleById(){
-      var hole =1;
-      if(this.frame == 1 && this.button == 1)hole =1;
-      else if(this.frame == 2 && this.button == 1)hole=2;
-      else if (this.frame == 3 && this.button == 1)hole=3;
-      else if(this.frame == 3 && this.button == 2)hole=4;
-      else if(this.frame == 4 && this.button == 2)hole=5;
-
-      for(var i=0;i<this.holeData.length;i++){
-        if(this.holeData[i].id == hole)return this.holeData[i]
-      }
-
-    },
-    getFrameController(){
-      
-      
-      return this.frameData;
-    },
-    
-    
-  },
-  
-  created:function () {
-        this.$parent.headerB();
-        this.$parent.footerB();
-  },
-  computed:{
-    frameImage:function(){
-      if(this.format ==1)return this.getFramebyId().img[0]
-      else return  this.getFramebyId().img[1]
-    },
-    buttonImage: function(){
-      return this.getButtonById().img
     }
   }
  
