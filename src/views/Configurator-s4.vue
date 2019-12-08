@@ -12,9 +12,9 @@
           <li class="gray-w">8. Create</li>
           <span class="font16 black click pull-right">✕</span>
         </ol>
-           
+
       </div>
-       
+
         <div class="content middle collect" >
           <div class="cell">
             <!-- Alba Start -->
@@ -23,7 +23,7 @@
                 <div class="row">
                   <p class="font20">SELECT FUNCTION</p>
                   <div class="col-xs-12 text-center mt30 inlineb mb30">
-                    <div class="inlineb p10 w100" v-viewer>
+                    <div class="inlineb p10 w100">
                       <div class="text-center">
                           <img :src="frameImage"  class="h350" alt="" title="">
                        </div>
@@ -48,8 +48,8 @@
                   </div>
                   <div class="col-xs-4 text-center" :class="smartSwitch.format == 'single' ? 'col-xs-offset-4':'col-xs-offset-2'">
                     <i class="el-icon-arrow-left click font25 left" @click=" smartSwitch.button > 1  ? smartSwitch.button-- : ''"></i>
-                     
-                      <div v-for="(i,index) in buttonControl" :key="index" class="inlineb active prl7" >
+
+                      <div v-for="(i,index) in buttonControl" :key="index"  class="inlineb active prl7" >
                         <div class="border inlineb">
                           <span title="" class="glyphicon glyphicon-th-large button-icon-small font20 click"></span>
                         </div>
@@ -57,12 +57,12 @@
                          ID: {{i.id}}
                         </p>
                       </div>
-                      
-                      
-                     
+
+
+
                     <i class="el-icon-arrow-right click font25 right" @click=" smartSwitch.button < 4 ? smartSwitch.button++ :''"></i>
-                   
-                  
+
+
                   </div>
                   <div class="col-xs-4 text-center" v-if="smartSwitch.format == 'double'">
                      <i class="el-icon-arrow-left click font25 left" @click=" smartSwitch.rightButton > 1  ? smartSwitch.rightButton -- : ''"></i>
@@ -74,9 +74,9 @@
                          ID: {{i.id}}
                         </p>
                       </div>
-                      
-                      
-                    
+
+
+
                     <i class="el-icon-arrow-right click font25 right" @click=" smartSwitch.rightButton < 4 ? smartSwitch.rightButton ++ :''"></i>
 
                   </div>
@@ -89,12 +89,12 @@
 
             <!-- Aria Start -->
             <!-- Aria End-->
-           
+
           </div>
-         
-          
+
+
         </div>
-        
+
         <div class="container">
           <hr class="gray">
           <div class="row">
@@ -103,9 +103,9 @@
             <div class="col-xs-4 text-right click orange" @click="next()">NEXT <i class="el-icon-d-arrow-right"></i></div>
           </div>
         </div>
-        
-      
-        
+
+
+
   </div>
 </template>
 
@@ -128,7 +128,7 @@ export default {
               {id:1,name:'York black (Glass)',buttonColor:[1],img:require('../assets/images/collection/alba/frame/double/ybg2.png')},
               {id:2,name:'Mars black (Metal)',buttonColor:[1],img:require('../assets/images/collection/alba/frame/double/mbf2.png')},
               {id:3,name:'Siler (Metal)',buttonColor:[1,2],img:require('../assets/images/collection/alba/frame/double/sf2.png')},
-              {id:4,name:'Ice White (Glass)',buttonColor:[2],img:require('../assets/images/collection/alba/frame/double/iws2.png')},           
+              {id:4,name:'Ice White (Glass)',buttonColor:[2],img:require('../assets/images/collection/alba/frame/double/iws2.png')},
               ]
              },
              buttonColorData:[
@@ -182,7 +182,7 @@ export default {
 
                ]
 
-              
+
         },
          iconData:{
           black:[
@@ -201,16 +201,17 @@ export default {
         }
             
             
+
         }
       },
-  
-  
+
+
   methods:{
     next(){
 
-        localStorage.setItem("smartSwitch",JSON.stringify(this.smartSwitch)),        
+        localStorage.setItem("smartSwitch",JSON.stringify(this.smartSwitch)),
         this.$router.push({path: '/collection/step5'});
-        
+
     },
     back(){
       this.$router.push({path: '/collection/step3'});
@@ -221,10 +222,10 @@ export default {
      actButtontype(index){
        this.buttonType = index
      },
-     
-    
+
+
   },
-  
+
   created:function () {
         this.$parent.headerB();
         this.$parent.footerB();
@@ -245,13 +246,13 @@ export default {
 
       if(this.smartSwitch.buttonColor == 1)
       return this.buttonData.black.find(b => b.id == this.smartSwitch.button).img
-      else return this.buttonData.white.find(b => b.id == this.smartSwitch.button).img 
+      else return this.buttonData.white.find(b => b.id == this.smartSwitch.button).img
 
     },
      rightButtonImage: function(){
       if(this.smartSwitch.buttonColor == 1)
       return this.rightButtonData.black.find(b => b.id == this.smartSwitch.rightButton).img
-      else return this.rightButtonData.white.find(b => b.id == this.smartSwitch.rightButton).img 
+      else return this.rightButtonData.white.find(b => b.id == this.smartSwitch.rightButton).img
     },
     buttonControl: function(){
        if(this.smartSwitch.buttonColor == 1)
@@ -259,7 +260,7 @@ export default {
       else return this.buttonData.white
     },
     holeImage: function(){
-      
+
      var frame = this.smartSwitch.frame
       var buttonColor = this.smartSwitch.buttonColor
       var button = this.smartSwitch.button
@@ -288,13 +289,13 @@ export default {
       }
 
       }
-      
+
       return null;
 
-    
+
     },
     rightHoleImage: function(){
-      
+
       var frame = this.smartSwitch.frame
       var buttonColor = this.smartSwitch.buttonColor
       var rightButton = this.smartSwitch.rightButton
@@ -323,10 +324,10 @@ export default {
       }
 
       }
-      
+
       return null;
 
-    
+
     },
     iconImage: function(){
       var buttonColor = this.smartSwitch.buttonColor
@@ -351,10 +352,10 @@ export default {
    
 
   }
- 
+
 }
 </script>
 
 <style lang="css" scoped>
-    
+
 </style>
