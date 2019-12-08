@@ -45,6 +45,12 @@
 
 
                           </div>
+
+                          <div class="icon-img">
+                         <img :src="iconImage" class="h350" alt="">
+                         <img v-if="smartSwitch.format=='double'" :src="iconImage" class="h350" alt="">
+                          </div>
+
                       </div>
                       <!-- <p>Click to zoom</p> -->
 
@@ -181,6 +187,22 @@ export default {
 
 
         },
+        iconData:{
+          black:[
+                {id:1,name:' 2 keys',img:'images/collection/alba/icon/black/ab-onWhite-icon2.png'},
+                {id:2,name:' 4 keys',img:'images/collection/alba/icon/black/ab-onWhite-icon4.png'},
+                {id:3,name:' 5 keys',img:'images/collection/alba/icon/black/ab-onWhite-icon5.png'},
+                {id:4,name:' 8 keys',img:'images/collection/alba/icon/black/ab-onWhite-icon8.png'},
+              ]
+                ,
+               white:[
+                 {id:1,name:' 2 keys',img:'images/collection/alba/icon/white/ab-onBlack-icon2.png'},
+                 {id:2,name:' 4 keys',img:'images/collection/alba/icon/white/ab-onBlack-icon4.png'},
+                 {id:3,name:' 5 keys',img:'images/collection/alba/icon/white/ab-onBlack-icon5.png'},
+                 {id:4,name:' 8 keys',img:'images/collection/alba/icon/white/ab-onBlack-icon8.png'}
+                 ]
+        }
+            
 
 
 
@@ -264,6 +286,22 @@ export default {
       return null;
 
 
+    },
+    iconImage: function(){
+      var buttonColor = this.smartSwitch.buttonColor
+
+      if(buttonColor == 1){
+        return this.iconData.white[0].img;
+      }else return this.iconData.black[0].img;
+      
+    },
+    rightIconImage: function(){
+      var buttonColor = this.smartSwitch.buttonColor
+
+      if(buttonColor == 1){
+        return this.iconData.white[0].img;
+      }else return this.iconData.black[0].img;
+      
     },
 
   }
