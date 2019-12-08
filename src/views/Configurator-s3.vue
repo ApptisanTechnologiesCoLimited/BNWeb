@@ -18,7 +18,7 @@
         <div class="content middle collect" >
           <div class="cell">
             <!-- Alba Start -->
-            <div v-if="collection==0">
+            <div v-if="1">
               <div class="container">
                 <div class="row">
                   <p class="font20">SELECT FORMAT</p>
@@ -26,13 +26,19 @@
                      
                       <div class="inlineb p10 w100" v-viewer>
                         <div class="text-center">
-                          <img :src="albaImages.frame[format][frame]"  class="h350" alt="" title="">
+                          <img :src="frameImage"  class="h350" alt="" title="">
                         </div>
                      
+                      <div class="hold-img">
+                         <img :src="holeImage" class="h350" alt="">
+                         <img v-if="smartSwitch.format=='double'" :src="rightHoleImage" class="h350" alt="">
+
+                      </div> 
+
                           <div class="button-img">
                             <div>
-                              <img :src="albaImages.button[buttonColor][0]" class="h350" alt="">
-                              <img v-if="format==1" :src="albaImages.button[buttonColor][2]" class="h350" alt="">
+                              <img :src="buttonImage" class="h350" alt="">
+                              <img v-if="smartSwitch.format=='double'" :src="rightButtonImage" class="h350" alt="">
 
                             </div>
 
@@ -46,7 +52,7 @@
                     </div>
                     <div class="col-xs-4 col-xs-offset-4 text-center mt30">
                         
-                        <div class="mr20 inlineb" @click="format=0" :class="format == 0 ? 'active':''">
+                        <div class="mr20 inlineb" @click="smartSwitch.format='single'" :class="smartSwitch.format == 'single' ? 'active':''">
                           <div class="border inlineb">
                             <span title="SOCKET" class="glyphicon glyphicon-th-large button-icon-small font20 click"></span>
                           </div>
@@ -54,7 +60,7 @@
                             Single Frame
                           </p>
                         </div>
-                        <div class="mr20 inlineb" @click="format=1" :class="format == 1 ? 'active':''">
+                        <div class="mr20 inlineb" @click="smartSwitch.format='double'" :class="smartSwitch.format == 'double' ? 'active':''">
                           <div class="border inlineb">
                             <span title="SOCKET" class="glyphicon glyphicon-th-large button-icon-small font20 click"></span>
                             <span title="SOCKET" class="glyphicon glyphicon-th-large button-icon-small font20 click"></span>
@@ -106,81 +112,86 @@ export default {
   data(){
         return {
             
-            collection:{},//用于判断ab或ar
-            format:{},//本页配置项
-            frame:{},
-            buttonColor:{},
-            albaImages:{
-              'frame':[
-                  [//single
-              require('../assets/images/collection/alba/frame/single/ybg.png'),
-              require('../assets/images/collection/alba/frame/single/mbf.png'),
-              require('../assets/images/collection/alba/frame/single/sf.png'),
-              require('../assets/images/collection/alba/frame/single/iws.png')
+           smartSwitch:null,
+            frameData:{
+              single:[
+              {id:1,name:'York black (Glass)',buttonColor:[1],img:require('../assets/images/collection/alba/frame/single/ybg.png')},
+              {id:2,name:'Mars black (Metal)',buttonColor:[1],img:require('../assets/images/collection/alba/frame/single/mbf.png')},
+              {id:3,name:'Siler (Metal)',buttonColor:[1,2],img:require('../assets/images/collection/alba/frame/single/sf.png')},
+              {id:4,name:'Ice White (Glass)',buttonColor:[2],img:require('../assets/images/collection/alba/frame/single/iws.png')},
               ],
-                  [//double
-              require('../assets/images/collection/alba/frame/double/ybg2.png'),
-              require('../assets/images/collection/alba/frame/double/mbf2.png'),
-              require('../assets/images/collection/alba/frame/double/sf2.png'),
-              require('../assets/images/collection/alba/frame/double/iws2.png')
-
-
-                  ]
-                ],
-               "button":[
-                  [//black
-              
-              require('../assets/images/collection/alba/button/black/button-b2.png'),
-              require('../assets/images/collection/alba/button/black/button-b4.png'),
-              require('../assets/images/collection/alba/button/black/button-b5.png'),
-              require('../assets/images/collection/alba/button/black/button-b8.png')
-
-             
+              double:[
+              {id:1,name:'York black (Glass)',buttonColor:[1],img:require('../assets/images/collection/alba/frame/double/ybg2.png')},
+              {id:2,name:'Mars black (Metal)',buttonColor:[1],img:require('../assets/images/collection/alba/frame/double/mbf2.png')},
+              {id:3,name:'Siler (Metal)',buttonColor:[1,2],img:require('../assets/images/collection/alba/frame/double/sf2.png')},
+              {id:4,name:'Ice White (Glass)',buttonColor:[2],img:require('../assets/images/collection/alba/frame/double/iws2.png')},           
+              ]
+             },
+             buttonColorData:[
+              {id:1,name:'York black (Glass)',img:'images/collection/alba/button/black/button-b2.png'},
+               {id:2,name:'Ice White (Glass)',img:'images/collection/alba/button/white/button-w2.png'}
             ],
-                 [//white
-              require('../assets/images/collection/alba/button/white/button-w2.png'),
-              require('../assets/images/collection/alba/button/white/button-w4.png'),
-              require('../assets/images/collection/alba/button/white/button-w5.png'),
-              require('../assets/images/collection/alba/button/white/button-w8.png')
+            buttonData:{
+              black:[
+                {id:1,name:' 2 keys',img:'images/collection/alba/button/black/button-b2.png'},
+                {id:2,name:' 4 keys',img:'images/collection/alba/button/black/button-b4.png'},
+                {id:3,name:' 5 keys',img:'images/collection/alba/button/black/button-b5.png'},
+                {id:4,name:' 8 keys',img:'images/collection/alba/button/black/button-b8.png'},
+              ]
+                ,
+               white:[
+                 {id:1,name:' 2 keys',img:'images/collection/alba/button/white/button-w2.png'},
+                 {id:2,name:' 4 keys',img:'images/collection/alba/button/white/button-w4.png'},
+                 {id:3,name:' 5 keys',img:'images/collection/alba/button/white/button-w5.png'},
+                 {id:4,name:' 8 keys',img:'images/collection/alba/button/white/button-w8.png'}
                  ]
-                ]
+        }, 
+        rightButtonData:{
+              black:[
+                {id:1,name:' 2 keys',img:'images/collection/alba/button/right/black/right-button-b2.png'},
+                {id:2,name:' 4 keys',img:'images/collection/alba/button/right/black/right-button-b4.png'},
+                {id:3,name:' 5 keys',img:'images/collection/alba/button/right/black/right-button-b5.png'},
+                {id:4,name:' 8 keys',img:'images/collection/alba/button/right/black/right-button-b8.png'},
+              ]
+                ,
+               white:[
+                 {id:1,name:' 2 keys',img:'images/collection/alba/button/right/white/right-button-w2.png'},
+                 {id:2,name:' 4 keys',img:'images/collection/alba/button/right/white/right-button-w4.png'},
+                 {id:3,name:' 5 keys',img:'images/collection/alba/button/right/white/right-button-w5.png'},
+                 {id:4,name:' 8 keys',img:'images/collection/alba/button/right/white/right-button-w8.png'}
+                 ]
+        },
+        
+             holeData:{
+              key248: [
+               {id:1,name:'York Black',img:require('../assets/images/collection/alba/hole/YorkBlack-Button-Base.png')},
+               {id:2,name:'Mars black',img:require('../assets/images/collection/alba/hole/MarsBlack-Button-Base.png')},
+              {id:3,name:'Silver black',img:require('../assets/images/collection/alba/hole/SilverBlack-Button-Base.png')},
+              {id:4,name:'Silver white',img:require('../assets/images/collection/alba/hole/SilverWhite-Button-Base.png')},
+               {id:5,name:'Ice White',img:require('../assets/images/collection/alba/hole/IceWhite-Button-Base.png')}],
+               key5:[
+                {id:1,name:'York Black',img:require('../assets/images/collection/alba/hole/YorkBlack-TT-Base.png')},
+               {id:2,name:'Mars black',img:require('../assets/images/collection/alba/hole/MarsBlack-TT-Base.png')},
+              {id:3,name:'Silver black',img:require('../assets/images/collection/alba/hole/SilverBlack-TT-Base.png')},
+              {id:4,name:'Silver white',img:require('../assets/images/collection/alba/hole/Silver-White-TT-Base.png')},
+               {id:5,name:'Ice White',img:require('../assets/images/collection/alba/hole/IceWhite-TT-Base.png')}],
+               keySocket:[
+
+               ]
 
               
-            }
+        },
             
 
             
         }
       },
   
-  mounted () {
-     if(localStorage.getItem("step") == null){
-          this.$router.push({path: '/collection/step1'});
-         }//若collection为空值时，设置默认选项。
-      if(localStorage.getItem("collection")){
-        this.collection = localStorage.getItem("collection");
-      }
-      if(localStorage.getItem("frame")){
-        this.frame = localStorage.getItem("frame");
-      }
-      if(localStorage.getItem("format")){
-        this.format = localStorage.getItem("format");
-      }else{
-         this.format = 0
-        }
-
-       if(localStorage.getItem("buttonColor")){
-        this.buttonColor = localStorage.getItem("buttonColor");
-      }
-      window.console.log(this.albaImages.frame[0])
-      
-       
-     },
+ 
   methods:{
     next(){
-        var step = 3;
-        localStorage.setItem("step",step),
-        localStorage.setItem("format",this.format),
+
+        localStorage.setItem("smartSwitch",JSON.stringify(this.smartSwitch)),        
         this.$router.push({path: '/collection/step4'});
         
     },
@@ -194,6 +205,67 @@ export default {
   created:function () {
         this.$parent.headerB();
         this.$parent.footerB();
+        this.smartSwitch = JSON.parse(localStorage.getItem("smartSwitch"))
+        if(this.smartSwitch == null){
+          this.$router.push({path: '/collection/step1'});
+         }
+  },
+  computed:{
+     frameImage:function(){
+
+       if(this.smartSwitch.format =='single')
+      return this.frameData.single.find(f => f.id == this.smartSwitch.frame).img;
+      else {
+        return this.frameData.double.find(f => f.id == this.smartSwitch.frame).img;}
+
+    },
+    buttonImage: function(){
+      if(this.smartSwitch.buttonColor == 1)
+      return this.buttonData.black[0].img
+      else return this.buttonData.white[0].img
+    },
+    rightButtonImage: function(){
+      if(this.smartSwitch.buttonColor == 1)
+      return this.rightButtonData.black[0].img
+      else return this.rightButtonData.white[0].img
+    },
+    holeImage: function(){
+      
+     var frame = this.smartSwitch.frame
+      var buttonColor = this.smartSwitch.buttonColor
+      var hole =1;
+      if(frame == 1 && buttonColor == 1)hole =1;
+      else if(frame == 2 && buttonColor == 1)hole=2;
+      else if (frame == 3 && buttonColor == 1)hole=3;
+      else if(frame == 3 && buttonColor == 2)hole=4;
+      else if(frame == 4 && buttonColor == 2)hole=5;
+
+      for(var i=0;i<this.holeData.key248.length;i++){
+        if(this.holeData.key248[i].id == hole)return this.holeData.key248[i].img
+      }
+      return null;
+
+    
+    },
+    rightHoleImage: function(){
+      
+      var frame = this.smartSwitch.frame
+      var buttonColor = this.smartSwitch.buttonColor
+      var hole =1;
+      if(frame == 1 && buttonColor == 1)hole =1;
+      else if(frame == 2 && buttonColor == 1)hole=2;
+      else if (frame == 3 && buttonColor == 1)hole=3;
+      else if(frame == 3 && buttonColor == 2)hole=4;
+      else if(frame == 4 && buttonColor == 2)hole=5;
+
+      for(var i=0;i<this.holeData.key248.length;i++){
+        if(this.holeData.key248[i].id == hole)return this.holeData.key248[i].img
+      }
+      return null;
+
+    
+    },
+
   }
  
 }
