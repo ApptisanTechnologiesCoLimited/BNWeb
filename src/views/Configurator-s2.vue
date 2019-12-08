@@ -211,6 +211,22 @@ export default {
 
 
         },
+        iconData:{
+          black:[
+                {id:1,name:' 2 keys',img:'images/collection/alba/icon/black/ab-onBlack-icon2.png'},
+                {id:2,name:' 4 keys',img:'images/collection/alba/icon/black/ab-onBlack-icon4.png'},
+                {id:3,name:' 5 keys',img:'images/collection/alba/icon/black/ab-onBlack-icon5.png'},
+                {id:4,name:' 8 keys',img:'images/collection/alba/icon/black/ab-onBlack-icon8.png'},
+              ]
+                ,
+               white:[
+                 {id:1,name:' 2 keys',img:'images/collection/alba/icon/white/ab-onWhite-icon2.png'},
+                 {id:2,name:' 4 keys',img:'images/collection/alba/icon/white/ab-onWhite-icon4.png'},
+                 {id:3,name:' 5 keys',img:'images/collection/alba/icon/white/ab-onWhite-icon5.png'},
+                 {id:4,name:' 8 keys',img:'images/collection/alba/icon/white/ab-onWhite-icon8.png'}
+                 ]
+        }
+            
 
 
 
@@ -278,6 +294,14 @@ export default {
       return null;
 
 
+    },
+    iconImage: function(){
+      var buttonColor = this.smartSwitch.buttonColor
+
+      if(buttonColor == 1){
+        return this.iconImage.white[0];
+      }else return this.iconImage.black[0];
+      
     },
     frameControl: function(){
       return this.frameData.single;
