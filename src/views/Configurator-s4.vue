@@ -39,6 +39,12 @@
                         <img v-if="smartSwitch.format=='double'" :src="rightButtonImage" class="h350" alt="">
                       </div>
                     </div>
+
+                    <div class="icon-img">
+                         <img :src="iconImage" class="h350" alt="">
+                         <img v-if="smartSwitch.format=='double'" :src="rightIconImage" class="h350" alt="">
+                          </div>
+
                   </div>
                   <div class="col-xs-4 text-center" :class="smartSwitch.format == 'single' ? 'col-xs-offset-4':'col-xs-offset-2'">
                     <i class="el-icon-arrow-left click font25 left" @click=" smartSwitch.button > 1  ? smartSwitch.button-- : ''"></i>
@@ -178,6 +184,21 @@ export default {
 
               
         },
+         iconData:{
+          black:[
+                {id:1,name:' 2 keys',img:'images/collection/alba/icon/black/ab-onWhite-icon2.png'},
+                {id:2,name:' 4 keys',img:'images/collection/alba/icon/black/ab-onWhite-icon4.png'},
+                {id:3,name:' 5 keys',img:'images/collection/alba/icon/black/ab-onWhite-icon5.png'},
+                {id:4,name:' 8 keys',img:'images/collection/alba/icon/black/ab-onWhite-icon8.png'},
+              ]
+                ,
+               white:[
+                 {id:1,name:' 2 keys',img:'images/collection/alba/icon/white/ab-onBlack-icon2.png'},
+                 {id:2,name:' 4 keys',img:'images/collection/alba/icon/white/ab-onBlack-icon4.png'},
+                 {id:3,name:' 5 keys',img:'images/collection/alba/icon/white/ab-onBlack-icon5.png'},
+                 {id:4,name:' 8 keys',img:'images/collection/alba/icon/white/ab-onBlack-icon8.png'}
+                 ]
+        }
             
             
         }
@@ -306,6 +327,26 @@ export default {
       return null;
 
     
+    },
+    iconImage: function(){
+      var buttonColor = this.smartSwitch.buttonColor
+      var button = this.smartSwitch.button
+      if(buttonColor == 1){
+        {
+          return this.iconData.white.find(b => b.id == button).img
+        }
+      }else return this.iconData.black.find(b => b.id == button).img
+      
+    },
+    rightIconImage: function(){
+      var buttonColor = this.smartSwitch.buttonColor
+      var rightButton = this.smartSwitch.rightButton
+      if(buttonColor == 1){
+        {
+          return this.iconData.white.find(b => b.id == rightButton).img
+        }
+      }else return this.iconData.black.find(b => b.id == rightButton).img
+      
     },
    
 
