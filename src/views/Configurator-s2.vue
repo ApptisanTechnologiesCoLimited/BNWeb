@@ -12,9 +12,9 @@
           <li class="gray-w">8. Create</li>
           <span class="font16 black click pull-right">✕</span>
         </ol>
-           
+
       </div>
-       
+
         <div class="content middle collect" >
           <div class="cell">
             <!-- Alba Start -->
@@ -27,17 +27,20 @@
 
                       <div class="hold-img">
                          <img :src="holeImage" class="h350" alt="">
-                      </div> 
-                      
+                      </div>
+
                       <div class="button-img">
                          <img  :src="buttonImage" class="h350" alt="">
                       </div>
-                     
+                      <div class="icon-img">
+                         <img src="../assets/images/collection/alba/icon/black/ab-onBlack-icon4.png" class="h350" alt="">
+                      </div>
+
 
                     </div>
                   <div class="col-xs-6 text-center">
                     <p class="font20 mb20">SELECT COLLECTION</p>
-                    
+
                     <div class="row">
                       <p class="mb20">FRAME</p>
                       <div class="col-xs-12">
@@ -47,11 +50,11 @@
                           <p class="name-mc">
                             {{i.name}}
                           </p>
-                          
+
                         </div>
-                        
-                        
-                        
+
+
+
                         <div class="col-xs-12 mt30">
                           <hr class="gray ">
                         </div>
@@ -63,27 +66,27 @@
                             <p class="name-mc">
                               {{i.name}}
                             </p>
-                          
+
                          </div>
-                        
+
 
                         </div>
 
 
-                       
 
-                        
+
+
                       </div>
-                        
+
                     </div>
-                   
+
                   </div>
                 </div>
-                 
+
                 </div>
               </div>
             </div><!-- Alba End -->
- 
+
 
             <!-- Aria Start -->
             <div v-if="false">
@@ -96,7 +99,7 @@
                     </div>
                   <div class="col-xs-6 text-center">
                     <p class="font20 mb20">SELECT MATERIAL AND COLOR</p>
-                    
+
                     <div class="row mt15p">
                       <p class="mb20">Surface</p>
                       <div class="col-xs-12">
@@ -105,7 +108,7 @@
                           <p class="name-mc">
                             York black (Glass)
                           </p>
-                          
+
                         </div>
                         <div class="inlineb mr20" @click="frame=1" :class="frame == 5 ? 'active':''" >
                           <img :src="frameImages[1][1]"  class="h50" alt="Mars Black" title="Mars Black">
@@ -113,26 +116,26 @@
                             Ice White (Glass)
                           </p>
                         </div>
-                
-                     
 
-                        
+
+
+
                       </div>
-                        
+
                     </div>
-                   
+
                   </div>
                 </div>
-                 
+
                 </div>
               </div>
             </div><!-- Aria End-->
-           
+
           </div>
-         
-          
+
+
         </div>
-        
+
         <div class="container">
           <hr class="gray">
           <div class="row">
@@ -141,9 +144,9 @@
             <div class="col-xs-4 text-right click orange" @click="next()">NEXT <i class="el-icon-d-arrow-right"></i></div>
           </div>
         </div>
-        
-      
-        
+
+
+
   </div>
 </template>
 
@@ -167,7 +170,7 @@ export default {
               {id:1,name:'York black (Glass)',buttonColor:[1],img:require('../assets/images/collection/alba/frame/double/ybg2.png')},
               {id:2,name:'Mars black (Metal)',buttonColor:[1],img:require('../assets/images/collection/alba/frame/double/mbf2.png')},
               {id:3,name:'Siler (Metal)',buttonColor:[1,2],img:require('../assets/images/collection/alba/frame/double/sf2.png')},
-              {id:4,name:'Ice White (Glass)',buttonColor:[2],img:require('../assets/images/collection/alba/frame/double/iws2.png')},           
+              {id:4,name:'Ice White (Glass)',buttonColor:[2],img:require('../assets/images/collection/alba/frame/double/iws2.png')},
               ]
              },
              buttonColorData:[
@@ -206,21 +209,21 @@ export default {
 
                ]
 
-              
-        },
-            
 
-            
+        },
+
+
+
         }
       },
-  
+
 
   methods:{
     next(){
-      
+
         localStorage.setItem("smartSwitch",JSON.stringify(this.smartSwitch)),
         this.$router.push({path: '/collection/step3'});
-        
+
     },
     back(){
       this.$router.push({path: '/collection/step1'});
@@ -230,21 +233,21 @@ export default {
       var frame = this.frameData.single.find(f => f.id == this.smartSwitch.frame)
       this.smartSwitch.buttonColor = frame.buttonColor[0]
 
-    
-     
-   
-      
+
+
+
+
     },
     changeButtonColor(bid){
       this.smartSwitch.buttonColor = bid
-      
-    },  
-  }, 
+
+    },
+  },
   created:function () {
         this.$parent.headerB();
         this.$parent.footerB();
          this.smartSwitch =  JSON.parse(localStorage.getItem("smartSwitch"))
-      
+
       if(this.smartSwitch == null){
           this.$router.push({path: '/collection/step1'});
          }
@@ -274,7 +277,7 @@ export default {
       }
       return null;
 
-    
+
     },
     frameControl: function(){
       return this.frameData.single;
@@ -282,10 +285,10 @@ export default {
     buttonColorControl: function(){
         var resultButton =[]
       var frame = this.frameData.single.find(f => f.id == this.smartSwitch.frame)
-      
+
 
       for(var i=0;i<frame.buttonColor.length;i++){
-  
+
         var buttonColor = frame.buttonColor[i];
 
         for(var j=0;j<this.buttonColorData.length;j++){
@@ -295,15 +298,15 @@ export default {
 
       }
 
-          
+
 
       return resultButton
     }
   }
- 
+
 }
 </script>
 
 <style lang="css" scoped>
-    
+
 </style>
