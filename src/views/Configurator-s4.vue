@@ -4,8 +4,8 @@
       <ol class="breadcrumb">
           <li class="black">1. Collection</li>
           <li class="black">2. Materials</li>
-          <li class="orange">3. Frame</li>
-          <li class="gray-w">4. Product</li>
+          <li class="black">3. Frame</li>
+          <li class="orange">4. Function</li>
           <li class="gray-w">5. Engraving</li>
           <li class="gray-w">6. Backlights</li>
           <li class="gray-w">7. Details</li>
@@ -43,9 +43,9 @@
                   <div class="col-xs-4 text-center" :class="smartSwitch.format == 'single' ? 'col-xs-offset-4':'col-xs-offset-2'">
                     <i class="el-icon-arrow-left click font25 left" @click=" smartSwitch.button > 1  ? smartSwitch.button-- : ''"></i>
                      
-                      <div v-for="(i,index) in buttonControl" :key="index"  class="inlineb active prl7" >
+                      <div v-for="(i,index) in buttonControl" :key="index" class="inlineb active prl7" >
                         <div class="border inlineb">
-                          <span title="SOCKET" class="glyphicon glyphicon-th-large button-icon-small font20 click"></span>
+                          <span title="" class="glyphicon glyphicon-th-large button-icon-small font20 click"></span>
                         </div>
                         <p class="name-f">
                          ID: {{i.id}}

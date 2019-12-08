@@ -78,7 +78,7 @@ export default {
             rightButton:1,
 
           },
-            collection:0,
+            
             collectionImages:[
               require("../assets/images/collection/alba/ab-product.png"),
               require("../assets/images/collection/aria/ar-product.png")
