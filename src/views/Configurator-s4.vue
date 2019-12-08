@@ -47,8 +47,8 @@
 
                   </div>
                   <div class="col-xs-4 text-center" :class="smartSwitch.format == 'single' ? 'col-xs-offset-4':'col-xs-offset-2'">
-                    <i class="el-icon-arrow-left click font25 left" @click="smartSwitch.button > 1  ? smartSwitch.button-- : ''"></i>
-                      <div v-for="(i,index) in buttonControl" :key="index"  class="inlineb active prl7" v-show="smartSwitch.button == index">
+                    <i class="el-icon-arrow-left click font25 left" @click="smartSwitch.button > 0  ? smartSwitch.button-- : ''"></i>
+                      <div v-for="(i,index) in buttonControl" :key="index"  class="inlineb active prl7" v-show="smartSwitch.button == i.id">
                         <div class="border inlineb">
                           <span title="" class="glyphicon glyphicon-th-large button-icon-small font20 click"></span>
                         </div>
@@ -64,8 +64,8 @@
 
                   </div>
                   <div class="col-xs-4 text-center" v-if="smartSwitch.format == 'double'">
-                     <i class="el-icon-arrow-left click font25 left" @click=" smartSwitch.rightButton > 1  ? smartSwitch.rightButton -- : ''"></i>
-                      <div v-for="(i,index) in buttonControl" :key="index"  class="inlineb active prl7"  v-show="smartSwitch.rightButton == index">
+                     <i class="el-icon-arrow-left click font25 left" @click=" smartSwitch.rightButton > 0  ? smartSwitch.rightButton -- : ''"></i>
+                      <div v-for="(i,index) in buttonControl" :key="index"  class="inlineb active prl7" v-show="smartSwitch.rightButton == i.id">
                         <div class="border inlineb">
                           <span title="SOCKET" class="glyphicon glyphicon-th-large button-icon-small font20 click"></span>
                         </div>

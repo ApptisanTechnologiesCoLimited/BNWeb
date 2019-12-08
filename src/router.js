@@ -117,6 +117,13 @@ const routes = [
     meta: {
       title: 'Add a Collection'
     }
+  },
+  {
+    path: '/collection/step5',
+    component: () => import('./views/Configurator-s5.vue'),
+    meta: {
+      title: 'Add a Collection'
+    }
   }
 ]
 
