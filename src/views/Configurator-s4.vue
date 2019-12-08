@@ -10,7 +10,7 @@
           <li class="gray-w">6. Backlights</li>
           <li class="gray-w">7. Details</li>
           <li class="gray-w">8. Create</li>
-          <span class="font16 black click pull-right">✕</span>
+
         </ol>
 
       </div>
@@ -41,9 +41,8 @@
                     </div>
                   </div>
                   <div class="col-xs-4 text-center" :class="smartSwitch.format == 'single' ? 'col-xs-offset-4':'col-xs-offset-2'">
-                    <i class="el-icon-arrow-left click font25 left" @click=" smartSwitch.button > 1  ? smartSwitch.button-- : ''"></i>
-
-                      <div v-for="(i,index) in buttonControl" :key="index"  class="inlineb active prl7" >
+                    <i class="el-icon-arrow-left click font25 left" @click="smartSwitch.button > 1  ? smartSwitch.button-- : ''"></i>
+                      <div v-for="(i,index) in buttonControl" :key="index"  class="inlineb prl7" >
                         <div class="border inlineb">
                           <span title="" class="glyphicon glyphicon-th-large button-icon-small font20 click"></span>
                         </div>

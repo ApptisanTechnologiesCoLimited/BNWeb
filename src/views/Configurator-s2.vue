@@ -10,7 +10,7 @@
           <li class="gray-w">6. Backlights</li>
           <li class="gray-w">7. Details</li>
           <li class="gray-w">8. Create</li>
-          <span class="font16 black click pull-right">✕</span>
+        
         </ol>
 
       </div>
@@ -45,7 +45,7 @@
                       <p class="mb20">FRAME</p>
                       <div class="col-xs-12">
 
-                        <div v-for="(i,index) in frameControl" :key="index" class="inlineb mr20" @click="changeFrame(i.id)" :class="i.id  == smartSwitch.frame? 'active':''" >
+                        <div v-for="(i,index) in frameControl" :key="index" class="inlineb mlr10" @click="changeFrame(i.id)" :class="i.id  == smartSwitch.frame? 'active':''" >
                           <img :src="i.img" class="h50" alt="York black (Glass)" title="York black (Glass)">
                           <p class="name-mc">
                             {{i.name}}
@@ -61,7 +61,7 @@
                         <div class="col-xs-12">
                           <p class="mb20 mt20">BUTTONS</p>
 
-                          <div v-for="(i,index) in buttonColorControl" :key="index" class="inlineb mr20" @click="changeButtonColor(i.id)" :class="i.id == smartSwitch.buttonColor ? 'active':''" >
+                          <div v-for="(i,index) in buttonColorControl" :key="index" class="inlineb mlr10" @click="changeButtonColor(i.id)" :class="i.id == smartSwitch.buttonColor ? 'active':''" >
                             <img :src="i.img" class="h50" alt="York black (Glass)" title="York black (Glass)">
                             <p class="name-mc">
                               {{i.name}}
@@ -226,7 +226,7 @@ export default {
                  {id:4,name:' 8 keys',img:'images/collection/alba/icon/white/ab-onWhite-icon8.png'}
                  ]
         }
-            
+
 
 
 
@@ -301,7 +301,7 @@ export default {
       if(buttonColor == 1){
         return this.iconImage.white[0];
       }else return this.iconImage.black[0];
-      
+
     },
     frameControl: function(){
       return this.frameData.single;

@@ -10,7 +10,7 @@
           <li class="gray-w">6. Backlights</li>
           <li class="gray-w">7. Details</li>
           <li class="gray-w">8. Create</li>
-          <span class="font16 black click pull-right">✕</span>
+      
         </ol>
 
       </div>
