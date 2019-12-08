@@ -1,7 +1,7 @@
 <template>
   <div id="collectionA">
-    <div class="bg-img1" v-if="collection == 0"></div>
-    <div class="bg-img2" v-if="collection == 1"></div>
+    <div class="bg-img1" v-if="smartSwitch.collection == 0"></div>
+    <div class="bg-img2" v-if="smartSwitch.collection == 1"></div>
     <div class="">
        <ol class="breadcrumb">
           <li class="orange">1. Collection</li>
@@ -17,14 +17,14 @@
                   <div class="col-xs-10 col-xs-offset-1">
                     <div class="row">
                       <div class="col-xs-6">
-                        <img :src="collectionImages[collection]"  class="h350" alt="">
+                        <img :src="collectionImages[smartSwitch.collection]"  class="h350" alt="">
                       </div>
                       <div class="col-xs-6 text-center mt30">
-                        <p class="font20" :class="collection == 1 ? 'white':''">SELECT COLLECTION</p>
-                        <div class="button-b black w100 mt30" :class="collection == 0 ? 'active':'white'" @click="collection=0">
+                        <p class="font20" :class="smartSwitch.collection == 1 ? 'white':''">SELECT COLLECTION</p>
+                        <div class="button-b black w100 mt30" :class="smartSwitch.collection == 0 ? 'active':'white'" @click="smartSwitch.collection=0">
                           ALBA
                         </div>
-                        <div class="button-b black w100 mt30" :class="collection == 1 ? 'active':''" @click="collection=1">
+                        <div class="button-b black w100 mt30" :class="smartSwitch.collection == 1 ? 'active':''" @click="smartSwitch.collection=1">
                           ARIA
                         </div>
 
@@ -39,7 +39,7 @@
                   <div class="col-xs-4 click"></div>
                   <div class="col-xs-4 text-center click"></div>
                   <div class="col-xs-4 text-right click">
-                    <div :class="collection == 0 ? 'black':'white'" @click="next()">NEXT <i class="el-icon-d-arrow-right"></i></div>
+                    <div :class="smartSwitch.collection == 0 ? 'black':'white'" @click="next()">NEXT <i class="el-icon-d-arrow-right"></i></div>
                   </div>
 
                   <!-- <div class="col-xs-4 text-right click" v-if="type == 1">
@@ -69,6 +69,15 @@ export default {
   name: 'collectionA',
   data(){
         return {
+          smartSwitch:{
+            collection:0,
+            frame:1,
+            buttonColor:1,
+            button:1,
+            format:'single',
+            rightButton:1,
+
+          },
             collection:0,
             collectionImages:[
               require("../assets/images/collection/alba/ab-product.png"),
@@ -83,18 +92,18 @@ export default {
   },
   mounted () {
     
-      if(localStorage.getItem("collection")){
-        this.collection = localStorage.getItem("collection")
-         }else{
-           this.collection = 0
-        }//若collection为空值时，设置默认选项。
+     
        
      },
   methods:{
     
     next(){
-        localStorage.setItem("step",1),
-        localStorage.setItem("collection",this.collection),
+       
+        
+        localStorage.setItem("smartSwitch",JSON.stringify(this.smartSwitch)),
+
+
+
         
         this.$router.push({path: '/collection/step2'});
     }
