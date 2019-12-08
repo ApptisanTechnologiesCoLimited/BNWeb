@@ -12,9 +12,9 @@
           <li class="gray-w">8. Create</li>
           <span class="font16 black click pull-right">✕</span>
         </ol>
-           
+
       </div>
-       
+
         <div class="content middle collect" >
           <div class="cell">
             <!-- Alba Start -->
@@ -23,17 +23,17 @@
                 <div class="row">
                   <p class="font20">SELECT FORMAT</p>
                   <div class="col-xs-12 text-center mt30 inlineb">
-                     
-                      <div class="inlineb p10 w100" v-viewer>
+
+                      <div class="inlineb p10 w100">
                         <div class="text-center">
                           <img :src="frameImage"  class="h350" alt="" title="">
                         </div>
-                     
+
                       <div class="hold-img">
                          <img :src="holeImage" class="h350" alt="">
                          <img v-if="smartSwitch.format=='double'" :src="rightHoleImage" class="h350" alt="">
 
-                      </div> 
+                      </div>
 
                           <div class="button-img">
                             <div>
@@ -42,16 +42,16 @@
 
                             </div>
 
-                             
-                        
+
+
                           </div>
                       </div>
                       <!-- <p>Click to zoom</p> -->
-                      
-                      
+
+
                     </div>
                     <div class="col-xs-4 col-xs-offset-4 text-center mt30">
-                        
+
                         <div class="mr20 inlineb" @click="smartSwitch.format='single'" :class="smartSwitch.format == 'single' ? 'active':''">
                           <div class="border inlineb">
                             <span title="SOCKET" class="glyphicon glyphicon-th-large button-icon-small font20 click"></span>
@@ -68,14 +68,14 @@
                           <p class="name-f">
                             Double Frame
                           </p>
-                          
+
                         </div>
-                   
+
                     </div>
 
 
                 </div>
-               
+
 
               </div>
             </div>
@@ -84,12 +84,12 @@
 
             <!-- Aria Start -->
             <!-- Aria End-->
-           
+
           </div>
-         
-          
+
+
         </div>
-        
+
         <div class="container">
           <hr class="gray">
           <div class="row">
@@ -98,9 +98,9 @@
             <div class="col-xs-4 text-right click orange" @click="next()">NEXT <i class="el-icon-d-arrow-right"></i></div>
           </div>
         </div>
-        
-      
-        
+
+
+
   </div>
 </template>
 
@@ -111,7 +111,7 @@ export default {
   name: 'addstep',
   data(){
         return {
-            
+
            smartSwitch:null,
             frameData:{
               single:[
@@ -124,7 +124,7 @@ export default {
               {id:1,name:'York black (Glass)',buttonColor:[1],img:require('../assets/images/collection/alba/frame/double/ybg2.png')},
               {id:2,name:'Mars black (Metal)',buttonColor:[1],img:require('../assets/images/collection/alba/frame/double/mbf2.png')},
               {id:3,name:'Siler (Metal)',buttonColor:[1,2],img:require('../assets/images/collection/alba/frame/double/sf2.png')},
-              {id:4,name:'Ice White (Glass)',buttonColor:[2],img:require('../assets/images/collection/alba/frame/double/iws2.png')},           
+              {id:4,name:'Ice White (Glass)',buttonColor:[2],img:require('../assets/images/collection/alba/frame/double/iws2.png')},
               ]
              },
              buttonColorData:[
@@ -145,7 +145,7 @@ export default {
                  {id:3,name:' 5 keys',img:'images/collection/alba/button/white/button-w5.png'},
                  {id:4,name:' 8 keys',img:'images/collection/alba/button/white/button-w8.png'}
                  ]
-        }, 
+        },
         rightButtonData:{
               black:[
                 {id:1,name:' 2 keys',img:'images/collection/alba/button/right/black/right-button-b2.png'},
@@ -161,7 +161,7 @@ export default {
                  {id:4,name:' 8 keys',img:'images/collection/alba/button/right/white/right-button-w8.png'}
                  ]
         },
-        
+
              holeData:{
               key248: [
                {id:1,name:'York Black',img:require('../assets/images/collection/alba/hole/YorkBlack-Button-Base.png')},
@@ -179,29 +179,29 @@ export default {
 
                ]
 
-              
-        },
-            
 
-            
+        },
+
+
+
         }
       },
-  
- 
+
+
   methods:{
     next(){
 
-        localStorage.setItem("smartSwitch",JSON.stringify(this.smartSwitch)),        
+        localStorage.setItem("smartSwitch",JSON.stringify(this.smartSwitch)),
         this.$router.push({path: '/collection/step4'});
-        
+
     },
     back(){
       this.$router.push({path: '/collection/step2'});
     }
-    
-    
+
+
   },
-  
+
   created:function () {
         this.$parent.headerB();
         this.$parent.footerB();
@@ -230,7 +230,7 @@ export default {
       else return this.rightButtonData.white[0].img
     },
     holeImage: function(){
-      
+
      var frame = this.smartSwitch.frame
       var buttonColor = this.smartSwitch.buttonColor
       var hole =1;
@@ -245,10 +245,10 @@ export default {
       }
       return null;
 
-    
+
     },
     rightHoleImage: function(){
-      
+
       var frame = this.smartSwitch.frame
       var buttonColor = this.smartSwitch.buttonColor
       var hole =1;
@@ -263,14 +263,14 @@ export default {
       }
       return null;
 
-    
+
     },
 
   }
- 
+
 }
 </script>
 
 <style lang="css" scoped>
-    
+
 </style>
